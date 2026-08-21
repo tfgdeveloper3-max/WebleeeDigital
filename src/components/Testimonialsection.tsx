@@ -56,19 +56,6 @@ function Stars({ color = "text-amber-400", size = "h-5 w-5" }: { color?: string;
     );
 }
 
-function PhoneIcon() {
-    return (
-        <svg viewBox="0 0 20 20" className="h-3.5 w-3.5" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path
-                d="M4 3.5c0-.5.4-.9.9-.9h1.6c.4 0 .8.3.9.7l.6 2.1c.1.4 0 .8-.3 1.1l-1 1c.9 1.8 2.4 3.3 4.2 4.2l1-1c.3-.3.7-.4 1.1-.3l2.1.6c.4.1.7.5.7.9v1.6c0 .5-.4.9-.9.9-6.1 0-11-4.9-11-11Z"
-                stroke="currentColor"
-                strokeWidth="1.3"
-                strokeLinejoin="round"
-            />
-        </svg>
-    );
-}
-
 const cardVariants: Variants = {
     enter: (direction: number) => ({
         x: direction > 0 ? 300 : -300,
