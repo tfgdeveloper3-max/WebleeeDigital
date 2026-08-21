@@ -150,7 +150,8 @@ export default function ContactSection() {
                 </span>
 
                 <h2 className="animate__animated animate__fadeInUp animate__delay-1s text-[36px] font-light leading-[1.1] text-neutral-900 sm:text-[44px] lg:text-[52px]">
-                    <span className="font-semibold text-brand">CONNECT</span> With Our Experts
+                    <span className="font-semibold text-brand">Discuss
+                    </span> Your Ideas With Us
                 </h2>
             </div>
 
@@ -203,7 +204,7 @@ export default function ContactSection() {
                     className="opacity-0 flex flex-col justify-center rounded-[20px] bg-gradient-to-br from-[#5a9a6a] via-brand to-[#12351f] p-10 md:h-[560px] lg:p-14"
                 >
                     <h3 className="mb-9 text-[28px] font-semibold leading-tight text-white lg:text-[32px]">
-                        Get In Touch With Us
+                        Have a Vision? Let's Give It a Digital Home.
                     </h3>
 
                     <div className="flex flex-col gap-8">

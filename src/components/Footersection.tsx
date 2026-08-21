@@ -4,7 +4,7 @@ import $ from "../lib/jquery-setup";
 import "jquery-ui-dist/jquery-ui";
 import { Link } from "react-router-dom";
 
-const HEADLINE = "Got A Project In Mind? Let's Talk.";
+const HEADLINE = "Curious to See What Your Brand Could Become?";
 const BRAND_NAME = "Weblee";
 
 const QUICK_LINKS = [
@@ -124,7 +124,6 @@ export default function FooterSection() {
     const subscribeRef = useRef<HTMLDivElement>(null);
     const socialRefs = useRef<(HTMLAnchorElement | null)[]>([]);
 
-    // Word-by-word scroll-triggered reveal for the big headline
     useEffect(() => {
         const el = headlineRef.current;
         if (!el) return;
@@ -147,7 +146,6 @@ export default function FooterSection() {
         return () => observer.disconnect();
     }, []);
 
-    // Scroll-triggered reveal for the columns below, same pattern used across all other sections
     useEffect(() => {
         const observers: IntersectionObserver[] = [];
 
@@ -171,7 +169,6 @@ export default function FooterSection() {
         return () => observers.forEach((o) => o.disconnect());
     }, []);
 
-    // jQuery UI tooltip on the subscribe field, same convention used elsewhere
     useEffect(() => {
         if (!subscribeRef.current) return;
         const $el = $(subscribeRef.current);
@@ -181,7 +178,6 @@ export default function FooterSection() {
         };
     }, []);
 
-    // jQuery UI "bounce" effect on social icons the first time they scroll into view
     useEffect(() => {
         const el = socialRefs.current[0]?.parentElement;
         if (!el) return;
@@ -230,7 +226,7 @@ export default function FooterSection() {
                         href="mailto:hello@yourbrand.com"
                         className="btn-sweep relative inline-flex items-center gap-3 overflow-hidden rounded-full bg-cta-gradient px-7 py-4 text-sm font-medium text-white shadow-lg shadow-pink-500/20 transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.03] hover:shadow-lg hover:shadow-pink-500/40"
                     >
-                        <span className="relative z-10">Start A Conversation</span>
+                        <span className="relative z-10">Unlock what’s possible</span>
                         <span className="relative z-10">
                             <ArrowIcon />
                         </span>

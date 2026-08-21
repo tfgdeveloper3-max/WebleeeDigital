@@ -5,6 +5,7 @@ type Testimonial = {
     name: string;
     role: string;
     avatar: string;
+    title: string;
     quote: string;
     featured?: boolean;
 };
@@ -14,23 +15,26 @@ const TESTIMONIALS: Testimonial[] = [
         name: "Priya Sharma",
         role: "Marketing Manager, UrbanCart",
         avatar: "https://i.pravatar.cc/160?img=47",
+        title: "They understood what we were trying to achieve.",
         quote:
-            "Lorem Ipsum Is Simply Dummy Text Of The Printing And Typesetting Industry. Lorem Ipsum Has Been The Industry's Standard Dummy Text Ever Since 1966,",
+            "We came to Weblee Digital with a rough idea and weren't sure how to bring it all together. The team helped us shape the concept, refine the design, and create a website that genuinely feels like our brand. The process was smooth, professional, and far easier than we expected.",
     },
     {
-        name: "Daniel Foster",
-        role: "CEO, GlobalVision Inc.",
+        name: "Daniel Carter",
+        role: "Founder, Northline Group",
         avatar: "https://i.pravatar.cc/160?img=12",
+        title: "A completely different experience from our previous agency.",
         quote:
-            "Lorem Ipsum Is Simply Dummy Text Of The Printing And Typesetting Industry. Lorem Ipsum Has Been The Industry's Standard Dummy Text Ever Since 1966,",
+            "What stood out most was their attention to detail. From branding and UI/UX to website development, everything felt connected rather than handled as separate pieces. We now have a digital presence that looks professional and truly represents where our business is heading.",
         featured: true,
     },
     {
-        name: "Anita Patel",
-        role: "Owner, Patel Enterprises",
+        name: "Sophia Bennett",
+        role: "Director, Elevate & Co.",
         avatar: "https://i.pravatar.cc/160?img=32",
+        title: "They made the complicated parts feel simple.",
         quote:
-            "Lorem Ipsum Is Simply Dummy Text Of The Printing And Typesetting Industry. Lorem Ipsum Has Been The Industry's Standard Dummy Text Ever Since 1966,",
+            "We needed more than just a website, we wanted a stronger digital presence. Weblee Digital helped us bring together design, development, SEO and digital strategy while keeping everything clear throughout the process. The final result feels modern, intuitive, and completely aligned with our goals.",
     },
 ];
 
@@ -143,7 +147,7 @@ export default function TestimonialsSection() {
                     viewport={{ once: true, amount: 0.5 }}
                     className="text-[36px] font-light leading-[1.1] text-neutral-900 sm:text-[44px] lg:text-[52px]"
                 >
-                    What Our <span className="font-semibold text-brand">CLIENTS</span> Are Saying
+                    THE <span className="font-semibold text-brand">BUSINESSES </span> WE'VE HELPED MOVE FORWARD
                 </motion.h2>
 
                 <motion.p
@@ -153,9 +157,9 @@ export default function TestimonialsSection() {
                     viewport={{ once: true, amount: 0.5 }}
                     className="mx-auto mt-6 max-w-2xl text-[15px] leading-relaxed text-neutral-500"
                 >
-                    Lorem Ipsum Is Simply Dummy Text Of The Printing And Typesetting Industry. Lorem
-                    Ipsum Has Been The Industry&apos;s Standard Dummy Text Ever Since 1966, When
-                    Designers At Letraset And James Mosley.
+                    We believe the best proof of our work comes from the people who
+                    experience it firsthand. Explore the stories, experiences, and
+                    results that have made our clients part of the Weblee journey.
                 </motion.p>
             </div>
 
@@ -176,8 +180,8 @@ export default function TestimonialsSection() {
                         animate="center"
                         exit="exit"
                         className={`w-full flex flex-col items-center rounded-[24px] px-8 py-12 text-center shadow-2xl md:px-12 md:py-16 ${activeTestimonial.featured
-                                ? "bg-emerald-50 shadow-[0_25px_50px_-20px_rgba(16,94,62,0.2)]"
-                                : "border border-neutral-200 bg-white"
+                            ? "bg-emerald-50 shadow-[0_25px_50px_-20px_rgba(16,94,62,0.2)]"
+                            : "border border-neutral-200 bg-white"
                             }`}
                     >
                         <img
@@ -196,6 +200,7 @@ export default function TestimonialsSection() {
                         <Stars />
 
                         <p className="mt-6 max-w-md text-[15px] leading-relaxed text-neutral-600">
+                            <span className="font-semibold text-neutral-900">{activeTestimonial.title}</span>{" "}
                             {activeTestimonial.quote}
                         </p>
                     </motion.div>
@@ -223,7 +228,7 @@ export default function TestimonialsSection() {
                 transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
                 className="mx-auto mt-14 flex max-w-3xl flex-col items-center gap-5"
             >
-                <div className="flex items-center gap-3 rounded-full px-4 py-2 transition-colors duration-700 hover:bg-emerald-50">
+                {/* <div className="flex items-center gap-3 rounded-full px-4 py-2 transition-colors duration-700 hover:bg-emerald-50">
                     <div className="relative h-9 w-9 shrink-0">
                         <img
                             src="https://i.pravatar.cc/72?img=47"
@@ -243,7 +248,7 @@ export default function TestimonialsSection() {
                             We Build Digital Solutions You Can Trust.
                         </a>
                     </p>
-                </div>
+                </div> */}
 
                 <div className="flex items-center gap-2" title="Based on verified customer reviews">
                     <span className="text-base font-bold text-neutral-900">4.9</span>
