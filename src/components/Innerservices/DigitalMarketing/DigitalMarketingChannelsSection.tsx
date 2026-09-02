@@ -12,32 +12,32 @@ const MARKETING_CHANNELS = [
     {
         icon: MousePointerClick,
         title: "Pay-Per-Click Advertising",
-        description: "Google and Meta ad campaigns built around clear conversion goals.",
+        description: "High-intent Google and Meta campaigns built around precise targeting, compelling creative, and measurable conversion goals.",
     },
     {
         icon: Mail,
         title: "Email Marketing Automation",
-        description: "Nurture sequences and campaigns that turn subscribers into repeat buyers.",
+        description: "Strategic email journeys that nurture prospects, re-engage customers, and turn one-time interactions into lasting relationships.",
     },
     {
         icon: TrendingUp,
         title: "Conversion Rate Optimization",
-        description: "A/B tested landing pages and funnels that turn more visitors into customers.",
+        description: "We refine landing pages, funnels, messaging, and user journeys to remove friction and turn more existing traffic into customers.",
     },
     {
         icon: Workflow,
         title: "Marketing Automation",
-        description: "Automated workflows that nurture leads without manual follow-up.",
+        description: "Intelligent workflows that keep leads moving, personalize follow-ups, and handle repetitive marketing tasks without constant manual intervention.",
     },
     {
         icon: ShoppingBag,
         title: "E-commerce Marketing",
-        description: "Retargeting, abandoned cart flows, and promotions built to lift revenue.",
+        description: "Data-driven campaigns, retargeting, abandoned-cart strategies, and promotional journeys designed to bring shoppers back and increase revenue.",
     },
     {
         icon: LineChart,
         title: "Analytics & Attribution",
-        description: "Clear tracking that shows exactly which channels are driving real revenue.",
+        description: "Connected tracking and performance insights that reveal where your results are coming from and which marketing efforts deserve more investment.",
     },
 ];
 
@@ -78,23 +78,22 @@ export default function DigitalMarketingChannelsSection() {
                     variants={headerItem}
                     className="mb-6 inline-flex w-fit items-center rounded-full bg-neutral-200/70 px-5 py-2 text-sm text-neutral-700"
                 >
-                    Where We Play
+                    WHAT WE DO
                 </motion.span>
 
                 <motion.h2
                     variants={headerItem}
                     className="text-[32px] font-light leading-[1.2] text-neutral-900 sm:text-[38px] lg:text-[42px]"
                 >
-                    Channels We{" "}
-                    <span className="font-semibold text-brand">Cover</span>
+                    The Channels Behind Your{" "}
+                    <span className="font-semibold text-brand">Next Growth Move</span>
                 </motion.h2>
 
                 <motion.p
                     variants={headerItem}
                     className="mx-auto mt-5 max-w-xl text-[15px] leading-relaxed text-neutral-500"
                 >
-                    A Complete, Coordinated Approach Across Every Channel That Moves
-                    Your Growth Forward.
+                    We connect the right channels, campaigns, and conversion systems into one coordinated digital marketing engine built to attract attention, nurture demand, and turn performance into measurable growth.
                 </motion.p>
             </motion.div>
 

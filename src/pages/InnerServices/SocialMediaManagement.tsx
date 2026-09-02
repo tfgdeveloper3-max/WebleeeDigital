@@ -3,21 +3,21 @@ import SocialMediaAboutSection from "../../components/Innerservices/SocialMediaM
 import SocialMediaPlatformsSection from "../../components/Innerservices/SocialMediaManagement/SocialMediaPlatformsSection";
 import SocialMediaPortfolioGridSection from "../../components/Innerservices/SocialMediaManagement/SocialMediaPortfolioGridSection";
 import ServicesClientsSection from "../../components/Innerservices/WebDevelopment/Servicesclientssection";
-import CtaBannerSection from "../../components/Innerservices/WebDevelopment/ServicesCta";
 import SocialMediaPricingSection from "../../components/Innerservices/SocialMediaManagement/SocialMediaPricingSection";
-import TestimonialsSection from "../../components/Innerservices/WebDevelopment/ServicesTestimonials";
+import SocialTestimonials from "../../components/Innerservices/SocialMediaManagement/SocialTestimonials";
+import SocialCta from "../../components/Innerservices/SocialMediaManagement/SocialCta";
 
 export default function SocialMediaManagementPage() {
     return (
         <main className="w-full">
             <SocialMediaHeroSection />
             <SocialMediaAboutSection />
+            <ServicesClientsSection />
             <SocialMediaPlatformsSection />
             <SocialMediaPortfolioGridSection />
-            <ServicesClientsSection />
-            <CtaBannerSection />
+            <SocialCta />
             <SocialMediaPricingSection />
-            <TestimonialsSection />
+            <SocialTestimonials />
         </main>
     );
 }

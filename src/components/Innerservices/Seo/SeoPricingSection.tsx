@@ -1,258 +1,266 @@
-import { useEffect, useRef, useState } from "react";
-import { motion, type Variants } from "motion/react";
-import $ from "../../../lib/jquery-setup";
-import "jquery-ui-dist/jquery-ui";
+"use client";
 
-type Plan = {
+import { useState, useRef, useEffect } from "react";
+import { motion, AnimatePresence } from "motion/react";
+import { Check, ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { useContactModal } from "../../../context/ContactModalContext";
+
+interface Plan {
     name: string;
-    description: string;
     price: string;
+    bestSeller: boolean;
     features: string[];
-};
+}
 
-const PLANS: Plan[] = [
-    {
-        name: "SEO Basic",
-        description: "Foundational SEO To Get Your Site Indexed And Ranking Right",
-        price: "$249.00",
-        features: [
-            "On-Page SEO Audit",
-            "Keyword Research",
-            "Monthly Performance Report",
-        ],
-    },
-    {
-        name: "SEO Growth",
-        description: "Ongoing Optimization To Build Sustainable Search Rankings",
-        price: "$499.00",
-        features: [
-            "Content Optimization",
-            "Link Building Outreach",
-            "Bi-Weekly Progress Reports",
-        ],
-    },
-    {
-        name: "SEO Enterprise",
-        description: "Full-Scale SEO Strategy For Competitive Markets",
-        price: "$999.00",
-        features: [
-            "Full Technical SEO Overhaul",
-            "Competitor Gap Analysis",
-            "Dedicated SEO Manager",
-        ],
-    },
-];
-
-const DEFAULT_ACTIVE = 1;
-
-function SearchIcon({ className }: { className?: string }) {
+function SearchIcon({ className, style }: { className?: string; style?: React.CSSProperties }) {
     return (
-        <svg viewBox="0 0 24 24" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg viewBox="0 0 24 24" className={className} style={style} fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="10.5" cy="10.5" r="6.5" stroke="currentColor" strokeWidth="1.5" />
             <path d="M20 20l-4.5-4.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
         </svg>
     );
 }
 
-function CheckIcon() {
+// Same data as the official Services page → "SEO Optimization" tab
+const PLANS: Plan[] = [
+    { name: "Startup Plan", price: "$350/mo", bestSeller: false, features: ["Website Audit", "10 Pages Optimized", "15 Selected Keywords", "On-Page SEO Roadmap", "Blog Creation", "Initial Off-Page SEO"] },
+    { name: "Scaling Plan", price: "$700/mo", bestSeller: true, features: ["Business & Competitor Analysis", "35 Selected Keywords", "15 Pages Keyword Targeted", "Google Analytics & Webmaster Setup", "Monthly Reporting", "Off-Page Optimization"] },
+    { name: "Venture Plan", price: "$1,200/mo", bestSeller: false, features: ["Full Prior Analysis", "60+ Selected Keywords", "30 Pages Keyword Targeted", "Google Places Inclusion", "Monthly Reporting + Phone Support", "Off-Page Optimization"] },
+];
+
+function PricingCard({
+    plan,
+    isActive,
+    onHover,
+    onLeave,
+    onGetStarted,
+}: {
+    plan: Plan;
+    isActive: boolean;
+    onHover: () => void;
+    onLeave: () => void;
+    onGetStarted: () => void;
+}) {
     return (
-        <svg viewBox="0 0 20 20" className="h-5 w-5 shrink-0" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="10" cy="10" r="10" fill="currentColor" />
-            <path
-                d="M6 10.2l2.4 2.4L14.2 7"
-                stroke="white"
-                strokeWidth="1.8"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-            />
-        </svg>
+        <motion.div
+            onMouseEnter={onHover}
+            onMouseLeave={onLeave}
+            animate={{
+                backgroundColor: isActive ? "#3B8C4E" : "#FFFFFF",
+                scale: isActive ? 1.05 : 1,
+                y: isActive ? -10 : 0,
+            }}
+            className="relative flex w-[280px] shrink-0 flex-col rounded-3xl p-6 shadow-[0_10px_40px_rgba(0,0,0,0.06)] md:w-[300px]"
+            style={{ transition: "background-color 400ms ease, transform 400ms ease" }}
+        >
+            {/* Best Seller Badge */}
+            {plan.bestSeller && (
+                <div className="absolute -top-3 left-1/2 z-10 -translate-x-1/2">
+                    <span className="whitespace-nowrap rounded-full bg-gradient-to-r from-[#F2530F] via-[#DB1B3F] to-[#B23FC9] px-4 py-1 text-[10px] font-bold tracking-wider text-white shadow-lg">
+                        BEST SELLER
+                    </span>
+                </div>
+            )}
+
+            {/* Icon */}
+            <motion.div
+                animate={{ backgroundColor: isActive ? "#FFFFFF" : "#3B8C4E" }}
+                transition={{ duration: 0.4 }}
+                className="flex h-10 w-10 items-center justify-center rounded-full"
+            >
+                <SearchIcon
+                    className="h-5 w-5 transition-colors duration-300"
+                    style={{ color: isActive ? "#3B8C4E" : "#FFFFFF" }}
+                />
+            </motion.div>
+
+            {/* Plan Name */}
+            <h3
+                className="mt-4 text-lg font-bold transition-colors duration-300"
+                style={{ color: isActive ? "#FFFFFF" : "#111111" }}
+            >
+                {plan.name}
+            </h3>
+
+            {/* Price */}
+            <div className="mt-2 flex items-baseline gap-1">
+                <span
+                    className="text-2xl font-extrabold transition-colors duration-300"
+                    style={{ color: isActive ? "#FFFFFF" : "#111111" }}
+                >
+                    {plan.price}
+                </span>
+            </div>
+
+            {/* Features Box */}
+            <div
+                className="mt-5 flex flex-1 flex-col gap-2.5 rounded-2xl p-4 transition-colors duration-300"
+                style={{ backgroundColor: isActive ? "#FFFFFF" : "#DCEBE1" }}
+            >
+                {plan.features.map((feature) => (
+                    <div key={feature} className="flex items-start gap-2">
+                        <span
+                            className="mt-0.5 flex h-3.5 w-3.5 shrink-0 items-center justify-center rounded-full"
+                            style={{ backgroundColor: "#3B8C4E" }}
+                        >
+                            <Check className="h-2 w-2 text-white" strokeWidth={3} />
+                        </span>
+                        <span
+                            className="text-[13px] leading-snug transition-colors duration-300"
+                            style={{ color: isActive ? "#374151" : "#6B7280" }}
+                        >
+                            {feature}
+                        </span>
+                    </div>
+                ))}
+            </div>
+
+            {/* CTA Button */}
+            <button
+                onClick={onGetStarted}
+                className="mt-5 flex items-center justify-center gap-2 rounded-full py-2.5 text-sm font-semibold text-white shadow-md transition-all duration-300 hover:scale-105"
+                style={{
+                    background: isActive
+                        ? "#3B8C4E"
+                        : "linear-gradient(90deg, #F2530F 0%, #DB1B3F 55%, #B23FC9 100%)",
+                }}
+            >
+                Get Started
+                <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={2.5} />
+            </button>
+        </motion.div>
     );
 }
 
-const cardVariants: Variants = {
-    hidden: (i: number) => ({
-        opacity: 0,
-        x: i === 0 ? -120 : i === 2 ? 120 : 0,
-        y: i === 1 ? 90 : 0,
-        scale: 0.9,
-    }),
-    visible: (i: number) => ({
-        opacity: 1,
-        x: 0,
-        y: 0,
-        scale: 1,
-        transition: {
-            type: "spring",
-            stiffness: 90,
-            damping: 16,
-            mass: 0.9,
-            delay: i * 0.15,
-        },
-    }),
-};
-
-const headerContainer: Variants = {
-    hidden: {},
-    visible: { transition: { staggerChildren: 0.18 } },
-};
-
-const headerItem: Variants = {
-    hidden: { opacity: 0, y: 24 },
-    visible: {
-        opacity: 1,
-        y: 0,
-        transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
-    },
-};
+/* ============================= SECTION ============================= */
 
 export default function SeoPricingSection() {
-    const priceTagRefs = useRef<(HTMLSpanElement | null)[]>([]);
-    const [activeIndex, setActiveIndex] = useState<number>(DEFAULT_ACTIVE);
+    const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+    const { openModal } = useContactModal();
+
+    const sliderRef = useRef<HTMLDivElement>(null);
+
+    const defaultActive = PLANS.findIndex((p) => p.bestSeller);
+    const activeIndex = hoveredIndex ?? (defaultActive >= 0 ? defaultActive : 0);
 
     useEffect(() => {
-        const $tags = priceTagRefs.current
-            .filter((el): el is HTMLSpanElement => !!el)
-            .map((el) => $(el));
-
-        $tags.forEach(($tag) => {
-            $tag.tooltip({
-                position: { my: "center bottom-10", at: "center top" },
-            });
-        });
-
-        return () => {
-            $tags.forEach(($tag) => {
-                if ($tag.data("ui-tooltip")) $tag.tooltip("destroy");
-            });
-        };
+        if (sliderRef.current) {
+            sliderRef.current.scrollTo({ left: 0, behavior: "smooth" });
+        }
     }, []);
 
+    const scrollSlider = (dir: "left" | "right") => {
+        if (!sliderRef.current) return;
+        const card = sliderRef.current.children[0] as HTMLElement | undefined;
+        const width = card ? card.offsetWidth + 20 : 320;
+        sliderRef.current.scrollBy({
+            left: dir === "left" ? -width : width,
+            behavior: "smooth",
+        });
+    };
+
+    const handleGetStarted = (plan: Plan) => {
+        openModal(
+            `Interested in the "${plan.name}" (SEO Optimization) — ${plan.price}.`
+        );
+    };
+
     return (
-        <section className="relative w-full bg-[#f5f5f4] px-6 py-20 font-atyp md:px-12 lg:py-28">
-            <motion.div
-                className="mx-auto max-w-3xl text-center"
-                variants={headerContainer}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: false, amount: 0.3 }}
-            >
-                <motion.span
-                    variants={headerItem}
-                    className="mb-6 inline-flex w-fit items-center rounded-full bg-neutral-200/70 px-5 py-2 text-sm text-neutral-700"
-                >
-                    Pricing
-                </motion.span>
+        <section id="pricing" className="w-full bg-[#F6F6F6] py-16 font-atyp md:py-20">
+            <div className="mx-auto max-w-6xl px-6 md:px-12">
+                {/* Header */}
+                <div className="text-center">
+                    <motion.span
+                        initial={{ opacity: 0, y: 10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6 }}
+                        className="inline-block rounded-full bg-[#B8C1BD] px-5 py-1.5 text-sm font-medium text-neutral-700"
+                    >
+                        Pricing
+                    </motion.span>
 
-                <motion.h2
-                    variants={headerItem}
-                    className="text-[36px] font-light leading-[1.1] text-neutral-900 sm:text-[44px] lg:text-[52px]"
-                >
-                    SEO Plans For <span className="font-semibold text-brand">EVERY BUSINESS</span>
-                </motion.h2>
+                    <motion.h2
+                        initial={{ opacity: 0, y: 15 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.7, delay: 0.1 }}
+                        className="mt-4 text-3xl font-light text-neutral-900 md:text-4xl"
+                    >
+                        CHOOSE THE <span className="font-bold text-brand">INVESTMENT</span> THAT FIT YOUR AMBITION
+                    </motion.h2>
 
-                <motion.p
-                    variants={headerItem}
-                    className="mx-auto mt-6 max-w-2xl text-[15px] leading-relaxed text-neutral-500"
-                >
-                    Whether You're Just Getting Started Or Competing In A Crowded Market,
-                    We Have An SEO Plan Built To Match Your Goals.
-                </motion.p>
-            </motion.div>
+                    <motion.p
+                        initial={{ opacity: 0, y: 15 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.7, delay: 0.2 }}
+                        className="mx-auto mt-3 max-w-xl text-[1rem] text-neutral-500"
+                    >
+                        Choose a package designed around your priorities, with the flexibility to scale as your brand grows.
+                    </motion.p>
+                </div>
 
-            <div className="mx-auto mt-14 grid max-w-6xl grid-cols-1 gap-6 md:grid-cols-3">
-                {PLANS.map((plan, i) => {
-                    const isActive = activeIndex === i;
+                {/* ===== Slider ===== */}
+                <div className="relative mt-10">
+                    {/* Edge Fades */}
+                    <div className="pointer-events-none absolute left-0 top-0 z-[5] h-full w-10 bg-gradient-to-r from-[#F6F6F6] to-transparent md:w-16" />
+                    <div className="pointer-events-none absolute right-0 top-0 z-[5] h-full w-10 bg-gradient-to-l from-[#F6F6F6] to-transparent md:w-16" />
 
-                    return (
-                        <motion.div
-                            key={plan.name}
-                            custom={i}
-                            variants={cardVariants}
-                            initial="hidden"
-                            whileInView="visible"
-                            viewport={{ once: false, amount: 0.25 }}
-                            onMouseEnter={() => setActiveIndex(i)}
-                            onMouseLeave={() => setActiveIndex(DEFAULT_ACTIVE)}
-                            animate={{
-                                scale: isActive ? 1.03 : 1,
-                                y: isActive ? -16 : 0,
-                            }}
-                            transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-                            className={[
-                                "flex flex-col rounded-[24px] p-8 transition-colors duration-500",
-                                isActive
-                                    ? "bg-gradient-to-br from-brand to-emerald-700 text-white shadow-[0_25px_50px_-15px_rgba(0,0,0,0.35)]"
-                                    : "bg-white text-neutral-900 shadow-[0_15px_35px_-15px_rgba(0,0,0,0.15)]",
-                            ].join(" ")}
+                    {/* Left Arrow */}
+                    <button
+                        onClick={() => scrollSlider("left")}
+                        className="absolute left-1 top-1/2 z-10 -translate-y-1/2 rounded-full border border-gray-200 bg-white/90 p-2 shadow-lg backdrop-blur-sm transition-all hover:scale-110 hover:shadow-xl"
+                    >
+                        <ChevronLeft className="h-5 w-5 text-neutral-700" />
+                    </button>
+
+                    {/* Cards Track */}
+                    <div className="overflow-hidden">
+                        <div
+                            ref={sliderRef}
+                            className="scrollbar-hide flex gap-5 overflow-x-auto scroll-smooth px-10 py-6 md:px-14"
                         >
-                            <div
-                                className={[
-                                    "flex h-14 w-14 items-center justify-center rounded-full transition-colors duration-500",
-                                    isActive ? "bg-white text-brand" : "bg-brand text-white",
-                                ].join(" ")}
-                            >
-                                <SearchIcon className="h-6 w-6" />
-                            </div>
+                            <AnimatePresence mode="wait">
+                                {PLANS.map((plan, i) => (
+                                    <motion.div
+                                        key={plan.name}
+                                        initial={{ opacity: 0, y: 20 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        exit={{ opacity: 0, y: -20 }}
+                                        transition={{
+                                            duration: 0.4,
+                                            delay: i * 0.06,
+                                            ease: [0.16, 1, 0.3, 1],
+                                        }}
+                                    >
+                                        <PricingCard
+                                            plan={plan}
+                                            isActive={activeIndex === i}
+                                            onHover={() => setHoveredIndex(i)}
+                                            onLeave={() => setHoveredIndex(null)}
+                                            onGetStarted={() => handleGetStarted(plan)}
+                                        />
+                                    </motion.div>
+                                ))}
+                            </AnimatePresence>
+                        </div>
+                    </div>
 
-                            <h3 className="mt-6 text-2xl font-normal">{plan.name}</h3>
-                            <p
-                                className={[
-                                    "mt-3 text-sm leading-relaxed transition-colors duration-500",
-                                    isActive ? "text-white/85" : "text-neutral-500",
-                                ].join(" ")}
-                            >
-                                {plan.description}
-                            </p>
-
-                            <div className="mt-6 flex items-baseline gap-2">
-                                <span className="text-[40px] font-medium leading-none">{plan.price}</span>
-                                <span
-                                    ref={(el) => {
-                                        priceTagRefs.current[i] = el;
-                                    }}
-                                    title="Billed monthly, cancel anytime"
-                                    className={[
-                                        "cursor-help text-sm transition-colors duration-500",
-                                        isActive ? "text-white/80" : "text-neutral-500",
-                                    ].join(" ")}
-                                >
-                                    /Month
-                                </span>
-                            </div>
-
-                            <div
-                                className={[
-                                    "mt-8 flex flex-1 flex-col justify-between rounded-[18px] p-6 transition-colors duration-500",
-                                    isActive ? "bg-white text-neutral-900" : "bg-emerald-50",
-                                ].join(" ")}
-                            >
-                                <ul className="flex flex-col gap-4">
-                                    {plan.features.map((feature) => (
-                                        <li key={feature} className="flex items-center gap-3 text-sm text-neutral-700">
-                                            <span className="text-brand">
-                                                <CheckIcon />
-                                            </span>
-                                            {feature}
-                                        </li>
-                                    ))}
-                                </ul>
-
-                                <button
-                                    className={[
-                                        "btn-sweep relative mt-8 flex w-fit items-center gap-2 overflow-hidden rounded-full px-6 py-3 text-sm font-medium transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.03]",
-                                        isActive
-                                            ? "bg-brand text-white hover:shadow-lg hover:shadow-emerald-900/30"
-                                            : "bg-cta-gradient text-white shadow-lg shadow-pink-500/20 hover:shadow-lg hover:shadow-pink-500/40",
-                                    ].join(" ")}
-                                >
-                                    <span className="relative z-10">Get Started With Plan</span>
-                                    <span className="relative z-10">↗</span>
-                                </button>
-                            </div>
-                        </motion.div>
-                    );
-                })}
+                    {/* Right Arrow */}
+                    <button
+                        onClick={() => scrollSlider("right")}
+                        className="absolute right-1 top-1/2 z-10 -translate-y-1/2 rounded-full border border-gray-200 bg-white/90 p-2 shadow-lg backdrop-blur-sm transition-all hover:scale-110 hover:shadow-xl"
+                    >
+                        <ChevronRight className="h-5 w-5 text-neutral-700" />
+                    </button>
+                </div>
             </div>
+
+            <style>{`
+                .scrollbar-hide::-webkit-scrollbar { display: none; }
+                .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+            `}</style>
         </section>
     );
 }

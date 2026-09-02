@@ -3,18 +3,18 @@ import BrandingAboutSection from "../../components/Innerservices/BrandingAndDesi
 import BrandingKitSection from "../../components/Innerservices/BrandingAndDesign/BrandingKitSection";
 import BrandingPortfolioGridSection from "../../components/Innerservices/BrandingAndDesign/BrandingPortfolioGridSection";
 import ServicesClientsSection from "../../components/Innerservices/WebDevelopment/Servicesclientssection";
-import CtaBannerSection from "../../components/Innerservices/WebDevelopment/ServicesCta";
+import CtaBannerSection from "../../components/Innerservices/BrandingAndDesign/BrandingCta";
 import BrandingPricingSection from "../../components/Innerservices/BrandingAndDesign/BrandingPricingSection";
-import TestimonialsSection from "../../components/Innerservices/WebDevelopment/ServicesTestimonials";
+import TestimonialsSection from "../../components/Innerservices/BrandingAndDesign/BrandingTestimonials";
 
 export default function BrandingAndDesignPage() {
     return (
         <main className="w-full">
             <BrandingHeroSection />
             <BrandingAboutSection />
+            <ServicesClientsSection />
             <BrandingKitSection />
             <BrandingPortfolioGridSection />
-            <ServicesClientsSection />
             <CtaBannerSection />
             <BrandingPricingSection />
             <TestimonialsSection />

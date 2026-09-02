@@ -1,16 +1,17 @@
 import { motion, type Variants } from "motion/react";
 import { ArrowUpRight } from "lucide-react";
+import { useContactModal } from "../../../context/ContactModalContext";
 
 const FEATURES = [
     {
-        title: "Consistent Content Calendar",
+        title: "What’s Holding Your Social Presence Back?",
         description:
-            "A planned publishing schedule so your feed stays active without you lifting a finger.",
+            "Posting more isn’t the same as growing. Inconsistent content, repetitive messaging, weak creative, and chasing likes without a clear strategy can leave your brand buried in the feed even when you have something worth saying.",
     },
     {
-        title: "Real Community Engagement",
+        title: "How We Execute",
         description:
-            "We respond to comments and DMs like a real extension of your team — not a bot.",
+            "We make every post earn its place in the feed with platform-specific strategies, create scroll-stopping content, manage real conversations, run targeted campaigns, and study performance to continuously sharpen what works.",
     },
 ];
 
@@ -53,6 +54,7 @@ const img2Variants: Variants = {
 };
 
 export default function SocialMediaAboutSection() {
+    const { openModal } = useContactModal();
     return (
         <section className="relative w-full bg-[#fdfcf7] px-6 py-20 font-atyp md:px-12 lg:py-28">
             <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-16 md:grid-cols-2">
@@ -66,33 +68,31 @@ export default function SocialMediaAboutSection() {
                         variants={textItem}
                         className="mb-6 inline-flex w-fit items-center rounded-full bg-neutral-200/70 px-5 py-2 text-sm text-neutral-700"
                     >
-                        Services
+                        What We Do
                     </motion.span>
 
                     <motion.h2
                         variants={textItem}
                         className="text-[32px] font-light leading-[1.2] text-neutral-900 sm:text-[38px] lg:text-[42px]"
                     >
-                        Social Media Management{" "}
-                        <span className="font-semibold text-brand">& Marketing</span>
+                        We Turn Your Social Presence Into A{" "}
+                        <span className="font-semibold text-brand">Brand People Want To Follow</span>
                     </motion.h2>
 
                     <motion.p
                         variants={textItem}
                         className="mt-6 max-w-xl text-[15px] leading-relaxed text-neutral-500"
                     >
-                        We Plan, Create, And Publish Content That Builds A Real Community
-                        Around Your Brand — Not Just Vanity Metrics. From Strategy To Daily
-                        Posting, Engagement, And Reporting, We Handle Every Part Of Your
-                        Social Presence So You Can Focus On Running Your Business.
+                        We build and manage social ecosystems where strategy, creative content, community, and paid promotion work together giving your brand a consistent voice and turning everyday interactions into lasting audience relationships.
                     </motion.p>
 
                     <motion.div variants={textItem} className="mt-8 flex items-center gap-2">
-                        <button className="btn-sweep relative overflow-hidden rounded-full bg-cta-gradient px-6 py-3 text-sm font-medium text-white shadow-lg shadow-pink-500/20 transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.03] hover:shadow-lg hover:shadow-pink-500/40">
+                        <button onClick={() => openModal()} className="btn-sweep relative overflow-hidden rounded-full bg-cta-gradient px-6 py-3 text-sm font-medium text-white shadow-lg shadow-pink-500/20 transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.03] hover:shadow-lg hover:shadow-pink-500/40">
                             <span className="relative z-10">Get In Touch</span>
                         </button>
 
                         <button
+                            onClick={() => openModal()}
                             aria-label="Go"
                             className="btn-sweep relative flex h-11 w-11 items-center justify-center overflow-hidden rounded-full bg-cta-gradient text-white shadow-lg shadow-pink-500/20 transition-all duration-300 hover:-translate-y-0.5 hover:scale-110 hover:rotate-45 hover:shadow-lg hover:shadow-orange-500/40"
                         >

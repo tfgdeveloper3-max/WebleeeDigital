@@ -1,16 +1,17 @@
 import { motion, type Variants } from "motion/react";
 import { ArrowUpRight } from "lucide-react";
+import { useContactModal } from "../../../context/ContactModalContext";
 
 const FEATURES = [
     {
-        title: "Custom Scriptwriting",
+        title: "What’s Your Story Missing?",
         description:
-            "Every video starts with a story — clear, concise scripts written to match your brand voice.",
+            "A strong idea can still get lost when the message is too complex, the visuals feel generic, or the story fails to hold attention. Without the right pacing and visual direction, even valuable content can become easy to skip.",
     },
     {
-        title: "Frame-By-Frame Craft",
+        title: "How We Solve It",
         description:
-            "Hand-tuned animation and timing, so every motion feels intentional and polished.",
+            "We give your message a visual rhythm and a reason to keep watching. Through purposeful scripting, thoughtful storyboarding, precise animation, and carefully crafted sound and motion, we turn your ideas into clear, engaging experiences that connect.",
     },
 ];
 
@@ -53,6 +54,8 @@ const img2Variants: Variants = {
 };
 
 export default function VideoAnimationAboutSection() {
+    const { openModal } = useContactModal();
+
     return (
         <section className="relative w-full bg-[#fdfcf7] px-6 py-20 font-atyp md:px-12 lg:py-28">
             <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-16 md:grid-cols-2">
@@ -66,34 +69,32 @@ export default function VideoAnimationAboutSection() {
                         variants={textItem}
                         className="mb-6 inline-flex w-fit items-center rounded-full bg-neutral-200/70 px-5 py-2 text-sm text-neutral-700"
                     >
-                        Services
+                        What We Do
                     </motion.span>
 
                     <motion.h2
                         variants={textItem}
                         className="text-[32px] font-light leading-[1.2] text-neutral-900 sm:text-[38px] lg:text-[42px]"
                     >
-                        Custom{" "}
-                        <span className="font-semibold text-brand">Video Animation</span>{" "}
-                        That Tells Your Story
+                        We Turn Ideas Into{" "}
+                        <span className="font-semibold text-brand">Stories</span>{" "}
+                        People Can See
                     </motion.h2>
 
                     <motion.p
                         variants={textItem}
                         className="mt-6 max-w-xl text-[15px] leading-relaxed text-neutral-500"
                     >
-                        We Script, Storyboard, And Animate Videos That Explain, Sell, And
-                        Connect. Whether It's A Product Explainer, A Brand Story, Or A Social
-                        Ad, We Craft Every Frame With Purpose — Combining Clear Messaging With
-                        Motion That Keeps Viewers Watching Until The End.
+                        We script, storyboard, design, and animate custom videos that make your message easier to understand and harder to forget whether you’re explaining a product, introducing a brand, or capturing attention on social media.
                     </motion.p>
 
                     <motion.div variants={textItem} className="mt-8 flex items-center gap-2">
-                        <button className="btn-sweep relative overflow-hidden rounded-full bg-cta-gradient px-6 py-3 text-sm font-medium text-white shadow-lg shadow-pink-500/20 transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.03] hover:shadow-lg hover:shadow-pink-500/40">
+                        <button onClick={() => openModal()} className="btn-sweep relative overflow-hidden rounded-full bg-cta-gradient px-6 py-3 text-sm font-medium text-white shadow-lg shadow-pink-500/20 transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.03] hover:shadow-lg hover:shadow-pink-500/40">
                             <span className="relative z-10">Get In Touch</span>
                         </button>
 
                         <button
+                            onClick={() => openModal()}
                             aria-label="Go"
                             className="btn-sweep relative flex h-11 w-11 items-center justify-center overflow-hidden rounded-full bg-cta-gradient text-white shadow-lg shadow-pink-500/20 transition-all duration-300 hover:-translate-y-0.5 hover:scale-110 hover:rotate-45 hover:shadow-lg hover:shadow-orange-500/40"
                         >

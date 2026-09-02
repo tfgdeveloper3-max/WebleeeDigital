@@ -3,34 +3,26 @@ import { motion, AnimatePresence, type Variants } from "motion/react";
 
 type Testimonial = {
     name: string;
-    role: string;
-    avatar: string;
     quote: string;
     featured?: boolean;
 };
 
 const TESTIMONIALS: Testimonial[] = [
     {
-        name: "Priya Sharma",
-        role: "Marketing Manager, UrbanCart",
-        avatar: "https://i.pravatar.cc/160?img=47",
+        name: "Michael Anderson",
         quote:
-            "Lorem Ipsum Is Simply Dummy Text Of The Printing And Typesetting Industry. Lorem Ipsum Has Been The Industry's Standard Dummy Text Ever Since 1966,",
+            "The team was incredibly professional and attentive to our vision. They created a custom website that looks modern, functions smoothly, and truly represents our brand. The entire process was seamless and well-managed.",
     },
     {
-        name: "Daniel Foster",
-        role: "CEO, GlobalVision Inc.",
-        avatar: "https://i.pravatar.cc/160?img=12",
+        name: "Sophia Reynolds",
         quote:
-            "Lorem Ipsum Is Simply Dummy Text Of The Printing And Typesetting Industry. Lorem Ipsum Has Been The Industry's Standard Dummy Text Ever Since 1966,",
+            "I’m extremely pleased with the website they developed for us. They took the time to understand exactly what we needed and transformed our ideas into a polished, user-friendly website. Their communication, creativity, and attention to detail made the experience exceptional.",
         featured: true,
     },
     {
-        name: "Anita Patel",
-        role: "Owner, Patel Enterprises",
-        avatar: "https://i.pravatar.cc/160?img=32",
+        name: "Daniel Brooks",
         quote:
-            "Lorem Ipsum Is Simply Dummy Text Of The Printing And Typesetting Industry. Lorem Ipsum Has Been The Industry's Standard Dummy Text Ever Since 1966,",
+            "The design is professional, responsive, and easy for our customers to navigate. The team was responsive throughout the project and made sure every detail was addressed. We couldn’t be happier with the final result.",
     },
 ];
 
@@ -52,17 +44,11 @@ function Stars({ color = "text-amber-400", size = "h-5 w-5" }: { color?: string;
     );
 }
 
-function PhoneIcon() {
-    return (
-        <svg viewBox="0 0 20 20" className="h-3.5 w-3.5" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path
-                d="M4 3.5c0-.5.4-.9.9-.9h1.6c.4 0 .8.3.9.7l.6 2.1c.1.4 0 .8-.3 1.1l-1 1c.9 1.8 2.4 3.3 4.2 4.2l1-1c.3-.3.7-.4 1.1-.3l2.1.6c.4.1.7.5.7.9v1.6c0 .5-.4.9-.9.9-6.1 0-11-4.9-11-11Z"
-                stroke="currentColor"
-                strokeWidth="1.3"
-                strokeLinejoin="round"
-            />
-        </svg>
-    );
+function getInitials(name: string): string {
+    const parts = name.trim().split(/\s+/);
+    const first = parts[0]?.[0] ?? "";
+    const last = parts.length > 1 ? parts[parts.length - 1][0] : "";
+    return (first + last).toUpperCase();
 }
 
 const cardVariants: Variants = {
@@ -143,7 +129,7 @@ export default function TestimonialsSection() {
                     viewport={{ once: true, amount: 0.5 }}
                     className="text-[36px] font-light leading-[1.1] text-neutral-900 sm:text-[44px] lg:text-[52px]"
                 >
-                    What Our <span className="font-semibold text-brand">CLIENTS</span> Are Saying
+                    THE BUSINESSES WE'VE <span className="font-semibold text-brand">HELPED</span> MOVE FORWARD
                 </motion.h2>
 
                 <motion.p
@@ -153,9 +139,7 @@ export default function TestimonialsSection() {
                     viewport={{ once: true, amount: 0.5 }}
                     className="mx-auto mt-6 max-w-2xl text-[15px] leading-relaxed text-neutral-500"
                 >
-                    Lorem Ipsum Is Simply Dummy Text Of The Printing And Typesetting Industry. Lorem
-                    Ipsum Has Been The Industry&apos;s Standard Dummy Text Ever Since 1966, When
-                    Designers At Letraset And James Mosley.
+                    We believe the best proof of our work comes from the people who experience it firsthand. Explore the stories, experiences, and results that have made our clients part of the Weblee journey.
                 </motion.p>
             </div>
 
@@ -180,17 +164,16 @@ export default function TestimonialsSection() {
                             : "border border-neutral-200 bg-white"
                             }`}
                     >
-                        <img
-                            src={activeTestimonial.avatar}
-                            alt={activeTestimonial.name}
-                            className={`rounded-full border-4 border-white object-cover shadow-lg ${activeTestimonial.featured ? "h-28 w-28" : "h-24 w-24"
+                        <div
+                            className={`flex items-center justify-center rounded-full border-4 border-white bg-brand font-semibold text-white shadow-lg ${activeTestimonial.featured
+                                ? "h-28 w-28 text-2xl"
+                                : "h-24 w-24 text-xl"
                                 }`}
-                            draggable={false}
-                        />
+                        >
+                            {getInitials(activeTestimonial.name)}
+                        </div>
 
                         <h3 className="mt-6 text-xl font-bold text-neutral-900">{activeTestimonial.name}</h3>
-                        <p className="mt-1 text-sm font-medium text-neutral-500">{activeTestimonial.role}</p>
-
                         <div className="my-6 h-px w-full max-w-[220px] bg-neutral-200" />
 
                         <Stars />
@@ -214,43 +197,6 @@ export default function TestimonialsSection() {
                     />
                 ))}
             </div>
-
-            {/* Bottom Trust Section */}
-            <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.5 }}
-                transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                className="mx-auto mt-14 flex max-w-3xl flex-col items-center gap-5"
-            >
-                <div className="flex items-center gap-3 rounded-full px-4 py-2 transition-colors duration-700 hover:bg-emerald-50">
-                    <div className="relative h-9 w-9 shrink-0">
-                        <img
-                            src="https://i.pravatar.cc/72?img=47"
-                            alt=""
-                            className="h-9 w-9 rounded-full border-2 border-white object-cover"
-                            draggable={false}
-                        />
-                        <span className="absolute -bottom-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-brand text-white ring-2 ring-[#fdfcf7]">
-                            <PhoneIcon />
-                        </span>
-                    </div>
-
-                    <p className="text-sm text-neutral-600">
-                        From Initial Planning To Long-Term Support{" "}
-                        <span className="text-neutral-400">–</span>{" "}
-                        <a href="#" className="font-medium text-brand underline underline-offset-2">
-                            We Build Digital Solutions You Can Trust.
-                        </a>
-                    </p>
-                </div>
-
-                <div className="flex items-center gap-2" title="Based on verified customer reviews">
-                    <span className="text-base font-bold text-neutral-900">4.9</span>
-                    <Stars color="text-brand" size="h-4 w-4" />
-                    <span className="text-sm text-neutral-500">Over 2000 Reviews</span>
-                </div>
-            </motion.div>
         </section>
     );
 }

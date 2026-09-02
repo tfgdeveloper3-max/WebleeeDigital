@@ -3,9 +3,9 @@ import SeoAboutSection from "../../components/Innerservices/Seo/SeoAboutSection"
 import SeoStrategySection from "../../components/Innerservices/Seo/SeoStrategySection";
 import SeoPortfolioGridSection from "../../components/Innerservices/Seo/SeoPortfolioGridSection";
 import ServicesClientsSection from "../../components/Innerservices/WebDevelopment/Servicesclientssection";
-import CtaBannerSection from "../../components/Innerservices/WebDevelopment/ServicesCta";
 import SeoPricingSection from "../../components/Innerservices/Seo/SeoPricingSection";
-import TestimonialsSection from "../../components/Innerservices/WebDevelopment/ServicesTestimonials";
+import SeoTestimonials from "../../components/Innerservices/Seo/SeoTestimonials";
+import SeoCta from "../../components/Innerservices/Seo/SeoCta";
 
 export default function SeoPage() {
     return (
@@ -15,9 +15,9 @@ export default function SeoPage() {
             <SeoStrategySection />
             <SeoPortfolioGridSection />
             <ServicesClientsSection />
-            <CtaBannerSection />
+            <SeoCta />
             <SeoPricingSection />
-            <TestimonialsSection />
+            <SeoTestimonials />
         </main>
     );
 }

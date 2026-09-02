@@ -25,10 +25,10 @@ const headerItem: Variants = {
 };
 
 const rowReveal: Variants = {
-    hidden: { 
-        opacity: 0, 
-        y: 40, 
-        filter: "blur(15px)" 
+    hidden: {
+        opacity: 0,
+        y: 40,
+        filter: "blur(15px)"
     },
     visible: {
         opacity: 1,
@@ -46,8 +46,8 @@ function LogoRow({
     direction,
     size,
 }: {
-  direction: "left" | "right";
-  size: string;
+    direction: "left" | "right";
+    size: string;
 }) {
     return (
         <motion.div
@@ -58,9 +58,8 @@ function LogoRow({
             className="group relative w-full overflow-hidden"
         >
             <div
-                className={`flex w-max items-center gap-16 md:gap-24 ${
-                    direction === "left" ? "animate-marquee-left" : "animate-marquee-right"
-                } group-hover:[animation-play-state:paused]`}
+                className={`flex w-max items-center gap-16 md:gap-24 ${direction === "left" ? "animate-marquee-left" : "animate-marquee-right"
+                    } group-hover:[animation-play-state:paused]`}
             >
                 {[...LOGOS, ...LOGOS].map((logo, i) => (
                     <img
@@ -112,10 +111,10 @@ export default function ClientsSection() {
                         variants={headerItem}
                         className="text-2xl font-light text-white sm:text-3xl"
                     >
-                       Legacies{" "}
+                        Legacies{" "}
                         <span className="relative font-extrabold text-white">
-                           We Build
-                          <span className="absolute inset-0 blur-md text-white/70">We Build</span>
+                            We Build
+                            <span className="absolute inset-0 blur-md text-white/70">We Build</span>
                         </span>{" "}
                     </motion.h2>
 

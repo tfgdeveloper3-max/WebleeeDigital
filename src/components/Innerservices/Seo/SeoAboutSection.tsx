@@ -1,16 +1,17 @@
 import { motion, type Variants } from "motion/react";
 import { ArrowUpRight } from "lucide-react";
+import { useContactModal } from "../../../context/ContactModalContext";
 
 const FEATURES = [
     {
-        title: "Data-Backed Strategy",
+        title: "Lost In The Search Results?",
         description:
-            "Every recommendation is grounded in real search data — not guesswork or generic checklists.",
+            "Great products and services mean little if the right people can't find you. Low visibility, weak rankings, and missed search opportunities could be sending your potential customers straight to the competition.",
     },
     {
-        title: "Transparent Reporting",
+        title: "Built On What Actually Works",
         description:
-            "Clear, jargon-free reports so you always know exactly what's working and why.",
+            "We combine technical SEO, data-backed keyword strategy, high-value content, and authority-building into one focused plan, designed to improve rankings, attract qualified traffic, and deliver sustainable growth.",
     },
 ];
 
@@ -53,6 +54,8 @@ const img2Variants: Variants = {
 };
 
 export default function SeoAboutSection() {
+    const { openModal } = useContactModal();
+
     return (
         <section className="relative w-full bg-[#fdfcf7] px-6 py-20 font-atyp md:px-12 lg:py-28">
             <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-16 md:grid-cols-2">
@@ -66,34 +69,31 @@ export default function SeoAboutSection() {
                         variants={textItem}
                         className="mb-6 inline-flex w-fit items-center rounded-full bg-neutral-200/70 px-5 py-2 text-sm text-neutral-700"
                     >
-                        Services
+                        Strategy
                     </motion.span>
 
                     <motion.h2
                         variants={textItem}
                         className="text-[32px] font-light leading-[1.2] text-neutral-900 sm:text-[38px] lg:text-[42px]"
                     >
-                        Search Engine{" "}
-                        <span className="font-semibold text-brand">Optimization</span>{" "}
-                        Built To Rank
+                        <span className="font-semibold text-brand">SEO</span>{" "}
+                        Built To Be Found
                     </motion.h2>
 
                     <motion.p
                         variants={textItem}
                         className="mt-6 max-w-xl text-[15px] leading-relaxed text-neutral-500"
                     >
-                        We Combine Technical SEO, Content Strategy, And Link Building Into
-                        One Cohesive Plan That Improves Your Rankings And Brings In Qualified
-                        Traffic. No Shortcuts, No Black-Hat Tactics — Just Sustainable
-                        Growth Built On What Actually Moves The Needle In Search.
+                        Your audience is already searching for what you offer. The real question is: will they find you or your competitor? We build SEO strategies that put your business in front of the right people and turn search visibility into meaningful growth.
                     </motion.p>
 
                     <motion.div variants={textItem} className="mt-8 flex items-center gap-2">
-                        <button className="btn-sweep relative overflow-hidden rounded-full bg-cta-gradient px-6 py-3 text-sm font-medium text-white shadow-lg shadow-pink-500/20 transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.03] hover:shadow-lg hover:shadow-pink-500/40">
+                        <button onClick={() => openModal()} className="btn-sweep relative overflow-hidden rounded-full bg-cta-gradient px-6 py-3 text-sm font-medium text-white shadow-lg shadow-pink-500/20 transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.03] hover:shadow-lg hover:shadow-pink-500/40">
                             <span className="relative z-10">Get In Touch</span>
                         </button>
 
                         <button
+                            onClick={() => openModal()}
                             aria-label="Go"
                             className="btn-sweep relative flex h-11 w-11 items-center justify-center overflow-hidden rounded-full bg-cta-gradient text-white shadow-lg shadow-pink-500/20 transition-all duration-300 hover:-translate-y-0.5 hover:scale-110 hover:rotate-45 hover:shadow-lg hover:shadow-orange-500/40"
                         >

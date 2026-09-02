@@ -17,8 +17,8 @@ export default function WebDevelopmentPage() {
             <ServicesClientssection />
             <Portfoliogridsection />
             <ServicesPricing />
-            <ServicesTestimonials />
             <ServicesCta />
+            <ServicesTestimonials />
         </main>
     );
 }

@@ -1,5 +1,6 @@
 import { motion, type Variants } from "motion/react";
 import { ArrowUpRight } from "lucide-react";
+import { useContactModal } from "../../../context/ContactModalContext";
 
 const container: Variants = {
     hidden: {},
@@ -29,6 +30,7 @@ const imageReveal: Variants = {
 };
 
 export default function CtaBannerSection() {
+    const { openModal } = useContactModal();
     return (
         <section className="w-full bg-white px-6 py-8 font-atyp md:px-12 md:py-10">
             <motion.div
@@ -59,25 +61,25 @@ export default function CtaBannerSection() {
                             variants={textItem}
                             className="text-[28px] font-extrabold leading-[1.25] text-white sm:text-[34px] lg:text-[40px]"
                         >
-                            BUILD QUALITY WEBSITES,
+                            <span className="font-light">Ready to Build a </span>
                             <br />
-                            <span className="font-light">Improve Business And Grow.</span>
+                            Better Website?
                         </motion.h2>
 
                         <motion.p
                             variants={textItem}
                             className="mt-5 max-w-md text-sm leading-relaxed text-white/80"
                         >
-                            Lorem Ipsum Is Simply Dummy Text Of The Printing And Typesetting
-                            Industry. Lorem Ipsum Has Been The Industry&apos;s James Mosley.
+                            Build a modern, high-performing website designed to engage visitors and turn them into customers.
                         </motion.p>
 
                         <motion.div variants={textItem} className="mt-8 flex items-center gap-3">
-                            <button className="rounded-full bg-white px-6 py-3 text-sm font-medium text-neutral-900 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg">
-                                Get In Touch
+                            <button onClick={() => openModal()} className="rounded-full bg-white px-6 py-3 text-sm font-medium text-neutral-900 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg">
+                                Get Your Free Consultation
                             </button>
 
                             <button
+                                onClick={() => openModal()}
                                 aria-label="Go"
                                 className="flex h-11 w-11 items-center justify-center rounded-full bg-white text-neutral-900 transition-transform duration-300 hover:scale-110 hover:rotate-45"
                             >

@@ -12,32 +12,32 @@ const SEO_INCLUSIONS = [
     {
         icon: Search,
         title: "Keyword Research",
-        description: "Deep research to find the exact terms your customers are searching for.",
+        description: "We uncover the search terms, questions, and intent patterns that reveal what your ideal customers are actively looking for.",
     },
     {
         icon: FileSearch,
         title: "On-Page Optimization",
-        description: "Titles, meta descriptions, headers, and content structured for search and readers.",
+        description: "We refine your titles, headings, metadata, content, internal linking, and page structure to make every page clearer to both users and search engines.",
     },
     {
         icon: Gauge,
         title: "Technical SEO Audits",
-        description: "Site speed, crawlability, and structure fixes that remove hidden ranking blockers.",
+        description: "We identify and resolve the technical barriers affecting crawlability, indexing, site speed, mobile performance, and overall search visibility.",
     },
     {
         icon: Link2,
         title: "Link Building",
-        description: "Quality backlinks earned through outreach — not risky shortcuts that get penalized.",
+        description: "We strengthen your website’s authority through relevant, quality-focused link acquisition built around credibility not shortcuts.",
     },
     {
         icon: MapPin,
         title: "Local SEO",
-        description: "Google Business Profile optimization to help nearby customers find you first.",
+        description: "We optimize your local search presence so nearby customers can discover, trust, and choose your business when it matters most.",
     },
     {
         icon: LineChart,
         title: "Analytics & Reporting",
-        description: "Monthly reports tracking rankings, traffic, and conversions in plain language.",
+        description: "We turn rankings, traffic, conversions, and search performance into clear insights so you always know what’s working and where we’re going next.",
     },
 ];
 
@@ -78,23 +78,22 @@ export default function SeoStrategySection() {
                     variants={headerItem}
                     className="mb-6 inline-flex w-fit items-center rounded-full bg-neutral-200/70 px-5 py-2 text-sm text-neutral-700"
                 >
-                    What's Included
+                    What’s Included
                 </motion.span>
 
                 <motion.h2
                     variants={headerItem}
                     className="text-[32px] font-light leading-[1.2] text-neutral-900 sm:text-[38px] lg:text-[42px]"
                 >
-                    What's Included In Our{" "}
-                    <span className="font-semibold text-brand">SEO Strategy</span>
+                    THE WORK BEHIND{" "}
+                    <span className="font-semibold text-brand">BEING FOUND.</span>
                 </motion.h2>
 
                 <motion.p
                     variants={headerItem}
                     className="mx-auto mt-5 max-w-xl text-[15px] leading-relaxed text-neutral-500"
                 >
-                    A Complete Approach That Covers Every Ranking Factor — Technical,
-                    On-Page, And Off-Page.
+                    A strategic SEO system built beyond rankings—combining search intelligence, technical precision, content optimization, authority building, and measurable growth to put your brand in front of the right audience.
                 </motion.p>
             </motion.div>
 

@@ -1,16 +1,17 @@
 import { motion, type Variants } from "motion/react";
 import { ArrowUpRight } from "lucide-react";
+import { useContactModal } from "../../../context/ContactModalContext";
 
 const FEATURES = [
     {
-        title: "Scalable Architecture",
+        title: "What’s Holding Your Product Back?",
         description:
-            "Built on a modular foundation that grows with your users, your data, and your feature roadmap.",
+            "Off-the-shelf tools can only take you so far. Disconnected systems, manual processes and growing technical demands can slow your team down and make scaling harder than it should be.",
     },
     {
-        title: "API-First Development",
+        title: "How We Solve It",
         description:
-            "Clean, documented APIs that connect seamlessly with your existing tools and third-party services.",
+            "We engineer the solution around you, API-first development, intuitive UX, and rigorous testing. We build secure digital products that simplify complexity today and remain flexible enough to grow tomorrow.",
     },
 ];
 
@@ -53,6 +54,7 @@ const img2Variants: Variants = {
 };
 
 export default function WebAppAboutSection() {
+    const { openModal } = useContactModal();
     return (
         <section className="relative w-full bg-[#fdfcf7] px-6 py-20 font-atyp md:px-12 lg:py-28">
             <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-16 md:grid-cols-2">
@@ -66,35 +68,32 @@ export default function WebAppAboutSection() {
                         variants={textItem}
                         className="mb-6 inline-flex w-fit items-center rounded-full bg-neutral-200/70 px-5 py-2 text-sm text-neutral-700"
                     >
-                        Services
+                        What We Do
                     </motion.span>
 
                     <motion.h2
                         variants={textItem}
                         className="text-[32px] font-light leading-[1.2] text-neutral-900 sm:text-[38px] lg:text-[42px]"
                     >
-                        Custom{" "}
-                        <span className="font-semibold text-brand">Web & App Solutions</span>{" "}
-                        Built To Perform
+                        Digital{" "}
+                        <span className="font-semibold text-brand">Systems</span>{" "}
+                        Built Around Your Business.
                     </motion.h2>
 
                     <motion.p
                         variants={textItem}
                         className="mt-6 max-w-xl text-[15px] leading-relaxed text-neutral-500"
                     >
-                        From Internal Tools To Full-Scale SaaS Products, We Design And Develop
-                        Web Applications That Are Fast, Secure, And Built To Handle Real Business
-                        Complexity. Every Application We Ship Is Engineered With Clean
-                        Architecture, Thorough Testing, And A Focus On Long-Term Maintainability
-                        — So You Can Scale With Confidence.
+                        We design and develop custom web applications, internal platforms, dashboards, and SaaS products that bring your workflows, users, data, and technology into one powerful digital experience.
                     </motion.p>
 
                     <motion.div variants={textItem} className="mt-8 flex items-center gap-2">
-                        <button className="btn-sweep relative overflow-hidden rounded-full bg-cta-gradient px-6 py-3 text-sm font-medium text-white shadow-lg shadow-pink-500/20 transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.03] hover:shadow-lg hover:shadow-pink-500/40">
+                        <button onClick={() => openModal()} className="btn-sweep relative overflow-hidden rounded-full bg-cta-gradient px-6 py-3 text-sm font-medium text-white shadow-lg shadow-pink-500/20 transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.03] hover:shadow-lg hover:shadow-pink-500/40">
                             <span className="relative z-10">Get In Touch</span>
                         </button>
 
                         <button
+                            onClick={() => openModal()}
                             aria-label="Go"
                             className="btn-sweep relative flex h-11 w-11 items-center justify-center overflow-hidden rounded-full bg-cta-gradient text-white shadow-lg shadow-pink-500/20 transition-all duration-300 hover:-translate-y-0.5 hover:scale-110 hover:rotate-45 hover:shadow-lg hover:shadow-orange-500/40"
                         >

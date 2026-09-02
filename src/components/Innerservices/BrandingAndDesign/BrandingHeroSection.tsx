@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import $ from "../../../lib/jquery-setup";
 import "jquery-ui-dist/jquery-ui";
 import { ArrowUpRight } from "lucide-react";
+import { useContactModal } from "../../../context/ContactModalContext";
 
 const AVATARS = [
     "https://i.pravatar.cc/64?img=12",
@@ -12,6 +13,7 @@ const AVATARS = [
 export default function BrandingHeroSection() {
     const badgeRef = useRef<HTMLDivElement>(null);
     const ratingRef = useRef<HTMLDivElement>(null);
+    const { openModal } = useContactModal();
 
     useEffect(() => {
         if (!badgeRef.current) return;
@@ -46,25 +48,25 @@ export default function BrandingHeroSection() {
         <section className="relative w-full overflow-hidden bg-[#E9E9E9] px-6 pb-20 pt-28 font-atyp md:px-12 md:pb-28 md:pt-36 lg:pt-40">
             <div className="relative z-10 mx-auto flex max-w-4xl flex-col items-center text-center">
                 <span className="animate__animated animate__fadeInUp mb-6 inline-flex w-fit items-center rounded-full bg-white px-5 py-2 text-sm text-neutral-700 shadow-sm">
-                    Identity That Sticks
+                    Where Identity Meets Impact
                 </span>
 
                 <h1 className="animate__animated animate__fadeInUp animate__delay-1s text-[44px] font-semibold uppercase leading-[1.05] text-neutral-900 sm:text-[64px] lg:text-[76px]">
-                    <span className="text-black font-light">Branding & <span className="text-brand font-semibold">Design</span> That Lasts</span>
+                    <span className="text-black font-light">Branding & <span className="text-brand font-semibold">Design</span> That GIVES YOUR BUSINESS A SOUL</span>
                 </h1>
 
                 <p className="animate__animated animate__fadeInUp animate__delay-2s mt-6 max-w-xl text-[16px] leading-relaxed text-neutral-500">
-                    From Strategy To Visual Identity — We Build Brands That Look
-                    Consistent, Feel Intentional, And Stand Out From Day One.
+                    We translate your story, personality, and purpose into a visual identity that feels authentic, creates connection, and gives people something worth remembering.
                 </p>
 
                 <div className="animate__animated animate__fadeInUp animate__delay-2s mt-8 flex flex-wrap items-center justify-center gap-6">
                     <div className="flex items-center gap-2">
-                        <button className="btn-sweep relative overflow-hidden rounded-full bg-cta-gradient px-6 py-3 text-sm font-medium text-white shadow-lg shadow-pink-500/20 transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.03] hover:shadow-lg hover:shadow-pink-500/40">
-                            <span className="relative z-10">Get In Touch</span>
+                        <button onClick={() => openModal()} className="btn-sweep relative overflow-hidden rounded-full bg-cta-gradient px-6 py-3 text-sm font-medium text-white shadow-lg shadow-pink-500/20 transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.03] hover:shadow-lg hover:shadow-pink-500/40">
+                            <span className="relative z-10">Bring My Brand To Life</span>
                         </button>
 
                         <button
+                            onClick={() => openModal()}
                             aria-label="Go"
                             className="btn-sweep relative flex h-11 w-11 items-center justify-center overflow-hidden rounded-full bg-cta-gradient text-white shadow-lg shadow-pink-500/20 transition-all duration-300 hover:-translate-y-0.5 hover:scale-110 hover:rotate-45 hover:shadow-lg hover:shadow-orange-500/40"
                         >

@@ -85,16 +85,16 @@ export default function VideoAnimationStylesSection() {
                     variants={headerItem}
                     className="text-[32px] font-light leading-[1.2] text-neutral-900 sm:text-[38px] lg:text-[42px]"
                 >
-                    Animation Styles{" "}
-                    <span className="font-semibold text-brand">We Offer</span>
+                    EVERY{" "}
+                    <span className="font-semibold text-brand">STORY </span>
+                    DESERVES TO BE SEEN
                 </motion.h2>
 
                 <motion.p
                     variants={headerItem}
                     className="mx-auto mt-5 max-w-xl text-[15px] leading-relaxed text-neutral-500"
                 >
-                    From 2D Explainers To Cinematic Brand Films, We Match The Style To The
-                    Story You Need To Tell.
+                    We transform ideas, products, and brand stories into captivating visual experiences combining animation, motion, sound, and storytelling to make your message clearer, more engaging, and impossible to overlook.
                 </motion.p>
             </motion.div>
 

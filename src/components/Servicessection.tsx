@@ -62,7 +62,7 @@ const cardItem: Variants = {
 
 export default function ServicesSection() {
     return (
-        <section className="relative w-full overflow-hidden bg-white py-20 font-atyp md:py-28">
+        <section id="services" className="relative w-full overflow-hidden bg-white py-20 font-atyp md:py-28">
             <div className="mx-auto max-w-[1550px] px-6 md:px-12">
                 <motion.div
                     className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:items-start"
@@ -130,8 +130,8 @@ export default function ServicesSection() {
                             <div className="flex md:col-span-3 md:justify-end">
                                 <button
                                     className={`group flex h-36 w-36 shrink-0 flex-col items-center justify-center gap-1 rounded-full text-sm transition-colors duration-300 lg:h-40 lg:w-40 ${service.filled
-                                            ? "bg-brand text-white hover:bg-neutral-900"
-                                            : "border border-neutral-300 text-neutral-900 hover:border-brand hover:bg-brand hover:text-white"
+                                        ? "bg-brand text-white hover:bg-neutral-900"
+                                        : "border border-neutral-300 text-neutral-900 hover:border-brand hover:bg-brand hover:text-white"
                                         }`}
                                 >
                                     <span className="text-xl transition-transform duration-300 group-hover:rotate-45">

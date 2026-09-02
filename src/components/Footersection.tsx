@@ -248,9 +248,8 @@ export default function FooterSection() {
                             />
                         </Link>
                         <p className="mt-5 max-w-sm text-sm leading-relaxed text-neutral-400">
-                            We partner with ambitious teams to design and build digital products
-                            that are as functional as they are memorable — from first sketch to
-                            shipped experience.
+                            The digital world is full of noise. We help ambitious brands create something worth noticing. Weblee exists for brands that see beyond the ordinary.
+
                         </p>
 
                         <div className="mt-6 flex items-center gap-3">
@@ -318,9 +317,9 @@ export default function FooterSection() {
                         ref={(el) => { revealRefs.current[4] = el; }}
                         className="opacity-0 animate__delay-2s"
                     >
-                        <h4 className="text-sm font-semibold uppercase tracking-wider text-white">Get Notified</h4>
+                        <h4 className="text-sm font-semibold uppercase tracking-wider text-white">Stay In The Loop </h4>
                         <p className="mt-5 text-sm leading-relaxed text-neutral-400">
-                            Subscribe for occasional updates on our latest work and openings.
+                            Be the first to discover our latest work, creative ideas, and digital experiments.
                         </p>
 
                         <div
@@ -345,11 +344,11 @@ export default function FooterSection() {
                         </div>
 
                         <div className="mt-8 space-y-1 text-sm text-neutral-400">
-                            <a href="mailto:hello@yourbrand.com" className="block transition-colors hover:text-white">
-                                hello@yourbrand.com
+                            <a href="mailto:support@webleedigital.com" className="block transition-colors hover:text-white">
+                                support@webleedigital.com
                             </a>
-                            <a href="tel:+10000000000" className="block transition-colors hover:text-white">
-                                (+1) 000 000 0000
+                            <a href="tel:+16267401517" className="block transition-colors hover:text-white">
+                                (626) 740 1517
                             </a>
                         </div>
                     </div>
@@ -365,11 +364,11 @@ export default function FooterSection() {
                         <a href="/style-guide" className="transition-colors hover:text-white">Style Guide</a>
                     </div>
 
-                    <p className="text-neutral-500">Mon–Fri · 10am–7pm</p>
+                    <p className="text-neutral-500">24/7 Support</p>
                 </div >
             </div >
 
             < BrandWordmark />
         </footer >
     );
-}
+} 

@@ -78,23 +78,22 @@ export default function MobileAppsCapabilitiesSection() {
                     variants={headerItem}
                     className="mb-6 inline-flex w-fit items-center rounded-full bg-neutral-200/70 px-5 py-2 text-sm text-neutral-700"
                 >
-                    App Capabilities
+                    Core App Architecture
                 </motion.span>
 
                 <motion.h2
                     variants={headerItem}
                     className="text-[32px] font-light leading-[1.2] text-neutral-900 sm:text-[38px] lg:text-[42px]"
                 >
-                    Every Feature Your{" "}
-                    <span className="font-semibold text-brand">App</span> Needs
+                    BUILT FOR HOW PEOPLE ACTUALLY USE{" "}
+                    <span className="font-semibold text-brand">APPS.</span>
                 </motion.h2>
 
                 <motion.p
                     variants={headerItem}
                     className="mx-auto mt-5 max-w-xl text-[15px] leading-relaxed text-neutral-500"
                 >
-                    From Offline Support To Biometric Login, We Build The Features That
-                    Make Your App Feel Complete And Ready For Real Users.
+                    Every capability is designed around real-world mobile behavior, making your app faster, more intuitive, more secure, and ready to deliver a seamless experience wherever your users are.
                 </motion.p>
             </motion.div>
 

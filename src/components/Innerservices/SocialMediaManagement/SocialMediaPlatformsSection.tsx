@@ -12,32 +12,32 @@ const SOCIAL_SERVICES = [
     {
         icon: Calendar,
         title: "Content Planning & Scheduling",
-        description: "A full content calendar planned in advance, published consistently on time.",
+        description: "Strategic content calendars built around your brand, audience, campaigns, and the moments that matter published consistently and on time.",
     },
     {
         icon: ImagePlus,
         title: "Graphic & Reel Creation",
-        description: "On-brand posts, carousels, and short-form video designed to stop the scroll.",
+        description: "Scroll-stopping visuals, carousels, and short-form videos crafted to capture attention while keeping your brand instantly recognizable.",
     },
     {
         icon: MessageCircle,
         title: "Community Management",
-        description: "Real, timely replies to comments and DMs that keep your audience engaged.",
+        description: "Thoughtful, timely responses to comments and messages that turn audience interactions into genuine conversations and stronger relationships.",
     },
     {
         icon: Target,
         title: "Paid Social Advertising",
-        description: "Targeted ad campaigns on Meta and beyond, built to drive real results.",
+        description: "Targeted social campaigns designed around the right audience, creative, messaging, and objectives to turn attention into measurable action.",
     },
     {
         icon: Users,
         title: "Influencer Collaboration",
-        description: "Partnerships with creators who match your brand and reach your audience.",
+        description: "Purposeful creator partnerships selected for brand alignment, audience relevance, authenticity, and meaningful reach not vanity metrics.",
     },
     {
         icon: BarChart2,
         title: "Performance Reporting",
-        description: "Monthly insights on growth, engagement, and reach — in plain language.",
+        description: "Clear monthly insights into reach, engagement, audience growth, and campaign performance, so every decision is backed by what the data tells us.",
     },
 ];
 
@@ -85,16 +85,15 @@ export default function SocialMediaPlatformsSection() {
                     variants={headerItem}
                     className="text-[32px] font-light leading-[1.2] text-neutral-900 sm:text-[38px] lg:text-[42px]"
                 >
-                    Everything Your{" "}
-                    <span className="font-semibold text-brand">Social Presence</span> Needs
+                    From Social Noise To{" "}
+                    <span className="font-semibold text-brand">Brand Presence</span>
                 </motion.h2>
 
                 <motion.p
                     variants={headerItem}
                     className="mx-auto mt-5 max-w-xl text-[15px] leading-relaxed text-neutral-500"
                 >
-                    From Content Creation To Paid Campaigns, We Manage Every Piece Of
-                    Your Social Strategy Under One Roof.
+                    We turn your social channels into a living extension of your brand combining strategy, creative, community, and performance to keep your business visible, relevant, and worth following.
                 </motion.p>
             </motion.div>
 

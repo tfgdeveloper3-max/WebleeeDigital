@@ -4,7 +4,6 @@ import { motion, AnimatePresence, type Variants } from "motion/react";
 type Testimonial = {
     name: string;
     role: string;
-    avatar: string;
     title: string;
     quote: string;
     featured?: boolean;
@@ -14,7 +13,6 @@ const TESTIMONIALS: Testimonial[] = [
     {
         name: "Priya Sharma",
         role: "Marketing Manager, UrbanCart",
-        avatar: "https://i.pravatar.cc/160?img=47",
         title: "They understood what we were trying to achieve.",
         quote:
             "We came to Weblee Digital with a rough idea and weren't sure how to bring it all together. The team helped us shape the concept, refine the design, and create a website that genuinely feels like our brand. The process was smooth, professional, and far easier than we expected.",
@@ -22,7 +20,6 @@ const TESTIMONIALS: Testimonial[] = [
     {
         name: "Daniel Carter",
         role: "Founder, Northline Group",
-        avatar: "https://i.pravatar.cc/160?img=12",
         title: "A completely different experience from our previous agency.",
         quote:
             "What stood out most was their attention to detail. From branding and UI/UX to website development, everything felt connected rather than handled as separate pieces. We now have a digital presence that looks professional and truly represents where our business is heading.",
@@ -31,7 +28,6 @@ const TESTIMONIALS: Testimonial[] = [
     {
         name: "Sophia Bennett",
         role: "Director, Elevate & Co.",
-        avatar: "https://i.pravatar.cc/160?img=32",
         title: "They made the complicated parts feel simple.",
         quote:
             "We needed more than just a website, we wanted a stronger digital presence. Weblee Digital helped us bring together design, development, SEO and digital strategy while keeping everything clear throughout the process. The final result feels modern, intuitive, and completely aligned with our goals.",
@@ -54,6 +50,13 @@ function Stars({ color = "text-amber-400", size = "h-5 w-5" }: { color?: string;
             ))}
         </div>
     );
+}
+
+function getInitials(name: string): string {
+    const parts = name.trim().split(/\s+/);
+    const first = parts[0]?.[0] ?? "";
+    const last = parts.length > 1 ? parts[parts.length - 1][0] : "";
+    return (first + last).toUpperCase();
 }
 
 const cardVariants: Variants = {
@@ -114,8 +117,7 @@ export default function TestimonialsSection() {
     const activeTestimonial = TESTIMONIALS[current];
 
     return (
-        // overflow-x-hidden lagaya hai extra safety ke liye
-        <section className="relative w-full overflow-x-hidden bg-[#fdfcf7] px-6 py-20 font-atyp md:px-12 lg:py-28">
+        <section id="testimonials" className="relative w-full overflow-x-hidden bg-[#fdfcf7] px-6 py-20 font-atyp md:px-12 lg:py-28">
             <div className="mx-auto max-w-3xl text-center">
                 <motion.span
                     variants={headerVariants}
@@ -171,13 +173,14 @@ export default function TestimonialsSection() {
                             : "border border-neutral-200 bg-white"
                             }`}
                     >
-                        <img
-                            src={activeTestimonial.avatar}
-                            alt={activeTestimonial.name}
-                            className={`rounded-full border-4 border-white object-cover shadow-lg ${activeTestimonial.featured ? "h-28 w-28" : "h-24 w-24"
+                        <div
+                            className={`flex items-center justify-center rounded-full border-4 border-white bg-brand font-semibold text-white shadow-lg ${activeTestimonial.featured
+                                ? "h-28 w-28 text-2xl"
+                                : "h-24 w-24 text-xl"
                                 }`}
-                            draggable={false}
-                        />
+                        >
+                            {getInitials(activeTestimonial.name)}
+                        </div>
 
                         <h3 className="mt-6 text-xl font-bold text-neutral-900">{activeTestimonial.name}</h3>
                         <p className="mt-1 text-sm font-medium text-neutral-500">{activeTestimonial.role}</p>
@@ -215,27 +218,6 @@ export default function TestimonialsSection() {
                 transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
                 className="mx-auto mt-14 flex max-w-3xl flex-col items-center gap-5"
             >
-                {/* <div className="flex items-center gap-3 rounded-full px-4 py-2 transition-colors duration-700 hover:bg-emerald-50">
-                    <div className="relative h-9 w-9 shrink-0">
-                        <img
-                            src="https://i.pravatar.cc/72?img=47"
-                            alt=""
-                            className="h-9 w-9 rounded-full border-2 border-white object-cover"
-                            draggable={false}
-                        />
-                        <span className="absolute -bottom-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-brand text-white ring-2 ring-[#fdfcf7]">
-                            <PhoneIcon />
-                        </span>
-                    </div>
-
-                    <p className="text-sm text-neutral-600">
-                        From Initial Planning To Long-Term Support{" "}
-                        <span className="text-neutral-400">–</span>{" "}
-                        <a href="#" className="font-medium text-brand underline underline-offset-2">
-                            We Build Digital Solutions You Can Trust.
-                        </a>
-                    </p>
-                </div> */}
 
                 <div className="flex items-center gap-2" title="Based on verified customer reviews">
                     <span className="text-base font-bold text-neutral-900">4.9</span>

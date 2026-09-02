@@ -12,32 +12,32 @@ const KIT_ITEMS = [
     {
         icon: Shapes,
         title: "Logo Suite",
-        description: "Primary, secondary, and icon marks — ready for every use case, from web to print.",
+        description: "Primary, secondary, and icon variations created to give your brand a recognizable presence across every format and application.",
     },
     {
         icon: Palette,
         title: "Color Palette",
-        description: "A curated color system with exact codes for print, digital, and everything between.",
+        description: "Strategic typefaces, pairings, and hierarchy rules that give your brand a distinctive voice across every piece of communication.",
     },
     {
         icon: Type,
         title: "Typography System",
-        description: "Font pairings and hierarchy rules that keep your text consistent everywhere.",
+        description: "Strategic typefaces, pairings, and hierarchy rules that give your brand a distinctive voice across every piece of communication.",
     },
     {
         icon: BookOpenCheck,
         title: "Brand Guidelines",
-        description: "A clear reference document so anyone on your team can use the brand correctly.",
+        description: "A clear, practical guide that defines how your identity should look, feel, and function across every brand touchpoint.",
     },
     {
         icon: Package,
         title: "Packaging & Print Assets",
-        description: "Business cards, letterheads, and packaging templates designed to match.",
+        description: "Branded stationery, packaging, and print-ready materials designed to carry your identity seamlessly into the physical world.",
     },
     {
         icon: ImageIcon,
         title: "Social Media Kit",
-        description: "Templates and cover assets so your profiles look polished from day one.",
+        description: "Ready-to-use templates, profile assets, and visual elements that keep your social presence instantly recognizable and on-brand.",
     },
 ];
 
@@ -85,7 +85,7 @@ export default function BrandingKitSection() {
                     variants={headerItem}
                     className="text-[32px] font-light leading-[1.2] text-neutral-900 sm:text-[38px] lg:text-[42px]"
                 >
-                    What's Included In Your{" "}
+                    Let's Scroll What's In Your{" "}
                     <span className="font-semibold text-brand">Brand Kit</span>
                 </motion.h2>
 
@@ -93,8 +93,8 @@ export default function BrandingKitSection() {
                     variants={headerItem}
                     className="mx-auto mt-5 max-w-xl text-[15px] leading-relaxed text-neutral-500"
                 >
-                    A Complete, Ready-To-Use Identity System — Everything You Need To
-                    Launch And Stay Consistent.
+                    A cohesive brand system built to give your business consistency, recognition, and creative freedom across every place your identity appears.
+
                 </motion.p>
             </motion.div>
 

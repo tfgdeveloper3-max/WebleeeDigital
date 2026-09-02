@@ -1,258 +1,270 @@
-import { useEffect, useRef, useState } from "react";
-import { motion, type Variants } from "motion/react";
-import $ from "../../../lib/jquery-setup";
-import "jquery-ui-dist/jquery-ui";
+"use client";
 
-type Plan = {
+import { useState, useRef, useEffect } from "react";
+import { motion, AnimatePresence } from "motion/react";
+import { Check, ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { useContactModal } from "../../../context/ContactModalContext";
+
+interface Plan {
     name: string;
-    description: string;
     price: string;
+    bestSeller: boolean;
     features: string[];
-};
+}
 
-const PLANS: Plan[] = [
-    {
-        name: "Basic Explainer",
-        description: "A Short, Focused Animation To Introduce Your Product Or Idea",
-        price: "$399.00",
-        features: [
-            "Up To 60 Seconds",
-            "Basic Script Writing",
-            "1 Revision Round",
-        ],
-    },
-    {
-        name: "Standard Animation",
-        description: "Polished Animation With Custom Voiceover And More Room To Tell Your Story",
-        price: "$799.00",
-        features: [
-            "Up To 2 Minutes",
-            "Custom Voiceover Included",
-            "3 Revision Rounds",
-        ],
-    },
-    {
-        name: "Premium Production",
-        description: "High-End Animation With Full Production Support From Start To Finish",
-        price: "$1,599.00",
-        features: [
-            "Up To 4 Minutes",
-            "Custom Sound Design",
-            "Unlimited Revisions",
-        ],
-    },
-];
-
-const DEFAULT_ACTIVE = 1;
-
-function FilmIcon({ className }: { className?: string }) {
+function FilmIcon({ className, style }: { className?: string; style?: React.CSSProperties }) {
     return (
-        <svg viewBox="0 0 24 24" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg viewBox="0 0 24 24" className={className} style={style} fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect x="3" y="4.5" width="18" height="15" rx="2" stroke="currentColor" strokeWidth="1.5" />
             <path d="M8 4.5v15M16 4.5v15M3 9h5M16 9h5M3 15h5M16 15h5" stroke="currentColor" strokeWidth="1.3" />
         </svg>
     );
 }
 
-function CheckIcon() {
+// Same data as the official Services page → "Video Animation" tab
+const PLANS: Plan[] = [
+    { name: "Startup Video Package", price: "$399", bestSeller: true, features: ["30s Duration, HD 1080", "Professional Script", "Storyboard Design", "Animations & VFX", "Music And Foley", "Voice Over Artists"] },
+    { name: "Classic Video Package", price: "$799", bestSeller: false, features: ["60 Second Video", "Professional Script", "Storyboard Design", "Animations & VFX", "Unlimited Revisions", "Voice Over Artists"] },
+    { name: "Premium Video Package", price: "$1,495", bestSeller: false, features: ["90 Second Video", "Professional Script", "Storyboard Design", "Animations & VFX", "Music And Foley", "Voice Over Artists"] },
+    { name: "Deluxe Video Package", price: "$1,995", bestSeller: false, features: ["120 Second Video", "Professional Script", "Storyboard Design", "Animations & VFX", "Music And Foley", "Voice Over Artists"] },
+    { name: "Basic 3D Animation", price: "$2,995", bestSeller: false, features: ["30s Duration, HD 1080", "3D Modeling & Texturing", "Rigging & Animation", "Custom Setting, 2 Characters", "Voice Over (All Accents)", "Unlimited Revisions & Concepts"] },
+    { name: "Standard 3D Animation", price: "$4,995", bestSeller: true, features: ["60s Duration, HD 1080", "3D Modeling & Texturing", "Lighting & Camera Setting", "Custom Setting, 2 Characters", "Compositing & Special VFX", "Unlimited Revisions & Concepts"] },
+    { name: "Premium 3D Animation", price: "$6,995", bestSeller: false, features: ["120s Duration, HD 1080", "3D Modeling & Texturing", "Custom Setting, 4 Characters", "Rendering & Compositing", "Voice Over (All Accents)", "Unlimited Revisions & Concepts"] },
+];
+
+function PricingCard({
+    plan,
+    isActive,
+    onHover,
+    onLeave,
+    onGetStarted,
+}: {
+    plan: Plan;
+    isActive: boolean;
+    onHover: () => void;
+    onLeave: () => void;
+    onGetStarted: () => void;
+}) {
     return (
-        <svg viewBox="0 0 20 20" className="h-5 w-5 shrink-0" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="10" cy="10" r="10" fill="currentColor" />
-            <path
-                d="M6 10.2l2.4 2.4L14.2 7"
-                stroke="white"
-                strokeWidth="1.8"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-            />
-        </svg>
+        <motion.div
+            onMouseEnter={onHover}
+            onMouseLeave={onLeave}
+            animate={{
+                backgroundColor: isActive ? "#3B8C4E" : "#FFFFFF",
+                scale: isActive ? 1.05 : 1,
+                y: isActive ? -10 : 0,
+            }}
+            className="relative flex w-[280px] shrink-0 flex-col rounded-3xl p-6 shadow-[0_10px_40px_rgba(0,0,0,0.06)] md:w-[300px]"
+            style={{ transition: "background-color 400ms ease, transform 400ms ease" }}
+        >
+            {/* Best Seller Badge */}
+            {plan.bestSeller && (
+                <div className="absolute -top-3 left-1/2 z-10 -translate-x-1/2">
+                    <span className="whitespace-nowrap rounded-full bg-gradient-to-r from-[#F2530F] via-[#DB1B3F] to-[#B23FC9] px-4 py-1 text-[10px] font-bold tracking-wider text-white shadow-lg">
+                        BEST SELLER
+                    </span>
+                </div>
+            )}
+
+            {/* Icon */}
+            <motion.div
+                animate={{ backgroundColor: isActive ? "#FFFFFF" : "#3B8C4E" }}
+                transition={{ duration: 0.4 }}
+                className="flex h-10 w-10 items-center justify-center rounded-full"
+            >
+                <FilmIcon
+                    className="h-5 w-5 transition-colors duration-300"
+                    style={{ color: isActive ? "#3B8C4E" : "#FFFFFF" }}
+                />
+            </motion.div>
+
+            {/* Plan Name */}
+            <h3
+                className="mt-4 text-lg font-bold transition-colors duration-300"
+                style={{ color: isActive ? "#FFFFFF" : "#111111" }}
+            >
+                {plan.name}
+            </h3>
+
+            {/* Price */}
+            <div className="mt-2 flex items-baseline gap-1">
+                <span
+                    className="text-2xl font-extrabold transition-colors duration-300"
+                    style={{ color: isActive ? "#FFFFFF" : "#111111" }}
+                >
+                    {plan.price}
+                </span>
+            </div>
+
+            {/* Features Box */}
+            <div
+                className="mt-5 flex flex-1 flex-col gap-2.5 rounded-2xl p-4 transition-colors duration-300"
+                style={{ backgroundColor: isActive ? "#FFFFFF" : "#DCEBE1" }}
+            >
+                {plan.features.map((feature) => (
+                    <div key={feature} className="flex items-start gap-2">
+                        <span
+                            className="mt-0.5 flex h-3.5 w-3.5 shrink-0 items-center justify-center rounded-full"
+                            style={{ backgroundColor: "#3B8C4E" }}
+                        >
+                            <Check className="h-2 w-2 text-white" strokeWidth={3} />
+                        </span>
+                        <span
+                            className="text-[13px] leading-snug transition-colors duration-300"
+                            style={{ color: isActive ? "#374151" : "#6B7280" }}
+                        >
+                            {feature}
+                        </span>
+                    </div>
+                ))}
+            </div>
+
+            {/* CTA Button */}
+            <button
+                onClick={onGetStarted}
+                className="mt-5 flex items-center justify-center gap-2 rounded-full py-2.5 text-sm font-semibold text-white shadow-md transition-all duration-300 hover:scale-105"
+                style={{
+                    background: isActive
+                        ? "#3B8C4E"
+                        : "linear-gradient(90deg, #F2530F 0%, #DB1B3F 55%, #B23FC9 100%)",
+                }}
+            >
+                Get Started
+                <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={2.5} />
+            </button>
+        </motion.div>
     );
 }
 
-const cardVariants: Variants = {
-    hidden: (i: number) => ({
-        opacity: 0,
-        x: i === 0 ? -120 : i === 2 ? 120 : 0,
-        y: i === 1 ? 90 : 0,
-        scale: 0.9,
-    }),
-    visible: (i: number) => ({
-        opacity: 1,
-        x: 0,
-        y: 0,
-        scale: 1,
-        transition: {
-            type: "spring",
-            stiffness: 90,
-            damping: 16,
-            mass: 0.9,
-            delay: i * 0.15,
-        },
-    }),
-};
-
-const headerContainer: Variants = {
-    hidden: {},
-    visible: { transition: { staggerChildren: 0.18 } },
-};
-
-const headerItem: Variants = {
-    hidden: { opacity: 0, y: 24 },
-    visible: {
-        opacity: 1,
-        y: 0,
-        transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
-    },
-};
+/* ============================= SECTION ============================= */
 
 export default function VideoAnimationPricingSection() {
-    const priceTagRefs = useRef<(HTMLSpanElement | null)[]>([]);
-    const [activeIndex, setActiveIndex] = useState<number>(DEFAULT_ACTIVE);
+    const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+    const { openModal } = useContactModal();
+
+    const sliderRef = useRef<HTMLDivElement>(null);
+
+    const defaultActive = PLANS.findIndex((p) => p.bestSeller);
+    const activeIndex = hoveredIndex ?? (defaultActive >= 0 ? defaultActive : 0);
 
     useEffect(() => {
-        const $tags = priceTagRefs.current
-            .filter((el): el is HTMLSpanElement => !!el)
-            .map((el) => $(el));
-
-        $tags.forEach(($tag) => {
-            $tag.tooltip({
-                position: { my: "center bottom-10", at: "center top" },
-            });
-        });
-
-        return () => {
-            $tags.forEach(($tag) => {
-                if ($tag.data("ui-tooltip")) $tag.tooltip("destroy");
-            });
-        };
+        if (sliderRef.current) {
+            sliderRef.current.scrollTo({ left: 0, behavior: "smooth" });
+        }
     }, []);
 
+    const scrollSlider = (dir: "left" | "right") => {
+        if (!sliderRef.current) return;
+        const card = sliderRef.current.children[0] as HTMLElement | undefined;
+        const width = card ? card.offsetWidth + 20 : 320;
+        sliderRef.current.scrollBy({
+            left: dir === "left" ? -width : width,
+            behavior: "smooth",
+        });
+    };
+
+    const handleGetStarted = (plan: Plan) => {
+        openModal(
+            `Interested in the "${plan.name}" package (Video Animation) — ${plan.price}.`
+        );
+    };
+
     return (
-        <section className="relative w-full bg-[#f5f5f4] px-6 py-20 font-atyp md:px-12 lg:py-28">
-            <motion.div
-                className="mx-auto max-w-3xl text-center"
-                variants={headerContainer}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: false, amount: 0.3 }}
-            >
-                <motion.span
-                    variants={headerItem}
-                    className="mb-6 inline-flex w-fit items-center rounded-full bg-neutral-200/70 px-5 py-2 text-sm text-neutral-700"
-                >
-                    Pricing
-                </motion.span>
+        <section id="pricing" className="w-full bg-[#F6F6F6] py-16 font-atyp md:py-20">
+            <div className="mx-auto max-w-6xl px-6 md:px-12">
+                {/* Header */}
+                <div className="text-center">
+                    <motion.span
+                        initial={{ opacity: 0, y: 10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6 }}
+                        className="inline-block rounded-full bg-[#B8C1BD] px-5 py-1.5 text-sm font-medium text-neutral-700"
+                    >
+                        Pricing
+                    </motion.span>
 
-                <motion.h2
-                    variants={headerItem}
-                    className="text-[36px] font-light leading-[1.1] text-neutral-900 sm:text-[44px] lg:text-[52px]"
-                >
-                    Animation Plans For <span className="font-semibold text-brand">EVERY STORY</span>
-                </motion.h2>
+                    <motion.h2
+                        initial={{ opacity: 0, y: 15 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.7, delay: 0.1 }}
+                        className="mt-4 text-3xl font-light text-neutral-900 md:text-4xl"
+                    >
+                        CHOOSE THE <span className="font-bold text-brand">INVESTMENT</span> THAT FIT YOUR AMBITION
+                    </motion.h2>
 
-                <motion.p
-                    variants={headerItem}
-                    className="mx-auto mt-6 max-w-2xl text-[15px] leading-relaxed text-neutral-500"
-                >
-                    From A Quick 60-Second Explainer To A Full Cinematic Production, We
-                    Have A Plan Built To Match Your Story.
-                </motion.p>
-            </motion.div>
+                    <motion.p
+                        initial={{ opacity: 0, y: 15 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.7, delay: 0.2 }}
+                        className="mx-auto mt-3 max-w-xl text-[1rem] text-neutral-500"
+                    >
+                        Choose a package designed around your priorities, with the flexibility to scale as your brand grows.
+                    </motion.p>
+                </div>
 
-            <div className="mx-auto mt-14 grid max-w-6xl grid-cols-1 gap-6 md:grid-cols-3">
-                {PLANS.map((plan, i) => {
-                    const isActive = activeIndex === i;
+                {/* ===== Slider ===== */}
+                <div className="relative mt-10">
+                    {/* Edge Fades */}
+                    <div className="pointer-events-none absolute left-0 top-0 z-[5] h-full w-10 bg-gradient-to-r from-[#F6F6F6] to-transparent md:w-16" />
+                    <div className="pointer-events-none absolute right-0 top-0 z-[5] h-full w-10 bg-gradient-to-l from-[#F6F6F6] to-transparent md:w-16" />
 
-                    return (
-                        <motion.div
-                            key={plan.name}
-                            custom={i}
-                            variants={cardVariants}
-                            initial="hidden"
-                            whileInView="visible"
-                            viewport={{ once: false, amount: 0.25 }}
-                            onMouseEnter={() => setActiveIndex(i)}
-                            onMouseLeave={() => setActiveIndex(DEFAULT_ACTIVE)}
-                            animate={{
-                                scale: isActive ? 1.03 : 1,
-                                y: isActive ? -16 : 0,
-                            }}
-                            transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-                            className={[
-                                "flex flex-col rounded-[24px] p-8 transition-colors duration-500",
-                                isActive
-                                    ? "bg-gradient-to-br from-brand to-emerald-700 text-white shadow-[0_25px_50px_-15px_rgba(0,0,0,0.35)]"
-                                    : "bg-white text-neutral-900 shadow-[0_15px_35px_-15px_rgba(0,0,0,0.15)]",
-                            ].join(" ")}
+                    {/* Left Arrow */}
+                    <button
+                        onClick={() => scrollSlider("left")}
+                        className="absolute left-1 top-1/2 z-10 -translate-y-1/2 rounded-full border border-gray-200 bg-white/90 p-2 shadow-lg backdrop-blur-sm transition-all hover:scale-110 hover:shadow-xl"
+                    >
+                        <ChevronLeft className="h-5 w-5 text-neutral-700" />
+                    </button>
+
+                    {/* Cards Track */}
+                    <div className="overflow-hidden">
+                        <div
+                            ref={sliderRef}
+                            className="scrollbar-hide flex gap-5 overflow-x-auto scroll-smooth px-10 py-6 md:px-14"
                         >
-                            <div
-                                className={[
-                                    "flex h-14 w-14 items-center justify-center rounded-full transition-colors duration-500",
-                                    isActive ? "bg-white text-brand" : "bg-brand text-white",
-                                ].join(" ")}
-                            >
-                                <FilmIcon className="h-6 w-6" />
-                            </div>
+                            <AnimatePresence mode="wait">
+                                {PLANS.map((plan, i) => (
+                                    <motion.div
+                                        key={plan.name}
+                                        initial={{ opacity: 0, y: 20 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        exit={{ opacity: 0, y: -20 }}
+                                        transition={{
+                                            duration: 0.4,
+                                            delay: i * 0.06,
+                                            ease: [0.16, 1, 0.3, 1],
+                                        }}
+                                    >
+                                        <PricingCard
+                                            plan={plan}
+                                            isActive={activeIndex === i}
+                                            onHover={() => setHoveredIndex(i)}
+                                            onLeave={() => setHoveredIndex(null)}
+                                            onGetStarted={() => handleGetStarted(plan)}
+                                        />
+                                    </motion.div>
+                                ))}
+                            </AnimatePresence>
+                        </div>
+                    </div>
 
-                            <h3 className="mt-6 text-2xl font-normal">{plan.name}</h3>
-                            <p
-                                className={[
-                                    "mt-3 text-sm leading-relaxed transition-colors duration-500",
-                                    isActive ? "text-white/85" : "text-neutral-500",
-                                ].join(" ")}
-                            >
-                                {plan.description}
-                            </p>
-
-                            <div className="mt-6 flex items-baseline gap-2">
-                                <span className="text-[40px] font-medium leading-none">{plan.price}</span>
-                                <span
-                                    ref={(el) => {
-                                        priceTagRefs.current[i] = el;
-                                    }}
-                                    title="One-time production fee"
-                                    className={[
-                                        "cursor-help text-sm transition-colors duration-500",
-                                        isActive ? "text-white/80" : "text-neutral-500",
-                                    ].join(" ")}
-                                >
-                                    /One Time
-                                </span>
-                            </div>
-
-                            <div
-                                className={[
-                                    "mt-8 flex flex-1 flex-col justify-between rounded-[18px] p-6 transition-colors duration-500",
-                                    isActive ? "bg-white text-neutral-900" : "bg-emerald-50",
-                                ].join(" ")}
-                            >
-                                <ul className="flex flex-col gap-4">
-                                    {plan.features.map((feature) => (
-                                        <li key={feature} className="flex items-center gap-3 text-sm text-neutral-700">
-                                            <span className="text-brand">
-                                                <CheckIcon />
-                                            </span>
-                                            {feature}
-                                        </li>
-                                    ))}
-                                </ul>
-
-                                <button
-                                    className={[
-                                        "btn-sweep relative mt-8 flex w-fit items-center gap-2 overflow-hidden rounded-full px-6 py-3 text-sm font-medium transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.03]",
-                                        isActive
-                                            ? "bg-brand text-white hover:shadow-lg hover:shadow-emerald-900/30"
-                                            : "bg-cta-gradient text-white shadow-lg shadow-pink-500/20 hover:shadow-lg hover:shadow-pink-500/40",
-                                    ].join(" ")}
-                                >
-                                    <span className="relative z-10">Get Started With Plan</span>
-                                    <span className="relative z-10">↗</span>
-                                </button>
-                            </div>
-                        </motion.div>
-                    );
-                })}
+                    {/* Right Arrow */}
+                    <button
+                        onClick={() => scrollSlider("right")}
+                        className="absolute right-1 top-1/2 z-10 -translate-y-1/2 rounded-full border border-gray-200 bg-white/90 p-2 shadow-lg backdrop-blur-sm transition-all hover:scale-110 hover:shadow-xl"
+                    >
+                        <ChevronRight className="h-5 w-5 text-neutral-700" />
+                    </button>
+                </div>
             </div>
+
+            <style>{`
+                .scrollbar-hide::-webkit-scrollbar { display: none; }
+                .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+            `}</style>
         </section>
     );
 }

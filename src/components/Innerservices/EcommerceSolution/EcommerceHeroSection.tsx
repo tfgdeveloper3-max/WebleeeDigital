@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import $ from "../../../lib/jquery-setup";
 import "jquery-ui-dist/jquery-ui";
 import { ArrowUpRight } from "lucide-react";
+import { useContactModal } from "../../../context/ContactModalContext";
 
 const AVATARS = [
     "https://i.pravatar.cc/64?img=12",
@@ -12,6 +13,8 @@ const AVATARS = [
 export default function EcommerceHeroSection() {
     const badgeRef = useRef<HTMLDivElement>(null);
     const ratingRef = useRef<HTMLDivElement>(null);
+
+    const { openModal } = useContactModal();
 
     useEffect(() => {
         if (!badgeRef.current) return;
@@ -50,21 +53,21 @@ export default function EcommerceHeroSection() {
                 </span>
 
                 <h1 className="animate__animated animate__fadeInUp animate__delay-1s text-[44px] font-semibold uppercase leading-[1.05] text-neutral-900 sm:text-[64px] lg:text-[76px]">
-                    <span className="text-black font-light">E-commerce <span className="text-brand font-semibold">Solutions</span> That Sell</span>
+                    <span className="text-black font-light">E-COMMERCE <span className="text-brand font-semibold">DESIGNED</span> TO DRIVE SALES</span>
                 </h1>
 
                 <p className="animate__animated animate__fadeInUp animate__delay-2s mt-6 max-w-xl text-[16px] leading-relaxed text-neutral-500">
-                    From Storefront Design To Secure Checkout And Inventory Management —
-                    We Build Online Stores That Turn Visitors Into Customers.
+                    People don’t abandon carts because they hate your product. They abandon experiences that make buying difficult. We remove the friction with intuitive designs!
                 </p>
 
                 <div className="animate__animated animate__fadeInUp animate__delay-2s mt-8 flex flex-wrap items-center justify-center gap-6">
                     <div className="flex items-center gap-2">
-                        <button className="btn-sweep relative overflow-hidden rounded-full bg-cta-gradient px-6 py-3 text-sm font-medium text-white shadow-lg shadow-pink-500/20 transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.03] hover:shadow-lg hover:shadow-pink-500/40">
-                            <span className="relative z-10">Get In Touch</span>
+                        <button onClick={() => openModal()} className="btn-sweep relative overflow-hidden rounded-full bg-cta-gradient px-6 py-3 text-sm font-medium text-white shadow-lg shadow-pink-500/20 transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.03] hover:shadow-lg hover:shadow-pink-500/40">
+                            <span className="relative z-10">Get your First Store</span>
                         </button>
 
                         <button
+                            onClick={() => openModal()}
                             aria-label="Go"
                             className="btn-sweep relative flex h-11 w-11 items-center justify-center overflow-hidden rounded-full bg-cta-gradient text-white shadow-lg shadow-pink-500/20 transition-all duration-300 hover:-translate-y-0.5 hover:scale-110 hover:rotate-45 hover:shadow-lg hover:shadow-orange-500/40"
                         >

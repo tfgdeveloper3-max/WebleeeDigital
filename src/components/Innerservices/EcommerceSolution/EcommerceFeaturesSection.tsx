@@ -12,32 +12,32 @@ const STORE_FEATURES = [
     {
         icon: ShoppingCart,
         title: "Product Catalog Management",
-        description: "Organize unlimited products, variants, and collections with an intuitive admin panel.",
+        description: "Keep your entire product range organized with intuitive tools for products, variants, categories, collections, pricing, and inventory.",
     },
     {
         icon: CreditCard,
         title: "Secure Payment Gateways",
-        description: "Accept cards, wallets, and local payment methods with PCI-compliant checkout.",
+        description: "Give customers a smooth, trustworthy checkout with secure payment integration supporting cards, digital wallets, and preferred payment methods.",
     },
     {
         icon: PackageSearch,
         title: "Order & Inventory Tracking",
-        description: "Real-time stock levels and order status synced across every sales channel.",
+        description: "Stay in control with streamlined order management and real-time inventory visibility, helping you reduce errors and keep fulfillment moving.",
     },
     {
         icon: Smartphone,
         title: "Mobile-First Design",
-        description: "Every storefront is built to convert on phones, where most of your buyers shop.",
+        description: "Create effortless shopping experiences across every screen with responsive storefronts designed around the way modern customers browse and buy.",
     },
     {
         icon: BarChart3,
         title: "Sales Analytics Dashboard",
-        description: "Track revenue, conversion rate, and customer behavior in one clear dashboard.",
+        description: "Turn store activity into useful insight with clear visibility into sales, conversions, customer behavior, and performance.",
     },
     {
         icon: Globe2,
         title: "Multi-Currency & Shipping",
-        description: "Sell globally with automatic currency conversion and flexible shipping rules.",
+        description: "Expand beyond borders with flexible currency, shipping, and delivery options designed to make global commerce simpler for both you and your customers.",
     },
 ];
 
@@ -78,23 +78,22 @@ export default function EcommerceFeaturesSection() {
                     variants={headerItem}
                     className="mb-6 inline-flex w-fit items-center rounded-full bg-neutral-200/70 px-5 py-2 text-sm text-neutral-700"
                 >
-                    Everything Included
+                    Bundle Pack
                 </motion.span>
 
                 <motion.h2
                     variants={headerItem}
                     className="text-[32px] font-light leading-[1.2] text-neutral-900 sm:text-[38px] lg:text-[42px]"
                 >
-                    Everything Your{" "}
-                    <span className="font-semibold text-brand">Online Store</span> Needs
+                    WHAT IF YOUR{" "}
+                    <span className="font-semibold text-brand">STORE</span> COULD DO IT ALL?
                 </motion.h2>
 
                 <motion.p
                     variants={headerItem}
                     className="mx-auto mt-5 max-w-xl text-[15px] leading-relaxed text-neutral-500"
                 >
-                    A Complete Toolkit To Launch, Manage, And Grow Your Store — All Built In,
-                    No Extra Plugins Required.
+                    We bring your essential e-commerce capabilities into one streamlined ecosystem, giving you more control behind the scenes and your customers a better experience up front. 
                 </motion.p>
             </motion.div>
 

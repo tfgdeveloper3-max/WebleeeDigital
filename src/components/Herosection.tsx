@@ -3,6 +3,7 @@ import { motion } from "motion/react";
 import $ from "../lib/jquery-setup";
 import "jquery-ui-dist/jquery-ui";
 import { ArrowUpRight } from "lucide-react";
+import { useContactModal } from "../context/ContactModalContext";
 
 const AVATARS = [
     "https://i.pravatar.cc/64?img=12",
@@ -19,7 +20,7 @@ const floatCard = (duration: number, delay = 0, distance = 14) => ({
         duration,
         delay,
         repeat: Infinity,
-        ease: "easeInOut" as const, 
+        ease: "easeInOut" as const,
     },
 });
 
@@ -27,6 +28,8 @@ export default function HeroSection() {
     const badgeRef = useRef<HTMLDivElement>(null);
     const ratingRef = useRef<HTMLDivElement>(null);
     const contactRef = useRef<HTMLDivElement>(null);
+    const { openModal } = useContactModal();
+
 
     useEffect(() => {
         if (!ratingRef.current) return;
@@ -76,7 +79,7 @@ export default function HeroSection() {
     }, []);
 
     return (
-        <section className="relative w-full overflow-hidden bg-[#ffffff] font-atyp overflow-hidden">
+        <section id="home" className="relative w-full overflow-hidden bg-[#ffffff] font-atyp overflow-hidden">
 
             <div className="relative pb-20 md:pb-28 lg:pb-32">
                 <div
@@ -94,21 +97,22 @@ export default function HeroSection() {
 
                         <h1 className="animate__animated animate__fadeInUp animate__delay-1s text-[44px] font-light leading-[1.08] text-neutral-900 sm:text-[56px] lg:text-[64px]">
                             We Build <span className="font-semibold text-brand">Digital Destinations</span>{" "}
-                            &amp; that Refuse to Blend In
+                            that Refuse to Blend In
                         </h1>
 
                         <p className="animate__animated animate__fadeInUp animate__delay-2s mt-6 max-w-lg text-[16px] leading-relaxed text-neutral-500">
-                            Your digital presence should never feel like a collection of disconnected services. From your website to your marketing, we create a unified ecosystem where every element works together. 
+                            Your digital presence should never feel like a collection of disconnected services. From your website to your marketing, we create a unified ecosystem where every element works together.
                         </p>
 
                         <div className="animate__animated animate__fadeInUp animate__delay-2s mt-8">
                             <div className="flex flex-wrap items-center gap-6">
                                 <div className="flex items-center gap-2">
-                                    <button className="btn-sweep relative overflow-hidden rounded-full bg-cta-gradient px-6 py-3 text-sm font-medium text-white shadow-lg shadow-pink-500/20 transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.03] hover:shadow-lg hover:shadow-pink-500/40">
+                                    <button onClick={() => openModal()} className="btn-sweep relative overflow-hidden rounded-full bg-cta-gradient px-6 py-3 text-sm font-medium text-white shadow-lg shadow-pink-500/20 transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.03] hover:shadow-lg hover:shadow-pink-500/40">
                                         <span className="relative z-10">Start Now</span>
                                     </button>
 
                                     <button
+                                        onClick={() => openModal()}
                                         aria-label="Go"
                                         className="btn-sweep relative flex h-11 w-11 items-center justify-center overflow-hidden rounded-full bg-cta-gradient text-white shadow-lg shadow-pink-500/20 transition-all duration-300 hover:-translate-y-0.5 hover:scale-110 hover:rotate-45 hover:shadow-lg hover:shadow-orange-500/40"
                                     >

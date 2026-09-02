@@ -27,7 +27,7 @@ const TECH_FEATURES = [
     {
         icon: ShieldCheck,
         title: "Role-Based Access Control",
-        description: "Granular permissions so every user sees exactly what they should — nothing more.",
+        description: "Granular permissions so every user sees exactly what they should, nothing more.",
     },
     {
         icon: Layers,
@@ -78,23 +78,23 @@ export default function WebAppTechProcessSection() {
                     variants={headerItem}
                     className="mb-6 inline-flex w-fit items-center rounded-full bg-neutral-200/70 px-5 py-2 text-sm text-neutral-700"
                 >
-                    Under The Hood
+                    Behind the Code
                 </motion.span>
 
                 <motion.h2
                     variants={headerItem}
                     className="text-[32px] font-light leading-[1.2] text-neutral-900 sm:text-[38px] lg:text-[42px]"
                 >
-                    Engineered With{" "}
-                    <span className="font-semibold text-brand">Modern Technology</span>
+                    THE{" "}
+                    <span className="font-semibold text-brand">TECHNOLOGY </span>
+                    THAT MAKES IT ALL WORK.
                 </motion.h2>
 
                 <motion.p
                     variants={headerItem}
                     className="mx-auto mt-5 max-w-xl text-[15px] leading-relaxed text-neutral-500"
                 >
-                    Every Application We Build Is Backed By A Solid Technical Foundation —
-                    Built For Speed, Security, And Long-Term Growth.
+                    From architecture to deployment, every layer is engineered with modern technology to keep your digital product fast, secure, scalable, and ready for whatever comes next.
                 </motion.p>
             </motion.div>
 

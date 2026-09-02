@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useInView, type Variants } from "motion/react";
 import { ArrowUpRight } from "lucide-react";
+import { useContactModal } from "../../../context/ContactModalContext";
 
 const PROJECTS = [
     { image: "/images/SeoPortfolio1.png", title: "Organic Growth Case Study", accent: "#1f8a3c" },
@@ -99,6 +100,8 @@ export default function SeoPortfolioGridSection() {
     const containerRef = useRef<HTMLDivElement>(null);
     const scrollDirRef = useRef<"up" | "down">("down");
     const [phase, setPhase] = useState<"hidden" | "visible">("hidden");
+    const { openModal } = useContactModal();
+
 
     const isInView = useInView(containerRef, { amount: 0.05, once: false });
 
@@ -136,15 +139,14 @@ export default function SeoPortfolioGridSection() {
                         variants={headerItem}
                         className="text-[32px] font-light leading-[1.2] text-neutral-900 sm:text-[42px] lg:text-[46px]"
                     >
-                        Results We've <span className="font-bold text-brand">DELIVERED</span>
+                        Search Is A Battleground. <span className="font-bold text-brand">We Know How To Compete</span>
                     </motion.h2>
 
                     <motion.p
                         variants={headerItem}
                         className="mx-auto mt-5 max-w-2xl text-[15px] leading-relaxed text-neutral-500"
                     >
-                        Real SEO Campaigns We've Run — From Local Businesses To National
-                        E-commerce Brands.
+                        Explore campaigns engineered to improve visibility, attract qualified traffic, and turn search demand into opportunity.
                     </motion.p>
                 </motion.div>
 
@@ -160,11 +162,12 @@ export default function SeoPortfolioGridSection() {
 
                 <motion.div variants={headerItem} initial="hidden" animate={phase} className="mt-12 flex justify-center">
                     <div className="flex items-center gap-2">
-                        <button className="btn-sweep relative overflow-hidden rounded-full bg-cta-gradient px-6 py-3 text-sm font-medium text-white shadow-lg shadow-pink-500/20 transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.03] hover:shadow-lg hover:shadow-pink-500/40">
+                        <button onClick={() => openModal()} className="btn-sweep relative overflow-hidden rounded-full bg-cta-gradient px-6 py-3 text-sm font-medium text-white shadow-lg shadow-pink-500/20 transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.03] hover:shadow-lg hover:shadow-pink-500/40">
                             <span className="relative z-10">Get In Touch</span>
                         </button>
 
                         <button
+                            onClick={() => openModal()}
                             aria-label="Go"
                             className="btn-sweep relative flex h-11 w-11 items-center justify-center overflow-hidden rounded-full bg-cta-gradient text-white shadow-lg shadow-pink-500/20 transition-all duration-300 hover:-translate-y-0.5 hover:scale-110 hover:rotate-45 hover:shadow-lg hover:shadow-orange-500/40"
                         >

@@ -11,11 +11,11 @@ type NavLink = {
 
 const NAV_LINKS: NavLink[] = [
     { label: "Home", to: "/" },
+    { label: "About Us", to: "/about" },
     { label: "Services", to: "/services" },
-    { label: "Portfolio", to: "/#portfolio" },
-    { label: "Pricing", to: "/#pricing" },
-    { label: "Testimonials", to: "/#testimonials" },
-    { label: "About Us", to: "/#about" },
+    { label: "Portfolio", to: "/portfolio" },
+    { label: "Pricing", to: "/pricing" },
+    { label: "Contact Us", to: "/contact" },
 ];
 
 export default function Navbar() {
@@ -151,15 +151,13 @@ export default function Navbar() {
 
             <div className="flex items-center gap-3">
                 <Link
-                    to="/#contact"
-                    onClick={(e) => handleHashClick("/#contact", e)}
+                    to="/contact"
                     className="rounded-full bg-white px-6 py-3 text-sm font-medium text-neutral-900 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.03] hover:shadow-md hover:bg-brand hover:text-white"
                 >
                     Get In Touch
                 </Link>
                 <Link
-                    to="/#contact"
-                    onClick={(e) => handleHashClick("/#contact", e)}
+                    to="/contact"
                     aria-label="Go"
                     className="flex h-11 w-11 items-center justify-center rounded-full bg-white text-neutral-900 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:scale-110 hover:rotate-45 hover:bg-brand hover:text-white"
                 >

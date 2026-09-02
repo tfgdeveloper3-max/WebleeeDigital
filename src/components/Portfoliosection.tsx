@@ -40,7 +40,6 @@ const SHUFFLE = [
     { x: 260, y: -40, rotate: 20 },
 ];
 
-// Record<number, number> — TS ko batata hai ke ye object kisi bhi number key se index ho sakta hai
 const EXIT_DELAYS: Record<number, number> = {
     2: 0,
     3: 0.15,
@@ -114,6 +113,7 @@ function ProjectCard({
                     : project.position === "bottom"
                         ? "object-bottom"
                         : "object-center"
+
                     }`}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-transparent" />
@@ -165,7 +165,7 @@ export default function PortfolioSection() {
     }, [isInView]);
 
     return (
-        <section className="w-full bg-white py-20 font-atyp md:py-28">
+        <section id="portfolio" className="w-full bg-white py-20 font-atyp md:py-28">
             <div ref={containerRef} className="mx-auto max-w-[1550px] px-6 text-center md:px-12">
                 <motion.div variants={headerContainer} initial="hidden" animate={phase}>
                     <motion.span

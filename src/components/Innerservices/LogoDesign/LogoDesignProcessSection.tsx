@@ -11,27 +11,27 @@ const PROCESS_STEPS = [
     {
         icon: Search,
         title: "Discovery",
-        description: "We learn your brand, audience, and competitors before drawing a single line.",
+        description: "We uncover your brand’s personality, audience, positioning, and visual direction before the design process begins.",
     },
     {
         icon: Lightbulb,
         title: "Concept Exploration",
-        description: "Multiple distinct directions, each rooted in a different idea about your brand.",
+        description: "We develop distinct logo concepts, each built around a clear creative idea and strategic direction.",
     },
     {
         icon: Pencil,
         title: "Refinement",
-        description: "We narrow to your favorite direction and refine every curve and spacing detail.",
+        description: "We select the strongest direction and carefully refine its form, proportions, typography, spacing, and visual balance.",
     },
     {
         icon: RefreshCcw,
         title: "Revisions",
-        description: "Your feedback shapes the final mark — we iterate until it feels exactly right.",
+        description: "Your feedback guides the final evolution as we fine-tune the mark until it feels unmistakably right for your brand.",
     },
     {
         icon: PackageCheck,
         title: "Final Delivery",
-        description: "Full file package — vector, PNG, favicon, and usage guidelines, ready to use.",
+        description: "You receive a complete, professional logo package with versatile file formats and assets ready for digital, print, social, and beyond.",
     },
 ];
 
@@ -79,16 +79,16 @@ export default function LogoDesignProcessSection() {
                     variants={headerItem}
                     className="text-[32px] font-light leading-[1.2] text-neutral-900 sm:text-[38px] lg:text-[42px]"
                 >
-                    Our Logo Design{" "}
-                    <span className="font-semibold text-brand">Process</span>
+                    From First Idea To A{" "}
+                    <span className="font-semibold text-brand">Mark</span>{" "}
+                    That Feels Inevitable
                 </motion.h2>
 
                 <motion.p
                     variants={headerItem}
                     className="mx-auto mt-5 max-w-xl text-[15px] leading-relaxed text-neutral-500"
                 >
-                    A Clear, Collaborative Process That Takes You From First Sketch To
-                    Final Files — No Guesswork.
+                    A thoughtful, collaborative process that turns your brand story into a distinctive visual mark, refined with purpose and delivered ready for every application.
                 </motion.p>
             </motion.div>
 

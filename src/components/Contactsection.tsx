@@ -1,26 +1,13 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import $ from "../lib/jquery-setup";
 import "jquery-ui-dist/jquery-ui";
-
-type Pin = {
-    top: string;
-    left: string;
-    label?: string;
-    tooltip: string;
-};
-
-const PINS: Pin[] = [
-    { top: "18%", left: "15%", tooltip: "Am Flughafen office" },
-    { top: "21%", left: "49%", label: "Am Markt, St.", tooltip: "Am Markt office" },
-    { top: "27%", left: "92%", tooltip: "Karl-Liebknecht-Straße office" },
-    { top: "60%", left: "81%", tooltip: "Halle-Kasseler-Straße office" },
-    { top: "76%", left: "39%", tooltip: "Friedegasse office" },
-];
+import { submitLead } from "../lib/leadApi";
 
 const CONTACT_ITEMS = [
     {
         label: "Call",
-        value: "(000) 123 456 789",
+        value: "(626) 740-1517",
+        href: "tel:+16267401517",
         icon: (
             <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -35,7 +22,8 @@ const CONTACT_ITEMS = [
     },
     {
         label: "Email",
-        value: "loremipsum132@gmail.com",
+        value: "support@webleedigital.com",
+        href: "mailto:support@webleedigital.com",
         icon: (
             <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect x="3.5" y="5.5" width="17" height="13" rx="2" stroke="currentColor" strokeWidth="1.5" />
@@ -45,7 +33,8 @@ const CONTACT_ITEMS = [
     },
     {
         label: "Location",
-        value: "Texas, USA",
+        value: "Weblee Digital Contact Information 5101 Santa Monica Blvd Ste 8 Los Angeles CA 90029",
+        href: null,
         icon: (
             <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -62,25 +51,19 @@ const CONTACT_ITEMS = [
     },
 ];
 
-function MapPinIcon() {
-    return (
-        <svg viewBox="0 0 24 30" className="h-8 w-8 drop-shadow-md" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path
-                d="M12 1C6.5 1 2 5.4 2 10.8 2 18 12 27 12 27s10-9 10-16.2C22 5.4 17.5 1 12 1Z"
-                fill="currentColor"
-            />
-            <circle cx="12" cy="10.8" r="3.6" fill="white" />
-        </svg>
-    );
-}
+
+type FormStatus = "idle" | "loading" | "success" | "error";
 
 export default function ContactSection() {
     const fieldRefs = useRef<(HTMLElement | null)[]>([]);
     const mapRef = useRef<HTMLDivElement>(null);
     const formCardRef = useRef<HTMLDivElement>(null);
-    const contactItemRefs = useRef<(HTMLDivElement | null)[]>([]);
+    const contactItemRefs = useRef<(HTMLElement | null)[]>([]);
 
-    // Scroll-triggered reveal, same pattern used across HeroSection / PricingSection / TestimonialsSection
+    const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
+    const [status, setStatus] = useState<FormStatus>("idle");
+    const [errorMsg, setErrorMsg] = useState("");
+
     useEffect(() => {
         const targets = [mapRef.current, formCardRef.current];
         const observers: IntersectionObserver[] = [];
@@ -105,7 +88,6 @@ export default function ContactSection() {
         return () => observers.forEach((o) => o.disconnect());
     }, []);
 
-    // jQuery UI tooltip on every map pin, same convention as the ratings tooltip in HeroSection
     useEffect(() => {
         const $mapEl = mapRef.current ? $(mapRef.current) : null;
         if (!$mapEl) return;
@@ -123,10 +105,9 @@ export default function ContactSection() {
         };
     }, []);
 
-    // jQuery UI tooltip on the Call / Email / Location items
     useEffect(() => {
         const $items = contactItemRefs.current
-            .filter((el): el is HTMLDivElement => !!el)
+            .filter((el): el is HTMLElement => !!el)
             .map((el) => $(el));
 
         $items.forEach(($item) => {
@@ -142,8 +123,39 @@ export default function ContactSection() {
         };
     }, []);
 
+    const handleChange = (field: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement>) => {
+        setForm((prev) => ({ ...prev, [field]: e.target.value }));
+    };
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+
+        if (!form.name || !form.email) {
+            setStatus("error");
+            setErrorMsg("Please fill in your name and email.");
+            return;
+        }
+
+        setStatus("loading");
+        setErrorMsg("");
+
+        try {
+            await submitLead({
+                name: form.name,
+                email: form.email,
+                phone_number: form.phone,
+                message: form.message,
+            });
+            setStatus("success");
+            setForm({ name: "", email: "", phone: "", message: "" });
+        } catch (err) {
+            setStatus("error");
+            setErrorMsg("Something went wrong. Please try again.");
+        }
+    };
+
     return (
-        <section className="relative w-full bg-[#fdfcf7] px-6 py-20 font-atyp md:px-12 lg:py-28">
+        <section id="contact" className="relative w-full bg-[#fdfcf7] px-6 py-20 font-atyp md:px-12 lg:py-28">
             <div className="mx-auto max-w-3xl text-center">
                 <span className="animate__animated animate__fadeInUp mb-6 inline-flex w-fit items-center rounded-full bg-neutral-200/70 px-5 py-2 text-sm text-neutral-700">
                     Contact
@@ -162,40 +174,11 @@ export default function ContactSection() {
                     className="opacity-0 relative h-[420px] overflow-hidden rounded-[20px] bg-neutral-100 md:h-[560px]"
                 >
                     <img
-                        src="/images/Map.png"
+                        src="/images/Map.jpg"
                         alt="Map showing our office locations"
                         className="absolute inset-0 h-full w-full select-none object-cover"
                         draggable={false}
                     />
-
-                    {/* You-are-here pulsing dot */}
-                    <div
-                        data-pin
-                        title="You are here"
-                        className="absolute flex h-11 w-11 -translate-x-1/2 -translate-y-1/2 cursor-help items-center justify-center rounded-full"
-                        style={{ top: "68%", left: "13%" }}
-                    >
-                        <span className="absolute h-11 w-11 animate-ping rounded-full bg-brand/30" />
-                        <span className="relative h-5 w-5 rounded-full bg-brand ring-4 ring-brand/20" />
-                    </div>
-
-                    {/* Location pins */}
-                    {PINS.map((pin, i) => (
-                        <div
-                            key={i}
-                            className="absolute -translate-x-1/2 -translate-y-full"
-                            style={{ top: pin.top, left: pin.left }}
-                        >
-                            {pin.label && (
-                                <span className="mb-1 block w-max -translate-x-1/2 -translate-y-2 rounded-full bg-brand px-4 py-1.5 text-xs font-medium text-white shadow-md">
-                                    {pin.label}
-                                </span>
-                            )}
-                            <div data-pin title={pin.tooltip} className="cursor-help text-brand">
-                                <MapPinIcon />
-                            </div>
-                        </div>
-                    ))}
                 </div>
 
                 {/* Form card */}
@@ -207,7 +190,7 @@ export default function ContactSection() {
                         Have a Vision? Let's Give It a Digital Home.
                     </h3>
 
-                    <div className="flex flex-col gap-8">
+                    <form onSubmit={handleSubmit} className="flex flex-col gap-8">
                         <div
                             ref={(el) => { fieldRefs.current[0] = el; }}
                             className="border-b border-white/35 pb-3"
@@ -215,6 +198,9 @@ export default function ContactSection() {
                             <input
                                 type="text"
                                 placeholder="Name"
+                                value={form.name}
+                                onChange={handleChange("name")}
+                                required
                                 className="w-full bg-transparent text-white outline-none placeholder:text-white/70"
                             />
                         </div>
@@ -226,6 +212,9 @@ export default function ContactSection() {
                             <input
                                 type="email"
                                 placeholder="Email address"
+                                value={form.email}
+                                onChange={handleChange("email")}
+                                required
                                 className="w-full bg-transparent text-white outline-none placeholder:text-white/70"
                             />
                         </div>
@@ -235,41 +224,92 @@ export default function ContactSection() {
                             className="border-b border-white/35 pb-3"
                         >
                             <input
+                                type="tel"
+                                placeholder="Phone number"
+                                value={form.phone}
+                                onChange={handleChange("phone")}
+                                className="w-full bg-transparent text-white outline-none placeholder:text-white/70"
+                            />
+                        </div>
+
+                        <div
+                            ref={(el) => { fieldRefs.current[3] = el; }}
+                            className="border-b border-white/35 pb-3"
+                        >
+                            <input
                                 type="text"
                                 placeholder="Message"
+                                value={form.message}
+                                onChange={handleChange("message")}
                                 className="w-full bg-transparent text-white outline-none placeholder:text-white/70"
                             />
                         </div>
 
                         <button
-                            ref={(el) => { fieldRefs.current[3] = el as unknown as HTMLElement; }}
-                            type="button"
-                            className="btn-sweep relative mt-4 overflow-hidden rounded-full bg-white px-8 py-4 text-base font-semibold text-neutral-900 shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.01] hover:shadow-xl"
+                            ref={(el) => { fieldRefs.current[4] = el as unknown as HTMLElement; }}
+                            type="submit"
+                            disabled={status === "loading"}
+                            className="btn-sweep relative mt-4 overflow-hidden rounded-full bg-white px-8 py-4 text-base font-semibold text-neutral-900 shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.01] hover:shadow-xl disabled:cursor-not-allowed disabled:opacity-70"
                         >
-                            <span className="relative z-10">Send now</span>
+                            <span className="relative z-10">
+                                {status === "loading" ? "Sending..." : "Send now"}
+                            </span>
                         </button>
-                    </div>
+
+                        {status === "success" && (
+                            <p className="text-sm font-medium text-white">
+                                Thanks! We've received your message and will be in touch soon.
+                            </p>
+                        )}
+                        {status === "error" && (
+                            <p className="text-sm font-medium text-red-100">{errorMsg}</p>
+                        )}
+                    </form>
                 </div>
             </div>
 
-            <div className="mx-auto mt-16 flex max-w-6xl flex-col flex-wrap items-center justify-center gap-x-16 gap-y-8 sm:flex-row">
-                {CONTACT_ITEMS.map((item, i) => (
-                    <div
-                        key={item.label}
-                        ref={(el) => { contactItemRefs.current[i] = el; }}
-                        title={item.label === "Location" ? "Visit us" : `Reach us via ${item.label.toLowerCase()}`}
-                        className="flex cursor-help items-center gap-3"
-                    >
-                        <span className="flex h-12 w-12 items-center justify-center rounded-full border border-brand/30 text-brand">
-                            {item.icon}
-                        </span>
-                        <div className="text-left">
-                            <p className="font-semibold text-neutral-900">{item.label}</p>
-                            <p className="text-sm text-neutral-500">{item.value}</p>
+            <div className="mx-auto mt-16 grid max-w-6xl grid-cols-1 gap-x-10 gap-y-8 sm:grid-cols-3">
+                {CONTACT_ITEMS.map((item, i) => {
+                    const content = (
+                        <>
+                            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-brand/30 text-brand transition-colors duration-300 group-hover:bg-brand group-hover:text-white">
+                                {item.icon}
+                            </span>
+                            <div className="text-left">
+                                <p className="font-semibold text-neutral-900">{item.label}</p>
+                                <p className="text-sm leading-snug text-neutral-500 transition-colors duration-300 group-hover:text-brand">
+                                    {item.value}
+                                </p>
+                            </div>
+                        </>
+                    );
+
+                    if (item.href) {
+                        return (
+                            <a
+                                key={item.label}
+                                ref={(el) => { contactItemRefs.current[i] = el; }}
+                                href={item.href}
+                                title={`Reach us via ${item.label.toLowerCase()}`}
+                                className="group flex cursor-pointer items-start justify-center gap-3 sm:items-center"
+                            >
+                                {content}
+                            </a>
+                        );
+                    }
+
+                    return (
+                        <div
+                            key={item.label}
+                            ref={(el) => { contactItemRefs.current[i] = el; }}
+                            title="Visit us"
+                            className="group flex cursor-help items-start justify-center gap-3 sm:items-center"
+                        >
+                            {content}
                         </div>
-                    </div>
-                ))}
+                    );
+                })}
             </div>
-        </section>
+        </section >
     );
 }

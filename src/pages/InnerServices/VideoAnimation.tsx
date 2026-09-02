@@ -3,21 +3,21 @@ import VideoAnimationAboutSection from "../../components/Innerservices/VideoAnim
 import VideoAnimationStylesSection from "../../components/Innerservices/VideoAnimation/VideoAnimationStylesSection";
 import VideoAnimationPortfolioGridSection from "../../components/Innerservices/VideoAnimation/VideoAnimationPortfolioGridSection";
 import ServicesClientsSection from "../../components/Innerservices/WebDevelopment/Servicesclientssection";
-import CtaBannerSection from "../../components/Innerservices/WebDevelopment/ServicesCta";
 import VideoAnimationPricingSection from "../../components/Innerservices/VideoAnimation/VideoAnimationPricingSection";
-import TestimonialsSection from "../../components/Innerservices/WebDevelopment/ServicesTestimonials";
+import VideoCta from "../../components/Innerservices/VideoAnimation/VideoCta";
+import VideoTestimonials from "../../components/Innerservices/VideoAnimation/VideoTestimonials";
 
 export default function VideoAnimationPage() {
     return (
         <main className="w-full">
             <VideoAnimationHeroSection />
             <VideoAnimationAboutSection />
+            <ServicesClientsSection />
             <VideoAnimationStylesSection />
             <VideoAnimationPortfolioGridSection />
-            <ServicesClientsSection />
-            <CtaBannerSection />
+            <VideoCta />
             <VideoAnimationPricingSection />
-            <TestimonialsSection />
+            <VideoTestimonials />
         </main>
     );
 }

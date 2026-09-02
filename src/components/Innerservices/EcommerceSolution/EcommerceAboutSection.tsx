@@ -1,16 +1,17 @@
 import { motion, type Variants } from "motion/react";
 import { ArrowUpRight } from "lucide-react";
+import { useContactModal } from "../../../context/ContactModalContext";
 
 const FEATURES = [
     {
-        title: "Secure Checkout",
+        title: "WHAT YOU NEED",
         description:
-            "Integrated payment gateways with PCI-compliant, encrypted checkout flows your customers can trust.",
+            "Your Store Shouldn’t Make Customers Work to Buy. Slow experiences, confusing journeys, and unnecessary friction can turn interested shoppers away.",
     },
     {
-        title: "Inventory Sync",
+        title: "HOW WE EXECUTE",
         description:
-            "Real-time stock tracking across every channel, so you never oversell or run out unexpectedly.",
+            "We Turn Shopping Friction Into Seamless Journeys through high-performance technology, secure checkout, and conversion-focused design.",
     },
 ];
 
@@ -53,6 +54,7 @@ const img2Variants: Variants = {
 };
 
 export default function EcommerceAboutSection() {
+    const { openModal } = useContactModal();
     return (
         <section className="relative w-full bg-[#fdfcf7] px-6 py-20 font-atyp md:px-12 lg:py-28">
             <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-16 md:grid-cols-2">
@@ -73,28 +75,24 @@ export default function EcommerceAboutSection() {
                         variants={textItem}
                         className="text-[32px] font-light leading-[1.2] text-neutral-900 sm:text-[38px] lg:text-[42px]"
                     >
-                        Powerful{" "}
-                        <span className="font-semibold text-brand">E-commerce Solutions</span>{" "}
-                        Built To Convert
+                        <span className="font-semibold text-brand">REIMAGINE</span>{" "}
+                        THE WAY YOUR CUSTOMERS SHOP
                     </motion.h2>
 
                     <motion.p
                         variants={textItem}
                         className="mt-6 max-w-xl text-[15px] leading-relaxed text-neutral-500"
                     >
-                        From Product Catalog To Secure Payments, We Design And Build Online
-                        Stores That Are Fast, Mobile-Ready, And Optimized To Turn Browsers Into
-                        Buyers. Every Store We Launch Is Built On A Scalable Foundation That
-                        Grows With Your Catalog, Your Traffic, And Your Ambitions — Without
-                        Compromising On Speed Or Experience.
+                        Your e-commerce presence is more than a place to sell, it’s where your product, brand, and customer experience come together. Get the digital ecommerce stores designed to make your brand feel exceptional from the very first click. Every touchpoint is engineered to make shopping effortless.
                     </motion.p>
 
                     <motion.div variants={textItem} className="mt-8 flex items-center gap-2">
-                        <button className="btn-sweep relative overflow-hidden rounded-full bg-cta-gradient px-6 py-3 text-sm font-medium text-white shadow-lg shadow-pink-500/20 transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.03] hover:shadow-lg hover:shadow-pink-500/40">
+                        <button onClick={() => openModal()} className="btn-sweep relative overflow-hidden rounded-full bg-cta-gradient px-6 py-3 text-sm font-medium text-white shadow-lg shadow-pink-500/20 transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.03] hover:shadow-lg hover:shadow-pink-500/40">
                             <span className="relative z-10">Get In Touch</span>
                         </button>
 
                         <button
+                            onClick={() => openModal()}
                             aria-label="Go"
                             className="btn-sweep relative flex h-11 w-11 items-center justify-center overflow-hidden rounded-full bg-cta-gradient text-white shadow-lg shadow-pink-500/20 transition-all duration-300 hover:-translate-y-0.5 hover:scale-110 hover:rotate-45 hover:shadow-lg hover:shadow-orange-500/40"
                         >

@@ -1,25 +1,26 @@
 import { motion, type Variants } from "motion/react";
 import { Target, Eye, Sparkles, ArrowUpRight } from "lucide-react";
 import { useRevealPhase } from "./BlindsReveal";
+import { useContactModal } from "../context/ContactModalContext";
 
 const ITEMS = [
     {
         icon: <Target size={22} strokeWidth={2.25} />,
         title: "Our Mission",
         subtitle: "Make Digital Matter.",
-        text: "Our mission is to turn ambitious ideas into meaningful digital experiences — combining creativity, technology, and strategy to create solutions that are beautiful, purposeful, and built around real business goals.",
+        text: "Our mission is to turn ambitious ideas into meaningful digital experiences combining creativity, technology, and strategy to create solutions that are beautiful, purposeful, and built around real business goals.",
     },
     {
         icon: <Eye size={22} strokeWidth={2.25} />,
         title: "Our Vision",
         subtitle: "To Shape What's Next.",
-        text: "We envision a digital world where brands are not simply present — they are memorable. We aim to set new standards in design, technology, and digital experiences that help businesses evolve and lead.",
+        text: "We envision a digital world where brands are not simply present they are memorable. We aim to set new standards in design, technology, and digital experiences that help businesses evolve and lead.",
     },
     {
         icon: <Sparkles size={22} strokeWidth={2.25} />,
         title: "What Sets Us Apart",
         subtitle: "We Think Beyond The Deliverable.",
-        text: "We don't believe in one-size-fits-all digital solutions. We look at the bigger picture, connect every digital touchpoint, and create experiences that feel distinctly yours — from the first idea to long-term growth.",
+        text: "We don’t believe in one-size-fits-all digital solutions. We look at the bigger picture, connect every digital touchpoint, and create experiences that feel distinctly yours from the first idea to long-term growth.",
     },
 ];
 
@@ -62,9 +63,10 @@ const iconStyle: Variants = {
 
 export default function AboutSection() {
     const phase = useRevealPhase();
+    const { openModal } = useContactModal();
 
     return (
-        <section className="relative w-full overflow-hidden bg-white py-20 font-atyp md:py-28">
+        <section id="about" className="relative w-full overflow-hidden bg-white py-20 font-atyp md:py-28">
             <motion.div
                 className="mx-auto max-w-[1550px] px-6 md:px-12"
                 variants={container}
@@ -164,10 +166,11 @@ export default function AboutSection() {
                         ))}
 
                         <div className="mt-2 flex items-center gap-3">
-                            <button className="btn-sweep relative overflow-hidden whitespace-nowrap rounded-full bg-cta-gradient px-7 py-3.5 text-sm font-medium text-white shadow-lg shadow-pink-500/20 transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.03] hover:shadow-lg hover:shadow-pink-500/40">
+                            <button onClick={() => openModal()} className="btn-sweep relative overflow-hidden whitespace-nowrap rounded-full bg-cta-gradient px-7 py-3.5 text-sm font-medium text-white shadow-lg shadow-pink-500/20 transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.03] hover:shadow-lg hover:shadow-pink-500/40">
                                 <span className="relative z-10">Learn More About Weblee</span>
                             </button>
                             <button
+                                onClick={() => openModal()}
                                 aria-label="Go"
                                 className="btn-sweep relative flex h-12 w-12 items-center justify-center overflow-hidden rounded-full bg-cta-gradient text-white shadow-lg shadow-pink-500/20 transition-all duration-300 hover:-translate-y-0.5 hover:scale-110 hover:rotate-45 hover:shadow-lg hover:shadow-orange-500/40"
                             >

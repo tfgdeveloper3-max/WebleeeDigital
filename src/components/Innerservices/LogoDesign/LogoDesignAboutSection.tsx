@@ -1,16 +1,17 @@
 import { motion, type Variants } from "motion/react";
 import { ArrowUpRight } from "lucide-react";
+import { useContactModal } from "../../../context/ContactModalContext";
 
 const FEATURES = [
     {
-        title: "Concept-Driven Design",
+        title: "What’s The Mistake?",
         description:
-            "Every mark starts with a concept rooted in your brand story — not just a nice shape.",
+            "A logo can look polished and still say nothing. Generic concepts, trend-driven visuals, poor scalability, and designs disconnected from the brand can make your identity difficult to recognize and even harder to remember.",
     },
     {
-        title: "Built To Scale",
+        title: "How We Solve It",
         description:
-            "From a favicon to a billboard, your logo stays sharp and recognizable at every size.",
+            "We design with meaning before aesthetics. We study your brand, audience, and positioning, develop purposeful concepts, and refine every detail into a versatile mark that feels distinctive, communicates clearly, and stays recognizable at any.",
     },
 ];
 
@@ -53,6 +54,7 @@ const img2Variants: Variants = {
 };
 
 export default function LogoDesignAboutSection() {
+      const { openModal } = useContactModal();
     return (
         <section className="relative w-full bg-[#fdfcf7] px-6 py-20 font-atyp md:px-12 lg:py-28">
             <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-16 md:grid-cols-2">
@@ -66,34 +68,32 @@ export default function LogoDesignAboutSection() {
                         variants={textItem}
                         className="mb-6 inline-flex w-fit items-center rounded-full bg-neutral-200/70 px-5 py-2 text-sm text-neutral-700"
                     >
-                        Services
+                        What We Do
                     </motion.span>
 
                     <motion.h2
                         variants={textItem}
                         className="text-[32px] font-light leading-[1.2] text-neutral-900 sm:text-[38px] lg:text-[42px]"
                     >
-                        Custom{" "}
-                        <span className="font-semibold text-brand">Logo Design</span>{" "}
-                        Built Around Your Brand
+                        We Turn Brand Meaning Into A{" "}
+                        <span className="font-semibold text-brand">Mark</span>{" "}
+                        People Remember
                     </motion.h2>
 
                     <motion.p
                         variants={textItem}
                         className="mt-6 max-w-xl text-[15px] leading-relaxed text-neutral-500"
                     >
-                        We Design Logos That Are Simple, Distinctive, And Built To Last —
-                        Not Just Trend-Chasing Graphics. Every Mark Goes Through Research,
-                        Multiple Concepts, And Careful Refinement Until It Captures Exactly
-                        Who You Are, In A Form That Works Everywhere Your Brand Shows Up.
+                        We create distinctive, concept-driven logos that capture your brand’s personality and purpose while remaining versatile enough to work across digital, print, packaging, social, and every other place your identity needs to live.
                     </motion.p>
 
                     <motion.div variants={textItem} className="mt-8 flex items-center gap-2">
-                        <button className="btn-sweep relative overflow-hidden rounded-full bg-cta-gradient px-6 py-3 text-sm font-medium text-white shadow-lg shadow-pink-500/20 transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.03] hover:shadow-lg hover:shadow-pink-500/40">
+                        <button onClick={() => openModal()} className="btn-sweep relative overflow-hidden rounded-full bg-cta-gradient px-6 py-3 text-sm font-medium text-white shadow-lg shadow-pink-500/20 transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.03] hover:shadow-lg hover:shadow-pink-500/40">
                             <span className="relative z-10">Get In Touch</span>
                         </button>
 
                         <button
+                            onClick={() => openModal()}
                             aria-label="Go"
                             className="btn-sweep relative flex h-11 w-11 items-center justify-center overflow-hidden rounded-full bg-cta-gradient text-white shadow-lg shadow-pink-500/20 transition-all duration-300 hover:-translate-y-0.5 hover:scale-110 hover:rotate-45 hover:shadow-lg hover:shadow-orange-500/40"
                         >

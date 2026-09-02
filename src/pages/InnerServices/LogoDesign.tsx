@@ -3,21 +3,21 @@ import LogoDesignAboutSection from "../../components/Innerservices/LogoDesign/Lo
 import LogoDesignProcessSection from "../../components/Innerservices/LogoDesign/LogoDesignProcessSection";
 import LogoDesignPortfolioGridSection from "../../components/Innerservices/LogoDesign/LogoDesignPortfolioGridSection";
 import ServicesClientsSection from "../../components/Innerservices/WebDevelopment/Servicesclientssection";
-import CtaBannerSection from "../../components/Innerservices/WebDevelopment/ServicesCta";
 import LogoDesignPricingSection from "../../components/Innerservices/LogoDesign/LogoDesignPricingSection";
-import TestimonialsSection from "../../components/Innerservices/WebDevelopment/ServicesTestimonials";
+import LogoTestimonials from "../../components/Innerservices/LogoDesign/LogoTestimonials";
+import LogoDesignCta from "../../components/Innerservices/LogoDesign/LogoDesignCta";
 
 export default function LogoDesignPage() {
     return (
         <main className="w-full">
             <LogoDesignHeroSection />
             <LogoDesignAboutSection />
+            <ServicesClientsSection />
             <LogoDesignProcessSection />
             <LogoDesignPortfolioGridSection />
-            <ServicesClientsSection />
-            <CtaBannerSection />
+            <LogoDesignCta />
             <LogoDesignPricingSection />
-            <TestimonialsSection />
+            <LogoTestimonials />
         </main>
     );
 }

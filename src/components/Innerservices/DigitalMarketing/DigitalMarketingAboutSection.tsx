@@ -1,16 +1,17 @@
 import { motion, type Variants } from "motion/react";
 import { ArrowUpRight } from "lucide-react";
+import { useContactModal } from "../../../context/ContactModalContext";
 
 const FEATURES = [
     {
-        title: "Full-Funnel Strategy",
+        title: "What’s Going Wrong?",
         description:
-            "From first impression to repeat customer — every stage of the funnel is planned and optimized.",
+            "More traffic doesn’t automatically mean more growth. Disconnected campaigns, unclear targeting, weak conversion paths, and marketing decisions based on assumptions can drain your budget while leaving you unsure of what’s actually working.",
     },
     {
-        title: "ROI-Focused Reporting",
+        title: "How We Do It",
         description:
-            "Every dollar tracked back to revenue, so you always know exactly what's working.",
+            "We map the customer journey, identify the channels with the most potential, launch targeted campaigns, optimize the experience, and use real performance data to continuously sharpen what delivers.",
     },
 ];
 
@@ -53,6 +54,7 @@ const img2Variants: Variants = {
 };
 
 export default function DigitalMarketingAboutSection() {
+    const { openModal } = useContactModal();
     return (
         <section className="relative w-full bg-[#fdfcf7] px-6 py-20 font-atyp md:px-12 lg:py-28">
             <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-16 md:grid-cols-2">
@@ -66,33 +68,31 @@ export default function DigitalMarketingAboutSection() {
                         variants={textItem}
                         className="mb-6 inline-flex w-fit items-center rounded-full bg-neutral-200/70 px-5 py-2 text-sm text-neutral-700"
                     >
-                        Services
+                        What We Do
                     </motion.span>
 
                     <motion.h2
                         variants={textItem}
                         className="text-[32px] font-light leading-[1.2] text-neutral-900 sm:text-[38px] lg:text-[42px]"
                     >
-                        Digital Marketing{" "}
-                        <span className="font-semibold text-brand">Built Around Growth</span>
+                        We Turn Marketing Activity Into{" "}
+                        <span className="font-semibold text-brand">Business Momentum</span>
                     </motion.h2>
 
                     <motion.p
                         variants={textItem}
                         className="mt-6 max-w-xl text-[15px] leading-relaxed text-neutral-500"
                     >
-                        We Combine Paid Advertising, Email Marketing, And Conversion
-                        Optimization Into One Coordinated Strategy — Not A Pile Of Disconnected
-                        Tactics. Every Campaign Is Built Around A Clear Goal, Tracked Closely,
-                        And Adjusted Based On What The Data Actually Shows.
+                        We build connected digital marketing systems that bring paid advertising, email, conversion optimization, and analytics together around one goal: getting your brand in front of the right people and giving them a compelling reason to act.
                     </motion.p>
 
                     <motion.div variants={textItem} className="mt-8 flex items-center gap-2">
-                        <button className="btn-sweep relative overflow-hidden rounded-full bg-cta-gradient px-6 py-3 text-sm font-medium text-white shadow-lg shadow-pink-500/20 transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.03] hover:shadow-lg hover:shadow-pink-500/40">
+                        <button onClick={() => openModal()} className="btn-sweep relative overflow-hidden rounded-full bg-cta-gradient px-6 py-3 text-sm font-medium text-white shadow-lg shadow-pink-500/20 transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.03] hover:shadow-lg hover:shadow-pink-500/40">
                             <span className="relative z-10">Get In Touch</span>
                         </button>
 
                         <button
+                            onClick={() => openModal()}
                             aria-label="Go"
                             className="btn-sweep relative flex h-11 w-11 items-center justify-center overflow-hidden rounded-full bg-cta-gradient text-white shadow-lg shadow-pink-500/20 transition-all duration-300 hover:-translate-y-0.5 hover:scale-110 hover:rotate-45 hover:shadow-lg hover:shadow-orange-500/40"
                         >
