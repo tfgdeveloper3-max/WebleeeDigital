@@ -5,30 +5,30 @@ import { useContactModal } from "../../context/ContactModalContext";
 const STEPS = [
     {
         number: "01",
-        title: "Discover",
+        title: "Evaluation",
         description:
-            "We start by understanding your business, your audience, and what success actually looks like for you before a single pixel gets designed.",
+            "We get to know your brand, audience, goals, and ambitions, uncovering the ideas and opportunities that will shape the project.",
         filled: true,
     },
     {
         number: "02",
-        title: "Design",
+        title: "Creation",
         description:
-            "We shape ideas into clear concepts and visuals, refining the direction with you until it feels unmistakably like your brand.",
+            "Strategy becomes something tangible. From concepts and design to technology and content, we bring your vision into focus.",
         filled: false,
     },
     {
         number: "03",
-        title: "Develop",
+        title: "Development",
         description:
-            "Our developers bring the design to life with clean, scalable code, testing along the way so nothing breaks when it matters.",
+            "We test, review, and perfect every detail from the smallest interaction to the complete experience until everything feels right.",
         filled: false,
     },
     {
         number: "04",
-        title: "Deliver & Support",
+        title: "Launch & Grow",
         description:
-            "We launch, monitor, and stay close after go-live, so your digital presence keeps performing long after the project wraps.",
+            "We take your project into the world and stay connected beyond launch, helping you optimize, evolve, and make the most of your digital presence.",
         filled: false,
     },
 ];
@@ -61,6 +61,12 @@ const rowItem: Variants = {
 export default function ProcessSection() {
     const { openModal } = useContactModal();
 
+    const handleStartHere = (step: (typeof STEPS)[number]) => {
+        openModal(
+            `Hi, I'd like to talk about starting a project — beginning with the "${step.title}" phase.`
+        );
+    };
+
     return (
         <section className="relative w-full overflow-hidden bg-white py-20 font-atyp md:py-28">
             <div className="mx-auto max-w-[1550px] px-6 md:px-12">
@@ -76,22 +82,20 @@ export default function ProcessSection() {
                             variants={headerItem}
                             className="mb-6 inline-flex w-fit items-center rounded-full bg-neutral-200/70 px-5 py-2 text-sm text-neutral-700"
                         >
-                            How We Work
+                            Our Process To Success
                         </motion.span>
 
                         <motion.h2
                             variants={headerItem}
                             className="text-[35px] font-light leading-[1.15] text-neutral-900 sm:text-[40px] lg:text-[47px]"
                         >
-                            A Process Built For{" "}
-                            <span className="font-bold text-brand">Clarity, Not Chaos</span>
+                            From <span className="font-bold text-brand">Vision</span> To Digital Impact
                         </motion.h2>
                     </div>
 
                     <div className="lg:col-span-5">
                         <motion.p variants={headerItem} className="text-[16px] pt-15 leading-relaxed text-neutral-500">
-                            No surprises, no black boxes. Every project moves through the
-                            same four stages, so you always know what's happening and why.
+                            A clear, collaborative process designed to turn ambitious ideas into meaningful digital experiences without the complexity.
                         </motion.p>
                     </div>
                 </motion.div>
@@ -120,7 +124,7 @@ export default function ProcessSection() {
 
                             <div className="flex md:col-span-3 md:justify-end">
                                 <button
-                                    onClick={() => openModal()}
+                                    onClick={() => handleStartHere(step)}
                                     className={`group flex h-36 w-36 shrink-0 flex-col items-center justify-center gap-1 rounded-full text-sm transition-colors duration-300 lg:h-40 lg:w-40 ${step.filled
                                         ? "bg-brand text-white hover:bg-neutral-900"
                                         : "border border-neutral-300 text-neutral-900 hover:border-brand hover:bg-brand hover:text-white"

@@ -7,19 +7,19 @@ const ITEMS = [
         icon: <Target size={24} strokeWidth={2.25} />,
         title: "Our Mission",
         subtitle: "Make Digital Matter.",
-        text: "Our mission is to turn ambitious ideas into meaningful digital experiences, combining creativity, technology, and strategy to build solutions that are beautiful, purposeful, and rooted in real business goals.",
+        text: "Our mission is to turn ambitious ideas into meaningful digital experiences combining creativity, technology, and strategy to create solutions that are beautiful, purposeful, and built around real business goals.",
     },
     {
         icon: <Eye size={24} strokeWidth={2.25} />,
         title: "Our Vision",
-        subtitle: "To Shape What's Next.",
-        text: "We envision a digital world where brands aren't simply present, they're memorable. We aim to set new standards in design, technology, and digital experience that help businesses evolve and lead.",
+        subtitle: "To Shape What’s Next.",
+        text: "We envision a digital world where brands are not simply present they are memorable. We aim to set new standards in design, technology, and digital experiences that help businesses evolve and lead.",
     },
     {
         icon: <Sparkles size={24} strokeWidth={2.25} />,
-        title: "Our Values",
-        subtitle: "We Think Beyond The Deliverable.",
-        text: "We don't believe in one-size-fits-all solutions. We look at the bigger picture, connect every digital touchpoint, and create experiences that feel distinctly yours, from the first idea to long-term growth.",
+        title: "What Sets Us Apart",
+        subtitle: "We Think Beyond the Deliverable.",
+        text: "We don’t believe in one-size-fits-all digital solutions. We look at the bigger picture, connect every digital touchpoint, and create experiences that feel distinctly yours from the first idea to long-term growth.",
     },
 ];
 
@@ -74,8 +74,8 @@ export default function MissionVisionSection() {
                         variants={item}
                         className="text-[32px] font-light leading-[1.2] text-neutral-900 sm:text-[38px] lg:text-[42px]"
                     >
-                        The Thinking{" "}
-                        <span className="font-semibold text-brand">Behind Every Project</span>
+                        The Strategy Behind{" "}
+                        <span className="font-semibold text-brand">Weblee</span>
                     </motion.h2>
                 </motion.div>
 

@@ -1,13 +1,13 @@
 import PortfolioHeroSection from "../components/Portfolio/PortfolioHeroSection";
 import PortfolioGridSection from "../components/Portfolio/PortfolioGridSection";
-import CtaBannerSection from "../components/Ctabannersection";
+import PortfolioCta from "../components/Portfolio/PortfolioCta";
 
 export default function Portfolio() {
     return (
         <main>
             <PortfolioHeroSection />
             <PortfolioGridSection />
-            <CtaBannerSection />
+            <PortfolioCta />
         </main>
     );
 }

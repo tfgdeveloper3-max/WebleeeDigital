@@ -6,6 +6,7 @@ import About from "./pages/About";
 import Portfolio from "./pages/Portfolio";
 import Pricing from "./pages/Pricing";
 import Contact from "./pages/Contact";
+import ScrollToTop from "./components/ScrollToTop";
 import Navbar from "./components/Navbar";
 import Footersection from "./components/Footersection";
 import { innerServiceRoutes } from "./routes/innerServiceRoutes";
@@ -48,6 +49,7 @@ function App() {
     <>
       <LiveChatWidget license="19067595" />
       <ContactModalProvider>
+        <ScrollToTop />
         <Navbar />
         <Suspense fallback={<div className="py-40 text-center text-neutral-400">Loading...</div>}>
           <Routes>

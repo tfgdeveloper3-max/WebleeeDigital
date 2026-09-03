@@ -3,8 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Check, ArrowUpRight, ChevronLeft, ChevronRight, PackageOpen } from "lucide-react";
-
-/* ============================= DATA ============================= */
+import { useContactModal } from "../../context/ContactModalContext";
 
 const SERVICE_TABS = [
     "Custom Website",
@@ -28,7 +27,6 @@ interface Plan {
 }
 
 const PRICING_DATA: Record<string, Plan[]> = {
-    /* ============ REAL DATA (matched from reference site) ============ */
 
     "Custom Website": [
         { name: "Basic Package", price: "$199", bestSeller: false, features: ["3 Page Website", "2 Stock Images", "1 jQuery Slider Banner", "Contact/Query Form", "24-48 Hours TAT", "Complete Deployment"] },
@@ -116,18 +114,19 @@ const PRICING_DATA: Record<string, Plan[]> = {
     ],
 };
 
-/* ============================= CARD ============================= */
 
 function PricingCard({
     plan,
     isActive,
     onHover,
     onLeave,
+    onGetStarted,
 }: {
     plan: Plan;
     isActive: boolean;
     onHover: () => void;
     onLeave: () => void;
+    onGetStarted: () => void;
 }) {
     return (
         <motion.div
@@ -206,6 +205,7 @@ function PricingCard({
 
             {/* CTA Button */}
             <button
+                onClick={onGetStarted}
                 className="mt-5 flex items-center justify-center gap-2 rounded-full py-2.5 text-sm font-semibold text-white shadow-md transition-all duration-300 hover:scale-105"
                 style={{
                     background: isActive
@@ -225,6 +225,7 @@ function PricingCard({
 export default function PricingSection() {
     const [activeTab, setActiveTab] = useState(SERVICE_TABS[0]);
     const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+    const { openModal } = useContactModal();
 
     const sliderRef = useRef<HTMLDivElement>(null);
     const tabsRef = useRef<HTMLDivElement>(null);
@@ -256,8 +257,14 @@ export default function PricingSection() {
         tabsRef.current.scrollBy({ left: dir === "left" ? -260 : 260, behavior: "smooth" });
     };
 
+    const handleGetStarted = (plan: Plan) => {
+        openModal(
+            `Interested in the "${plan.name}" package (${activeTab}) — ${plan.price}.`
+        );
+    };
+
     return (
-        <section className="w-full bg-[#F6F6F6] py-16 font-atyp md:py-20">
+        <section id="pricing" className="w-full bg-[#F6F6F6] py-16 font-atyp md:py-20">
             <div className="mx-auto max-w-6xl px-6 md:px-12">
                 {/* Header */}
                 <div className="text-center">
@@ -276,9 +283,9 @@ export default function PricingSection() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.7, delay: 0.1 }}
-                        className="mt-4 text-3xl font-bold text-neutral-900 md:text-4xl"
+                        className="mt-4 text-3xl font-light text-neutral-900 md:text-4xl"
                     >
-                        Flexible <span className="text-[#147237]">PRICING</span> For Every Need
+                        CHOOSE THE <span className="font-bold text-brand">INVESTMENT</span> THAT FIT YOUR AMBITION
                     </motion.h2>
 
                     <motion.p
@@ -286,10 +293,9 @@ export default function PricingSection() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.7, delay: 0.2 }}
-                        className="mx-auto mt-3 max-w-xl text-sm text-neutral-500"
+                        className="mx-auto mt-3 max-w-xl text-[1rem] text-neutral-500"
                     >
-                        Lorem Ipsum Is Simply Dummy Text Of The Printing And Typesetting Industry.
-                        Lorem Ipsum Has Been The Industry's Standard Dummy Text Ever Since 1966.
+                        Choose a package designed around your priorities, with the flexibility to scale as your brand grows.
                     </motion.p>
                 </div>
 
@@ -366,6 +372,7 @@ export default function PricingSection() {
                                             isActive={activeIndex === i}
                                             onHover={() => setHoveredIndex(i)}
                                             onLeave={() => setHoveredIndex(null)}
+                                            onGetStarted={() => handleGetStarted(plan)}
                                         />
                                     </motion.div>
                                 ))}

@@ -3,21 +3,21 @@ import ContentWritingAboutSection from "../../components/Innerservices/ContentWr
 import ContentWritingTypesSection from "../../components/Innerservices/ContentWriting/ContentWritingTypesSection";
 import ContentWritingPortfolioGridSection from "../../components/Innerservices/ContentWriting/ContentWritingPortfolioGridSection";
 import ServicesClientsSection from "../../components/Innerservices/WebDevelopment/Servicesclientssection";
-import CtaBannerSection from "../../components/Innerservices/WebDevelopment/ServicesCta";
 import ContentWritingPricingSection from "../../components/Innerservices/ContentWriting/ContentWritingPricingSection";
-import TestimonialsSection from "../../components/Innerservices/WebDevelopment/ServicesTestimonials";
+import ContentCta from "../../components/Innerservices/ContentWriting/ContentCta";
+import ContentTestimonials from "../../components/Innerservices/ContentWriting/ContentTestimonials";
 
 export default function ContentWritingPage() {
     return (
         <main className="w-full">
             <ContentWritingHeroSection />
             <ContentWritingAboutSection />
+            <ServicesClientsSection />
             <ContentWritingTypesSection />
             <ContentWritingPortfolioGridSection />
-            <ServicesClientsSection />
-            <CtaBannerSection />
+            <ContentCta />
             <ContentWritingPricingSection />
-            <TestimonialsSection />
+            <ContentTestimonials />
         </main>
     );
 }

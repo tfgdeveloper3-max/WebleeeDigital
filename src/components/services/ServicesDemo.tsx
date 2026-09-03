@@ -147,7 +147,7 @@ export default function ServicesPortfolioSection() {
                         transition={{ duration: 0.7, delay: 0.1 }}
                         className="mt-4 text-3xl font-bold text-neutral-900 md:text-4xl"
                     >
-                        See Our <span className="text-[#237B43]">Services</span> In Action
+                        This Is What <span className="text-[#237B43]">We Build</span>
                     </motion.h2>
 
                     <motion.p
@@ -157,7 +157,7 @@ export default function ServicesPortfolioSection() {
                         transition={{ duration: 0.7, delay: 0.2 }}
                         className="mx-auto mt-3 max-w-xl text-sm text-neutral-500"
                     >
-                        Real demos and live examples from every service we offer — pick a category and explore.
+                        A closer look at the brands, websites, apps, and digital experiences brought to life by Weblee.
                     </motion.p>
                 </div>
 

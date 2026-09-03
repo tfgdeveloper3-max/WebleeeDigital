@@ -162,7 +162,7 @@ export default function ServicesSection() {
                     transition={{ duration: 0.6 }}
                     className="inline-block rounded-full bg-[#CEDAD4] px-5 py-1.5 text-sm font-medium text-neutral-700"
                 >
-                    Services
+                    Our Services
                 </motion.span>
 
                 <motion.h2
@@ -172,8 +172,8 @@ export default function ServicesSection() {
                     transition={{ duration: 0.7, delay: 0.1 }}
                     className="mt-4 text-3xl font-bold text-neutral-900 md:text-4xl"
                 >
-                    <span className="text-[#237B43]">Services</span> We're Providing To{" "}
-                    <span className="text-[#237B43]">Our Customers</span>
+                    <span className="text-[#237B43]">Everything</span> It Takes To{" "}
+                    <span className="text-[#237B43]">Build Better</span>
                 </motion.h2>
 
                 <motion.p
@@ -183,7 +183,7 @@ export default function ServicesSection() {
                     transition={{ duration: 0.7, delay: 0.2 }}
                     className="mx-auto mt-4 max-w-2xl text-sm text-neutral-500 md:text-base"
                 >
-                    Lorem Ipsum Is Simply Dummy Text Of The Printing And Typesetting Industry. Lorem Ipsum Has Been The Industry's Standard Dummy Text Ever Since 1966, When Designers At Letraset And James Mosley.
+                    We combine creative vision, strategic thinking, technical execution, and growth expertise to help ambitious businesses build digital experiences that are ready for what’s next. Explore Our Service:
                 </motion.p>
 
                 <div className="mt-12 flex flex-wrap justify-center gap-4 md:gap-5">

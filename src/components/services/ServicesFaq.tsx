@@ -3,23 +3,46 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { ArrowUpRight, ChevronDown } from "lucide-react";
+import { useContactModal } from "../../context/ContactModalContext";
 
 const FAQS = [
-    "Lorem Ipsum Is Simply Dummy Text Of The Printing?",
-    "Lorem Ipsum Is Simply Dummy Text Of The Printing?",
-    "Lorem Ipsum Is Simply Dummy Text Of The Printing?",
-    "Lorem Ipsum Is Simply Dummy Text Of The Printing?",
-    "Lorem Ipsum Is Simply Dummy Text Of The Printing?",
+    {
+        question: "How do you start a new project?",
+        answer:
+            "We start by understanding your goals, requirements, audience, and challenges. From there, we recommend the right approach, technology, and project roadmap.",
+    },
+    {
+        question: "Can you work with our existing website or technology?",
+        answer:
+            "Absolutely. Share what you're currently using, and we'll assess your setup, integrations, and infrastructure before recommending the best way forward.",
+    },
+    {
+        question: "How do you make sure my project can scale?",
+        answer:
+            "We build with the future in mind. Our team considers performance, architecture, integrations, security, and scalability from the beginning.",
+    },
+    {
+        question: "Will I be involved during development?",
+        answer:
+            "Yes. We keep you involved throughout the process with regular updates, reviews, and feedback points so the final solution stays aligned with your vision.",
+    },
+    {
+        question: "Do you provide support after launch?",
+        answer:
+            "Yes. Once your project is live, we can continue supporting it through maintenance, updates, optimization, new features, and ongoing digital growth.",
+    },
 ];
 
 function FaqItem({
     index,
     question,
+    answer,
     isOpen,
     onToggle,
 }: {
     index: number;
     question: string;
+    answer: string;
     isOpen: boolean;
     onToggle: () => void;
 }) {
@@ -55,8 +78,7 @@ function FaqItem({
                         className="overflow-hidden"
                     >
                         <p className="pt-3 text-sm leading-relaxed text-neutral-500">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-                            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            {answer}
                         </p>
                     </motion.div>
                 )}
@@ -67,6 +89,7 @@ function FaqItem({
 
 export default function FaqSection() {
     const [openIndex, setOpenIndex] = useState<number | null>(null);
+    const { openModal } = useContactModal();
 
     return (
         <section className="w-full bg-[#FFFEFA] py-16 font-atyp md:py-20">
@@ -89,9 +112,9 @@ export default function FaqSection() {
                         transition={{ delay: 0.1 }}
                         className="mt-4 text-3xl font-bold leading-tight text-neutral-900 md:text-4xl"
                     >
-                        Frequently Asked
+                        Let's Talk About
                         <br />
-                        <span className="text-[#237B43]">QUESTIONS</span>
+                        <span className="text-[#237B43]">Your Project</span>
                     </motion.h2>
 
                     <motion.p
@@ -101,13 +124,7 @@ export default function FaqSection() {
                         transition={{ delay: 0.2 }}
                         className="mt-5 max-w-md text-sm leading-relaxed text-neutral-500"
                     >
-                        Lorem Ipsum Is Simply Dummy Text Of The Printing And Typesetting
-                        Industry. Lorem Ipsum Has Been The Industry's Standard Dummy Text Ever
-                        Since 1966, When Designers At Letraset And James Mosley, The Librarian At
-                        St Bride Printing Library In London, Took A 1914 Cicero Translation And
-                        Scrambled It To Make Dummy Text For Letraset's Body Type Sheets. It Has
-                        Survived Not Only Many Decades, But Also The Leap Into Electronic
-                        Typesetting, Remaining Essentially Unchanged.
+                        Have questions before getting started? Here are some of the things our clients commonly ask about how we plan, build, launch, and support digital projects.
                     </motion.p>
 
                     <motion.div
@@ -117,10 +134,10 @@ export default function FaqSection() {
                         transition={{ delay: 0.3 }}
                         className="mt-7 flex items-center gap-3"
                     >
-                        <button className="rounded-full bg-gradient-to-r from-[#F2530F] via-[#DB1B3F] to-[#B23FC9] px-6 py-3 text-sm font-medium text-white shadow-lg transition-transform duration-300 hover:scale-105">
+                        <button onClick={() => openModal()} className="rounded-full bg-gradient-to-r from-[#F2530F] via-[#DB1B3F] to-[#B23FC9] px-6 py-3 text-sm font-medium text-white shadow-lg transition-transform duration-300 hover:scale-105">
                             Learn More Us
                         </button>
-                        <button className="flex h-11 w-11 items-center justify-center rounded-full bg-gradient-to-br from-[#DB1B3F] to-[#B23FC9] text-white shadow-lg transition-transform duration-300 hover:scale-110 hover:rotate-45">
+                        <button onClick={() => openModal()} className="flex h-11 w-11 items-center justify-center rounded-full bg-gradient-to-br from-[#DB1B3F] to-[#B23FC9] text-white shadow-lg transition-transform duration-300 hover:scale-110 hover:rotate-45">
                             <ArrowUpRight className="h-5 w-5" strokeWidth={2.5} />
                         </button>
                     </motion.div>
@@ -128,11 +145,12 @@ export default function FaqSection() {
 
                 {/* RIGHT - FAQ list */}
                 <div className="flex flex-col gap-3">
-                    {FAQS.map((q, i) => (
+                    {FAQS.map((item, i) => (
                         <FaqItem
                             key={i}
                             index={i}
-                            question={q}
+                            question={item.question}
+                            answer={item.answer}
                             isOpen={openIndex === i}
                             onToggle={() => setOpenIndex(openIndex === i ? null : i)}
                         />

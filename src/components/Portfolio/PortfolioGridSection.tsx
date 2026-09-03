@@ -1,11 +1,13 @@
 import { motion, type Variants } from "motion/react";
 import { ArrowUpRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const PROJECTS = [
     {
         image: "/images/Portfolio1.png",
         title: "Web Design & Development",
         category: "Custom Website",
+        slug: "web-development",
         description: "A full brand-to-website rebuild for a growing retail chain.",
         size: "tall",
     },
@@ -13,6 +15,7 @@ const PROJECTS = [
         image: "/images/Portfolio2.png",
         title: "Video Animation",
         category: "Video Animation",
+        slug: "video-animation",
         description: "A 90-second explainer video for a SaaS product launch.",
         size: "short",
     },
@@ -20,6 +23,7 @@ const PROJECTS = [
         image: "/images/Portfolio3.png",
         title: "Mobile Apps",
         category: "Mobile Apps",
+        slug: "mobile-apps",
         description: "A cross-platform booking app built for a hospitality group.",
         size: "short",
     },
@@ -27,6 +31,7 @@ const PROJECTS = [
         image: "/images/Portfolio4.png",
         title: "Logo Design",
         category: "Branding & Identity",
+        slug: "logo-design",
         description: "A full identity system for a specialty coffee roastery.",
         size: "tall",
     },
@@ -34,6 +39,7 @@ const PROJECTS = [
         image: "/images/portfolio/project5.png",
         title: "E-Commerce Solution",
         category: "E-Commerce",
+        slug: "ecommerce-solution",
         description: "A conversion-focused storefront rebuild for a fashion label.",
         size: "short",
     },
@@ -41,6 +47,7 @@ const PROJECTS = [
         image: "/images/portfolio/project6.png",
         title: "Web/App Solution",
         category: "Web/App Solution",
+        slug: "web-app-solution",
         description: "A custom booking portal with real-time availability sync.",
         size: "tall",
     },
@@ -48,6 +55,7 @@ const PROJECTS = [
         image: "/images/portfolio/project7.png",
         title: "Digital Marketing",
         category: "Digital Marketing",
+        slug: "digital-marketing",
         description: "A multi-channel campaign that grew qualified leads 3x.",
         size: "tall",
     },
@@ -55,6 +63,7 @@ const PROJECTS = [
         image: "/images/portfolio/project8.png",
         title: "Social Media Marketing",
         category: "Social Media",
+        slug: "social-media-management",
         description: "A content system that took a local brand to 40K followers.",
         size: "short",
     },
@@ -107,12 +116,13 @@ function ProjectCard({ project }: { project: (typeof PROJECTS)[number] }) {
                 </span>
                 <div className="flex items-center justify-between gap-4">
                     <h3 className="text-lg font-semibold text-white lg:text-xl">{project.title}</h3>
-                    <button
+                    <Link
+                        to={`/services/${project.slug}`}
                         aria-label={`View ${project.title}`}
                         className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white text-brand transition-transform duration-300 group-hover:rotate-45"
                     >
                         <ArrowUpRight strokeWidth={2.75} />
-                    </button>
+                    </Link>
                 </div>
                 <p className="max-w-sm text-sm leading-relaxed text-white/80">
                     {project.description}
@@ -144,8 +154,8 @@ export default function PortfolioGridSection() {
                         variants={headerItem}
                         className="text-[32px] font-light leading-[1.2] text-neutral-900 sm:text-[38px] lg:text-[42px]"
                     >
-                        Selected Projects{" "}
-                        <span className="font-semibold text-brand">From The Studio</span>
+                        A Showcase Of{" "}
+                        <span className="font-semibold text-brand">Our Craft</span>
                     </motion.h2>
                 </motion.div>
 

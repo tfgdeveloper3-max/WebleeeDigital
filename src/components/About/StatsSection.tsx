@@ -56,14 +56,14 @@ export default function StatsSection() {
                         variants={headerItem}
                         className="mb-4 inline-flex items-center rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs uppercase tracking-widest text-white/80 backdrop-blur-sm"
                     >
-                        By The Numbers
+                        The Weblee Track Record
                     </motion.span>
 
                     <motion.h2 variants={headerItem} className="text-2xl font-light text-white sm:text-3xl">
-                        Growth We're{" "}
+                        MORE THAN NUMBERS.{" "}
                         <span className="relative font-extrabold text-white">
-                            Proud Of
-                            <span className="absolute inset-0 blur-md text-white/70">Proud Of</span>
+                            REAL MOMENTUM.
+                            <span className="absolute inset-0 blur-md text-white/70">REAL MOMENTUM.</span>
                         </span>
                     </motion.h2>
                 </motion.div>

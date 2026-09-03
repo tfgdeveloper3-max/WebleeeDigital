@@ -1,16 +1,17 @@
 import { motion, type Variants } from "motion/react";
 import { ArrowUpRight } from "lucide-react";
+import { useContactModal } from "../../../context/ContactModalContext";
 
 const FEATURES = [
     {
-        title: "Voice-Matched Writing",
+        title: "Content Without A Voice",
         description:
-            "We study your brand tone and write content that sounds authentically like you, every time.",
+            "Generic words make brands forgettable. If your copy sounds like everyone else, your audience has no reason to remember you, trust you, or choose you.",
     },
     {
-        title: "SEO-Aware Content",
+        title: "Words With A Purpose",
         description:
-            "Every piece is structured to rank in search while still reading naturally for real people.",
+            "We research your audience, understand your brand, and shape every sentence to inform, persuade, and move people toward action—without sacrificing your voice.",
     },
 ];
 
@@ -53,6 +54,8 @@ const img2Variants: Variants = {
 };
 
 export default function ContentWritingAboutSection() {
+    const { openModal } = useContactModal();
+
     return (
         <section className="relative w-full bg-[#fdfcf7] px-6 py-20 font-atyp md:px-12 lg:py-28">
             <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-16 md:grid-cols-2">
@@ -66,33 +69,32 @@ export default function ContentWritingAboutSection() {
                         variants={textItem}
                         className="mb-6 inline-flex w-fit items-center rounded-full bg-neutral-200/70 px-5 py-2 text-sm text-neutral-700"
                     >
-                        Services
+                        Strategy
                     </motion.span>
 
                     <motion.h2
                         variants={textItem}
                         className="text-[32px] font-light leading-[1.2] text-neutral-900 sm:text-[38px] lg:text-[42px]"
                     >
-                        Content Writing{" "}
-                        <span className="font-semibold text-brand">That Sounds Like You</span>
+                        Content{" "}
+                        <span className="font-semibold text-brand">Crafted With Purpose</span>
                     </motion.h2>
 
                     <motion.p
                         variants={textItem}
                         className="mt-6 max-w-xl text-[15px] leading-relaxed text-neutral-500"
                     >
-                        We Write Website Copy, Blog Posts, And Marketing Content That's
-                        Clear, On-Brand, And Built To Convert. Every Piece Starts With
-                        Research Into Your Audience And Goals — So The Words We Write Don't
-                        Just Fill Space, They Actually Move People To Act.
+                        Your audience is reading. Make every word earn its place. We craft website copy, blogs, and marketing content that gives your brand a distinct voice and gives your audience a reason to care.
                     </motion.p>
 
                     <motion.div variants={textItem} className="mt-8 flex items-center gap-2">
-                        <button className="btn-sweep relative overflow-hidden rounded-full bg-cta-gradient px-6 py-3 text-sm font-medium text-white shadow-lg shadow-pink-500/20 transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.03] hover:shadow-lg hover:shadow-pink-500/40">
+                        <button onClick={() => openModal()}
+                            className="btn-sweep relative overflow-hidden rounded-full bg-cta-gradient px-6 py-3 text-sm font-medium text-white shadow-lg shadow-pink-500/20 transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.03] hover:shadow-lg hover:shadow-pink-500/40">
                             <span className="relative z-10">Get In Touch</span>
                         </button>
 
                         <button
+                            onClick={() => openModal()}
                             aria-label="Go"
                             className="btn-sweep relative flex h-11 w-11 items-center justify-center overflow-hidden rounded-full bg-cta-gradient text-white shadow-lg shadow-pink-500/20 transition-all duration-300 hover:-translate-y-0.5 hover:scale-110 hover:rotate-45 hover:shadow-lg hover:shadow-orange-500/40"
                         >

@@ -1,5 +1,6 @@
 import { motion } from "motion/react";
 import { ArrowUpRight } from "lucide-react";
+import { useContactModal } from "../../context/ContactModalContext";
 
 const fadeUp = {
     hidden: { opacity: 0, y: 30 },
@@ -11,6 +12,7 @@ const fadeUp = {
 };
 
 export default function SuiteOfServicesSection() {
+    const { openModal } = useContactModal();
     return (
         <section className="w-full bg-[#FFFEFA] py-16 font-atyp md:py-20">
             <div className="mx-auto grid max-w-6xl grid-cols-1 gap-10 px-6 md:grid-cols-2 md:gap-12 md:px-12">
@@ -35,9 +37,9 @@ export default function SuiteOfServicesSection() {
                         custom={0.1}
                         className="mt-5 text-3xl font-bold leading-tight text-neutral-900 md:text-4xl lg:text-[2.6rem]"
                     >
-                        The Complete Suite Of{" "}
-                        <span className="text-[#318350]">Services</span> We Provide For Your
-                        Online <span className="text-[#318350]">Success</span>
+                        Weblee - The Complete{" "}
+                        <span className="text-[#318350]">Digital Toolkit</span> For What's{" "}
+                        <span className="text-[#318350]">Next</span>
                     </motion.h2>
 
                     <motion.div
@@ -79,13 +81,8 @@ export default function SuiteOfServicesSection() {
                         custom={0.3}
                         className="mt-6 text-sm leading-relaxed text-neutral-400 md:text-[15px]"
                     >
-                        Lorem Ipsum Is Simply Dummy Text Of The Printing And Typesetting
-                        Industry. Lorem Ipsum Has Been The Industry's Standard Dummy Text Ever
-                        Since 1966, When Designers At Letraset And James Mosley, The Librarian At
-                        St Bride Printing Library In London, Took A 1914 Cicero Translation And
-                        Scrambled It To Make Dummy Text For Letraset's Body Type Sheets. It Has
-                        Survived Not Only Many Decades, But Also The Leap Into Electronic
-                        Typesetting, Remaining Essentially Unchanged.
+                        Great digital experiences are never one-dimensional. They’re the result of sharp strategy, intelligent design, solid engineering, and continuous optimization working together.
+                        Weblee brings branding, UI/UX, web development, mobile apps, e-commerce, content, SEO, animation, and digital marketing into one connected ecosystem, turning complex requirements into digital experiences that are distinctive on the surface, powerful underneath, and built to perform.
                     </motion.p>
 
                     <motion.div
@@ -96,10 +93,10 @@ export default function SuiteOfServicesSection() {
                         custom={0.45}
                         className="mt-7 flex items-center gap-3"
                     >
-                        <button className="rounded-full bg-gradient-to-r from-[#F2530F] via-[#DB1B3F] to-[#B23FC9] px-6 py-3 text-sm font-medium text-white shadow-lg transition-transform duration-300 hover:scale-105">
-                            Learn More Us
+                        <button onClick={() => openModal()} className="rounded-full bg-gradient-to-r from-[#F2530F] via-[#DB1B3F] to-[#B23FC9] px-6 py-3 text-sm font-medium text-white shadow-lg transition-transform duration-300 hover:scale-105">
+                            Learn more
                         </button>
-                        <button className="flex h-11 w-11 items-center justify-center rounded-full bg-gradient-to-br from-[#DB1B3F] to-[#B23FC9] text-white shadow-lg transition-transform duration-300 hover:scale-110 hover:rotate-45">
+                        <button onClick={() => openModal()} className="flex h-11 w-11 items-center justify-center rounded-full bg-gradient-to-br from-[#DB1B3F] to-[#B23FC9] text-white shadow-lg transition-transform duration-300 hover:scale-110 hover:rotate-45">
                             <ArrowUpRight className="h-5 w-5" strokeWidth={2.5} />
                         </button>
                     </motion.div>

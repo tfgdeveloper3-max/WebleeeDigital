@@ -4,6 +4,7 @@ import $ from "../lib/jquery-setup";
 import "jquery-ui-dist/jquery-ui";
 import { ArrowUpRight } from "lucide-react";
 import { useContactModal } from "../context/ContactModalContext";
+import { Link } from "react-router-dom";
 
 const AVATARS = [
     "https://i.pravatar.cc/64?img=12",
@@ -162,12 +163,13 @@ export default function HeroSection() {
                                         </svg>
                                     </div>
 
-                                    <button
+                                    <Link
+                                        to="/services"
                                         aria-label="Explore more"
                                         className="btn-sweep absolute left-1/2 top-1/2 z-10 flex h-11 w-11 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-brand text-white transition-transform duration-300 hover:scale-110 hover:rotate-45"
                                     >
                                         <span className="relative z-10"><ArrowUpRight strokeWidth={2.75} /></span>
-                                    </button>
+                                    </Link>
                                 </div>
                             </div>
                         </div>

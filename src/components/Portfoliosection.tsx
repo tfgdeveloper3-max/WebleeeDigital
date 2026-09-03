@@ -1,11 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useInView, type Variants } from "motion/react";
 import { ArrowUpRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const PROJECTS = [
     {
         image: "/images/Portfolio1.png",
         title: "Web Design & Development",
+        slug: "web-development",
         description: "...",
         size: "short",
         position: "center",
@@ -13,6 +15,7 @@ const PROJECTS = [
     {
         image: "/images/Portfolio2.png",
         title: "Video Animation",
+        slug: "video-animation",
         description: "...",
         size: "tall",
         position: "top",
@@ -20,6 +23,7 @@ const PROJECTS = [
     {
         image: "/images/Portfolio3.png",
         title: "Mobile Apps",
+        slug: "mobile-apps",
         description: "...",
         size: "tall",
         position: "top",
@@ -27,6 +31,7 @@ const PROJECTS = [
     {
         image: "/images/Portfolio4.png",
         title: "Logo Design",
+        slug: "logo-design",
         description: "...",
         size: "short",
         position: "center",
@@ -123,12 +128,13 @@ function ProjectCard({
                     <h3 className="text-xl font-semibold text-white lg:text-2xl">
                         {project.title}
                     </h3>
-                    <button
+                    <Link
+                        to={`/services/${project.slug}`}
                         aria-label={`View ${project.title}`}
                         className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white text-brand transition-transform duration-300 group-hover:rotate-45"
                     >
                         <ArrowUpRight strokeWidth={2.75} />
-                    </button>
+                    </Link>
                 </div>
                 <p className="max-w-sm text-sm leading-relaxed text-white/80">
                     {project.description}

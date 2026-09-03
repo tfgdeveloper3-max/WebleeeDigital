@@ -12,32 +12,32 @@ const CONTENT_TYPES = [
     {
         icon: FileText,
         title: "Website Copy",
-        description: "Homepage, about, and service pages written to inform and convert visitors.",
+        description: "Clear, compelling website content that communicates your value quickly and turns curious visitors into confident prospects.",
     },
     {
         icon: Newspaper,
         title: "Blog & Article Writing",
-        description: "SEO-optimized blog posts that build authority and bring in organic traffic.",
+        description: "Insightful, search-aware content designed to answer real questions, establish authority, and keep your brand discoverable.",
     },
     {
         icon: Mail,
         title: "Email Campaigns",
-        description: "Newsletters and drip sequences that keep subscribers engaged and buying.",
+        description: "Strategic email sequences and campaigns that feel personal, maintain attention, nurture relationships, and encourage action.",
     },
     {
         icon: MessageSquareText,
         title: "Social Media Captions",
-        description: "On-brand captions and copy that match your voice across every platform.",
+        description: "Sharp, platform-ready copy that captures your brand personality and gives your audience a reason to stop, read, and engage.",
     },
     {
         icon: BookOpen,
         title: "Product Descriptions",
-        description: "Clear, persuasive copy that highlights benefits and drives add-to-cart clicks.",
+        description: "Persuasive product storytelling that turns features into benefits, answers buying questions, and makes the value instantly clear.",
     },
     {
         icon: Megaphone,
         title: "Ad & Landing Page Copy",
-        description: "High-converting copy built around a single, focused call to action.",
+        description: "Focused, conversion-driven messaging built around one powerful idea, one clear audience, and one unmistakable next step.",
     },
 ];
 
@@ -85,16 +85,15 @@ export default function ContentWritingTypesSection() {
                     variants={headerItem}
                     className="text-[32px] font-light leading-[1.2] text-neutral-900 sm:text-[38px] lg:text-[42px]"
                 >
-                    Content We{" "}
-                    <span className="font-semibold text-brand">Create</span>
+                    Words That Make Your{" "}
+                    <span className="font-semibold text-brand">Brand Mean Something</span>
                 </motion.h2>
 
                 <motion.p
                     variants={headerItem}
                     className="mx-auto mt-5 max-w-xl text-[15px] leading-relaxed text-neutral-500"
                 >
-                    From Website Pages To Email Campaigns, We Write The Content That
-                    Carries Your Brand Voice Everywhere It Shows Up.
+                    From the first headline to the final call to action, we craft purposeful content that gives your brand a distinct voice, earns attention, builds trust, and moves people to act.
                 </motion.p>
             </motion.div>
 

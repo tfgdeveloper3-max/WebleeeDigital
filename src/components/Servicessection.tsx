@@ -1,10 +1,12 @@
 import { ArrowUpRight } from "lucide-react";
 import { motion, type Variants } from "motion/react";
+import { Link } from "react-router-dom";
 
 const SERVICES = [
     {
         number: "01",
         title: "Custom Website",
+        slug: "web-development",
         description:
             "Bespoke websites built around your brand, combining striking design, seamless functionality, and intuitive experiences that turn visitors into customers.",
         filled: true,
@@ -12,6 +14,7 @@ const SERVICES = [
     {
         number: "02",
         title: "E-Commerce Solution",
+        slug: "ecommerce-solution",
         description:
             "High-performance online stores designed to make shopping effortless, strengthen your brand, and turn digital traffic into lasting business.",
         filled: false,
@@ -19,6 +22,7 @@ const SERVICES = [
     {
         number: "03",
         title: "Web/App Solution",
+        slug: "web-app-solution",
         description:
             "Smart, scalable digital platforms and applications engineered for performance, usability, and the evolving needs of modern businesses.",
         filled: false,
@@ -128,7 +132,8 @@ export default function ServicesSection() {
                             </div>
 
                             <div className="flex md:col-span-3 md:justify-end">
-                                <button
+                                <Link
+                                    to={`/services/${service.slug}`}
                                     className={`group flex h-36 w-36 shrink-0 flex-col items-center justify-center gap-1 rounded-full text-sm transition-colors duration-300 lg:h-40 lg:w-40 ${service.filled
                                         ? "bg-brand text-white hover:bg-neutral-900"
                                         : "border border-neutral-300 text-neutral-900 hover:border-brand hover:bg-brand hover:text-white"
@@ -138,7 +143,7 @@ export default function ServicesSection() {
                                         <ArrowUpRight strokeWidth={2.75} />
                                     </span>
                                     <span>View Details</span>
-                                </button>
+                                </Link>
                             </div>
                         </motion.div>
                     ))}

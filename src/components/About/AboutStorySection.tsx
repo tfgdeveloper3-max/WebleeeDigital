@@ -56,28 +56,20 @@ export default function AboutStorySection() {
                         variants={item}
                         className="text-[32px] font-light leading-[1.2] text-neutral-900 sm:text-[38px] lg:text-[42px]"
                     >
-                        Started In A Small Room,{" "}
-                        <span className="font-semibold text-brand">Built For The Long Run</span>
+                        Weblee - Where{" "}
+                        <span className="font-semibold text-brand">Ideas Become Digital Systems</span>
                     </motion.h2>
 
                     <motion.p variants={item} className="mt-6 text-[15px] leading-relaxed text-neutral-500">
-                        Weblee began with three people, one laptop each, and a shared
-                        frustration with agencies that treated every client the same way.
-                        We wanted to build something different — a studio that actually
-                        listens before it designs.
+                        Weblee was built on a simple belief: digital solutions should be engineered around the problem not assembled from a template. We combine strategic thinking, creative direction, product design, and modern technology to turn complex requirements into clear, purposeful digital experiences.
                     </motion.p>
 
                     <motion.p variants={item} className="mt-4 text-[15px] leading-relaxed text-neutral-500">
-                        What started as small website builds for local businesses has
-                        grown into a full digital partner for brands across e-commerce,
-                        SaaS, and hospitality. The team is bigger now, but the way we work
-                        hasn't changed: understand the business first, design second.
+                        Our capabilities span branding, UI/UX, web platforms, mobile applications, e-commerce, content, SEO, animation, and digital marketing. Each discipline works as part of a connected system, with every project shaped around usability, performance, scalability, and measurable business objectives
                     </motion.p>
 
                     <motion.p variants={item} className="mt-4 text-[15px] leading-relaxed text-neutral-500">
-                        Today, Weblee is a team of designers, developers, strategists, and
-                        marketers who all care about the same thing — building digital
-                        work that actually moves the needle for the people who hired us.
+                        Our process is grounded in discovery, architecture, execution, testing, and continuous refinement. We challenge assumptions, simplify complexity, and build with the future in mind creating digital experiences that are technically sound, visually distinctive, and built to deliver.
                     </motion.p>
                 </div>
             </motion.div>

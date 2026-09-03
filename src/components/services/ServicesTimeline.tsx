@@ -1,33 +1,34 @@
 import { motion, type Variants } from "motion/react";
 import { Target, ClipboardList, Presentation, Lightbulb, ArrowUpRight } from "lucide-react";
+import { useContactModal } from "../../context/ContactModalContext";
 
 const STEPS = [
     {
         number: "01",
         icon: Target,
         title: "Choose A Service",
-        description: "Lorem Ipsum Is Simply And Typesetting Industry.",
+        description: "Tell us what you need to build or grow.",
         position: "up", // icon on top, text below
     },
     {
         number: "02",
         icon: ClipboardList,
         title: "Define Requirements",
-        description: "Lorem Ipsum Is Simply And Typesetting Industry.",
+        description: "We understand your goals, needs, and requirements.",
         position: "down", // text above, icon below
     },
     {
         number: "03",
         icon: Presentation,
         title: "Request A Meeting",
-        description: "Lorem Ipsum Is Simply And Typesetting Industry.",
+        description: "Our team brings your solution to life and perfects the details.",
         position: "up",
     },
     {
         number: "04",
         icon: Lightbulb,
         title: "Final Solution",
-        description: "Lorem Ipsum Is Simply And Typesetting Industry.",
+        description: "We finalize everything and get your solution ready to perform.",
         position: "down",
     },
 ];
@@ -140,6 +141,8 @@ function Step({ step, index }: { step: (typeof STEPS)[number]; index: number }) 
 }
 
 export default function ProcessSection() {
+    const { openModal } = useContactModal();
+
     return (
         <section className="w-full bg-[#F8F6F6] py-16 font-atyp md:py-20">
             <div className="mx-auto max-w-6xl px-6 text-center md:px-12">
@@ -151,7 +154,7 @@ export default function ProcessSection() {
                     transition={{ duration: 0.6 }}
                     className="inline-block rounded-full bg-[#D1DCD7] px-5 py-1.5 text-sm font-medium text-neutral-700"
                 >
-                    Services
+                    Our Process
                 </motion.span>
 
                 {/* Heading */}
@@ -162,8 +165,8 @@ export default function ProcessSection() {
                     transition={{ duration: 0.7, delay: 0.1 }}
                     className="mt-4 text-3xl font-bold text-neutral-900 md:text-4xl lg:text-5xl"
                 >
-                    <span className="text-[#237B43]">Services</span> We're Providing To{" "}
-                    <span className="text-[#237B43]">Our Customers</span>
+                    From <span className="text-[#237B43]">First Conversation</span> To{" "}
+                    <span className="text-[#237B43]">Final Solution</span>
                 </motion.h2>
 
                 {/* Subtitle */}
@@ -174,7 +177,7 @@ export default function ProcessSection() {
                     transition={{ duration: 0.7, delay: 0.2 }}
                     className="mx-auto mt-4 max-w-xl text-sm text-neutral-500 md:text-base"
                 >
-                    Lorem Ipsum Is Simply Dummy Text Of The Printing And Typesetting Industry. L
+                    A simple, focused process that turns your needs into the right digital solution.
                 </motion.p>
 
                 {/* Steps */}
@@ -187,6 +190,7 @@ export default function ProcessSection() {
 
                 {/* CTA */}
                 <motion.button
+                    onClick={() => openModal()}
                     initial={{ opacity: 0, y: 15 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
