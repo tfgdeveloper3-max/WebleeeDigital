@@ -4,12 +4,9 @@ import { ArrowUpRight } from "lucide-react";
 import { useContactModal } from "../../../context/ContactModalContext";
 
 const PROJECTS = [
-    { image: "/images/VideoAnimationPortfolio1.png", title: "Product Launch Explainer", accent: "#d9631e" },
-    { image: "/images/VideoAnimationPortfolio2.png", title: "Brand Story Animation", accent: "#1f8a3c" },
-    { image: "/images/VideoAnimationPortfolio3.png", title: "3D Product Showcase", accent: "#5b3fa8" },
-    { image: "/images/VideoAnimationPortfolio4.png", title: "Social Ad Motion Graphics", accent: "#c9412f" },
-    { image: "/images/VideoAnimationPortfolio5.png", title: "App Onboarding Animation", accent: "#171717" },
-    { image: "/images/VideoAnimationPortfolio6.png", title: "Corporate Culture Film", accent: "#2f7ac9" },
+    { image: "/images/Portfolio/Video-Animation-1.jpg", title: "Full Brand Identity Kit", accent: "#7c2d8a" },
+    { image: "/images/Portfolio/Video-Animation-2.jpg", title: "Packaging & Print Design", accent: "#c94b6d" },
+    { image: "/images/Portfolio/Video-Animation-3.png", title: "Startup Brand Refresh", accent: "#1f6a3c" },
 ];
 
 const SHUFFLE = [

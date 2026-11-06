@@ -36,7 +36,7 @@ const PROJECTS = [
         size: "tall",
     },
     {
-        image: "/images/portfolio/project5.png",
+        image: "/images/Portfolio/E-commerce-Solution-2.jpg",
         title: "E-Commerce Solution",
         category: "E-Commerce",
         slug: "ecommerce-solution",
@@ -44,7 +44,7 @@ const PROJECTS = [
         size: "short",
     },
     {
-        image: "/images/portfolio/project6.png",
+        image: "/images/Portfolio/Web-App2.png",
         title: "Web/App Solution",
         category: "Web/App Solution",
         slug: "web-app-solution",
@@ -52,7 +52,7 @@ const PROJECTS = [
         size: "tall",
     },
     {
-        image: "/images/portfolio/project7.png",
+        image: "/images/Portfolio/Digital-Marketing-1.png",
         title: "Digital Marketing",
         category: "Digital Marketing",
         slug: "digital-marketing",
@@ -60,7 +60,7 @@ const PROJECTS = [
         size: "tall",
     },
     {
-        image: "/images/portfolio/project8.png",
+        image: "/images/Portfolio/Social-Media-1.png",
         title: "Social Media Marketing",
         category: "Social Media",
         slug: "social-media-management",

@@ -6,10 +6,14 @@ import ServicesClientsSection from "../../components/Innerservices/WebDevelopmen
 import CtaBannerSection from "../../components/Innerservices/WebAppSolution/WebAppCta";
 import WebAppPricingSection from "../../components/Innerservices/WebAppSolution/WebAppPricingSection";
 import TestimonialsSection from "../../components/Innerservices/WebAppSolution/WebAppTestimonials";
+import PageMeta from "../../components/PageMeta";
+import { PAGE_META } from "../../data/pageMeta";
 
 export default function WebAppSolutionPage() {
     return (
         <main className="w-full">
+            <PageMeta {...PAGE_META["web-app-solution"]} />
+            
             <WebAppHeroSection />
             <WebAppAboutSection />
             <ServicesClientsSection />

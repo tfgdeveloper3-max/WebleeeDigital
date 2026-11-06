@@ -9,10 +9,14 @@ import TestimonialsSection from '../components/Testimonialsection'
 import CtaBannerSection from '../components/Ctabannersection'
 import ContactSection from '../components/Contactsection'
 import BlindsReveal from '../components/BlindsReveal'
+import { PAGE_META } from '../data/pageMeta'
+import PageMeta from '../components/PageMeta'
 
 export default function Home() {
     return (
         <>
+            <PageMeta {...PAGE_META["home"]} />
+
             <HeroSection />
             <BlindsReveal>
                 <AboutSection />

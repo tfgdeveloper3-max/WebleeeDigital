@@ -4,12 +4,9 @@ import { ArrowUpRight } from "lucide-react";
 import { useContactModal } from "../../../context/ContactModalContext";
 
 const PROJECTS = [
-    { image: "/images/SocialMediaPortfolio1.png", title: "Social Campaign Highlights", accent: "#c94b6d" },
-    { image: "/images/SocialMediaPortfolio2.png", title: "Instagram Growth Case Study", accent: "#5b3fa8" },
-    { image: "/images/SocialMediaPortfolio3.png", title: "Product Launch Social Push", accent: "#d9631e" },
-    { image: "/images/SocialMediaPortfolio4.png", title: "Influencer Partnership Campaign", accent: "#2f7ac9" },
-    { image: "/images/SocialMediaPortfolio5.png", title: "Reel & Short-Form Video Series", accent: "#1f8a3c" },
-    { image: "/images/SocialMediaPortfolio6.png", title: "Community Engagement Revamp", accent: "#171717" },
+    { image: "/images/Portfolio/Social-Media-1.png", title: "Full Brand Identity Kit", accent: "#7c2d8a" },
+    { image: "/images/Portfolio/Social-Media-2.png", title: "Packaging & Print Design", accent: "#c94b6d" },
+    { image: "/images/Portfolio/Social-Media-3.png", title: "Startup Brand Refresh", accent: "#1f6a3c" },
 ];
 
 const SHUFFLE = [

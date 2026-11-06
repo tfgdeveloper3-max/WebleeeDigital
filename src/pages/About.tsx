@@ -5,11 +5,15 @@ import StatsSection from "../components/About/StatsSection";
 import ProcessSection from "../components/About/ProcessSection";
 import BlindsReveal from "../components/BlindsReveal";
 import CtaBannerSection from "../components/Ctabannersection";
+import PageMeta from "../components/PageMeta";
+import { PAGE_META } from "../data/pageMeta";
 
 
 export default function About() {
     return (
         <main>
+            <PageMeta {...PAGE_META.about} />
+            
             <AboutHeroSection />
             <AboutStorySection />
 

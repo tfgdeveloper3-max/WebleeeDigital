@@ -4,12 +4,9 @@ import { ArrowUpRight } from "lucide-react";
 import { useContactModal } from "../../../context/ContactModalContext";
 
 const PROJECTS = [
-    { image: "/images/ContentWritingPortfolio1.png", title: "Blog & Editorial Content", accent: "#1f8a3c" },
-    { image: "/images/ContentWritingPortfolio2.png", title: "SaaS Website Copy Rewrite", accent: "#2f7ac9" },
-    { image: "/images/ContentWritingPortfolio3.png", title: "E-commerce Product Copy", accent: "#d9631e" },
-    { image: "/images/ContentWritingPortfolio4.png", title: "Email Nurture Sequence", accent: "#5b3fa8" },
-    { image: "/images/ContentWritingPortfolio5.png", title: "Brand Voice & Messaging Guide", accent: "#171717" },
-    { image: "/images/ContentWritingPortfolio6.png", title: "Landing Page Copy Overhaul", accent: "#c94b6d" },
+    { image: "/images/Portfolio/Content-Writing-1.png", title: "Full Brand Identity Kit", accent: "#7c2d8a" },
+    { image: "/images/Portfolio/Content-Writing-2.png", title: "Packaging & Print Design", accent: "#c94b6d" },
+    { image: "/images/Portfolio/Content-Writing-3.png", title: "Startup Brand Refresh", accent: "#1f6a3c" },
 ];
 
 const SHUFFLE = [

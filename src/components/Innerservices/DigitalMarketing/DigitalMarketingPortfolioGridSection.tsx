@@ -4,12 +4,9 @@ import { ArrowUpRight } from "lucide-react";
 import { useContactModal } from "../../../context/ContactModalContext";
 
 const PROJECTS = [
-    { image: "/images/DigitalMarketingPortfolio1.png", title: "Multi-Channel Ad Campaign", accent: "#d9631e" },
-    { image: "/images/DigitalMarketingPortfolio2.png", title: "E-commerce Retargeting Funnel", accent: "#1f8a3c" },
-    { image: "/images/DigitalMarketingPortfolio3.png", title: "Email Automation Revenue Lift", accent: "#5b3fa8" },
-    { image: "/images/DigitalMarketingPortfolio4.png", title: "Landing Page Conversion Test", accent: "#2f7ac9" },
-    { image: "/images/DigitalMarketingPortfolio5.png", title: "PPC Campaign ROI Case Study", accent: "#171717" },
-    { image: "/images/DigitalMarketingPortfolio6.png", title: "Lead Gen Funnel Overhaul", accent: "#c94b6d" },
+    { image: "/images/Portfolio/Digital-Marketing-1.png", title: "Full Brand Identity Kit", accent: "#7c2d8a" },
+    { image: "/images/Portfolio/Digital-Marketing-2.png", title: "Packaging & Print Design", accent: "#c94b6d" },
+    { image: "/images/Portfolio/Digital-Marketing-3.png", title: "Startup Brand Refresh", accent: "#1f6a3c" },
 ];
 
 const SHUFFLE = [

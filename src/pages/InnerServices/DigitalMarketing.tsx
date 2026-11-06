@@ -6,10 +6,14 @@ import ServicesClientsSection from "../../components/Innerservices/WebDevelopmen
 import DigitalMarketingPricingSection from "../../components/Innerservices/DigitalMarketing/DigitalMarketingPricingSection";
 import DigitalCta from "../../components/Innerservices/DigitalMarketing/DigitalCta";
 import DigitalTestimonials from "../../components/Innerservices/DigitalMarketing/DigitalTestimonials";
+import PageMeta from "../../components/PageMeta";
+import { PAGE_META } from "../../data/pageMeta";
 
 export default function DigitalMarketingPage() {
     return (
         <main className="w-full">
+            <PageMeta {...PAGE_META["digital-marketing-services"]} />
+
             <DigitalMarketingHeroSection />
             <DigitalMarketingAboutSection />
             <ServicesClientsSection />

@@ -6,15 +6,19 @@ import ServicesClientsSection from "../../components/Innerservices/WebDevelopmen
 import SeoPricingSection from "../../components/Innerservices/Seo/SeoPricingSection";
 import SeoTestimonials from "../../components/Innerservices/Seo/SeoTestimonials";
 import SeoCta from "../../components/Innerservices/Seo/SeoCta";
+import PageMeta from "../../components/PageMeta";
+import { PAGE_META } from "../../data/pageMeta";
 
 export default function SeoPage() {
     return (
         <main className="w-full">
+            <PageMeta {...PAGE_META.seo} />
+            
             <SeoHeroSection />
             <SeoAboutSection />
+            <ServicesClientsSection />
             <SeoStrategySection />
             <SeoPortfolioGridSection />
-            <ServicesClientsSection />
             <SeoCta />
             <SeoPricingSection />
             <SeoTestimonials />

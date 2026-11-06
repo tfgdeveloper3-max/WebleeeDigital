@@ -6,10 +6,14 @@ import ServicesClientsSection from "../../components/Innerservices/WebDevelopmen
 import ContentWritingPricingSection from "../../components/Innerservices/ContentWriting/ContentWritingPricingSection";
 import ContentCta from "../../components/Innerservices/ContentWriting/ContentCta";
 import ContentTestimonials from "../../components/Innerservices/ContentWriting/ContentTestimonials";
+import PageMeta from "../../components/PageMeta";
+import { PAGE_META } from "../../data/pageMeta";
 
 export default function ContentWritingPage() {
     return (
         <main className="w-full">
+            <PageMeta {...PAGE_META["content-writing"]} />
+            
             <ContentWritingHeroSection />
             <ContentWritingAboutSection />
             <ServicesClientsSection />

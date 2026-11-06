@@ -4,12 +4,9 @@ import { ArrowUpRight } from "lucide-react";
 import { useContactModal } from "../../../context/ContactModalContext";
 
 const PROJECTS = [
-    { image: "/images/EcommercePortfolio1.png", title: "Reviv Juice — Fresh & Pure Can", accent: "#7c2d8a" },
-    { image: "/images/EcommercePortfolio2.png", title: "Leaf — Natural Skincare Store", accent: "#4a7c3f" },
-    { image: "/images/EcommercePortfolio3.png", title: "Cosmetic Store — Beauty Essentials", accent: "#c94b6d" },
-    { image: "/images/EcommercePortfolio4.png", title: "Volume — Fashion & Apparel", accent: "#1f6a3c" },
-    { image: "/images/EcommercePortfolio5.png", title: "Leaf — Skincare Collection", accent: "#3f6b2f" },
-    { image: "/images/EcommercePortfolio6.png", title: "Curated Marketplace", accent: "#171717" },
+    { image: "/images/Portfolio/E-commerce-Solution-1.jpg", title: "Full Brand Identity Kit", accent: "#7c2d8a" },
+    { image: "/images/Portfolio/E-commerce-Solution-2.jpg", title: "Packaging & Print Design", accent: "#c94b6d" },
+    { image: "/images/Portfolio/E-commerce-Solution-3.jpg", title: "Startup Brand Refresh", accent: "#1f6a3c" },
 ];
 
 const SHUFFLE = [

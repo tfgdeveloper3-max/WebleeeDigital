@@ -4,12 +4,9 @@ import { ArrowUpRight } from "lucide-react";
 import { useContactModal } from "../../../context/ContactModalContext";
 
 const PROJECTS = [
-    { image: "/images/BrandingPortfolio1.png", title: "Full Brand Identity Kit", accent: "#7c2d8a" },
-    { image: "/images/BrandingPortfolio2.png", title: "Packaging & Print Design", accent: "#c94b6d" },
-    { image: "/images/BrandingPortfolio3.png", title: "Startup Brand Refresh", accent: "#1f6a3c" },
-    { image: "/images/BrandingPortfolio4.png", title: "Restaurant Visual Identity", accent: "#d9631e" },
-    { image: "/images/BrandingPortfolio5.png", title: "Boutique Retail Branding", accent: "#5b3fa8" },
-    { image: "/images/BrandingPortfolio6.png", title: "Corporate Rebrand Project", accent: "#171717" },
+    { image: "/images/Portfolio/Branding-Design-1.jpg", title: "Full Brand Identity Kit", accent: "#7c2d8a" },
+    { image: "/images/Portfolio/Branding-Design-2.jpg", title: "Packaging & Print Design", accent: "#c94b6d" },
+    { image: "/images/Portfolio/Branding-Design-3.jpg", title: "Startup Brand Refresh", accent: "#1f6a3c" },
 ];
 
 const SHUFFLE = [

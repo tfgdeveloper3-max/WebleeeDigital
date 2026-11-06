@@ -35,9 +35,9 @@ export default function AboutStorySection() {
                 viewport={{ once: false, amount: 0.3 }}
             >
                 <motion.div variants={imageReveal} className="order-2 md:order-1">
-                    <div className="overflow-hidden rounded-[28px] border border-neutral-200 bg-white p-2">
+                    <div className="overflow-hidden rounded-[28px] p-2">
                         <img
-                            src="/images/about/story.png"
+                            src="/images/AboutPage.png"
                             alt="Weblee's early workspace"
                             className="h-full max-h-[520px] w-full rounded-[22px] object-cover"
                         />

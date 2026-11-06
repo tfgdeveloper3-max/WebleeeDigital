@@ -359,9 +359,9 @@ export default function FooterSection() {
                     <p>© {new Date().getFullYear()} Weblee. All rights reserved.</p>
 
                     <div className="flex items-center gap-6">
-                        <a href="/terms" className="transition-colors hover:text-white">Terms</a>
-                        <a href="/privacy" className="transition-colors hover:text-white">Privacy</a>
-                        <a href="/style-guide" className="transition-colors hover:text-white">Style Guide</a>
+                        <Link to="/terms-and-conditions" className="transition-colors hover:text-white">Terms</Link>
+                        <Link to="/privacy-policy" className="transition-colors hover:text-white">Privacy</Link>
+                        <Link to="/refund-policy" className="transition-colors hover:text-white">Refund Policy</Link>
                     </div>
 
                     <p className="text-neutral-500">24/7 Support</p>

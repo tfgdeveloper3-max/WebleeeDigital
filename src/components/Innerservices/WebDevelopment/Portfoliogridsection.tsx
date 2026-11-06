@@ -4,12 +4,9 @@ import { ArrowUpRight } from "lucide-react";
 import { useContactModal } from "../../../context/ContactModalContext";
 
 const PROJECTS = [
-    { image: "/images/ServicesPortfolio1.png", title: "Car Inspection Platform", accent: "#1f8a3c" },
-    { image: "/images/ServicesPortfolio2.png", title: "Lumina Skincare", accent: "#d9631e" },
-    { image: "/images/ServicesPortfolio3.png", title: "Architecture Studio", accent: "#4a2f22" },
-    { image: "/images/ServicesPortfolio4.png", title: "Sailboat Rentals", accent: "#8a8f98" },
-    { image: "/images/ServicesPortfolio5.png", title: "Beauty & Wellness Spa", accent: "#0f7a6b" },
-    { image: "/images/ServicesPortfolio6.png", title: "Sports Gear Store", accent: "#171717" },
+    { image: "/images/Portfolio/Custom-Website-1.png", title: "Full Brand Identity Kit", accent: "#7c2d8a" },
+    { image: "/images/Portfolio/Custom-Website-2.jpg", title: "Packaging & Print Design", accent: "#c94b6d" },
+    { image: "/images/Portfolio/Custom-Website-3.jpg", title: "Startup Brand Refresh", accent: "#1f6a3c" },
 ];
 
 const SHUFFLE = [

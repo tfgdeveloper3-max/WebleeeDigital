@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "motion/react";
 import { ArrowUpRight, ChevronDown } from "lucide-react";
 import { SERVICE_CATEGORIES } from "../data/serviceCategories";
+import { useContactModal } from "../context/ContactModalContext";
 
 type NavLink = {
     label: string;
@@ -22,6 +23,7 @@ export default function Navbar() {
     const location = useLocation();
     const navigate = useNavigate();
     const [servicesOpen, setServicesOpen] = useState(false);
+    const { openModal } = useContactModal();
 
     const basePath = (to: string) => to.split("#")[0] || "/";
     const isActive = (to: string) =>
@@ -156,13 +158,13 @@ export default function Navbar() {
                 >
                     Get In Touch
                 </Link>
-                <Link
-                    to="/contact"
+                <button
+                    onClick={() => openModal()}
                     aria-label="Go"
                     className="flex h-11 w-11 items-center justify-center rounded-full bg-white text-neutral-900 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:scale-110 hover:rotate-45 hover:bg-brand hover:text-white"
                 >
                     <ArrowUpRight strokeWidth={2.5} />
-                </Link>
+                </button>
             </div>
         </nav>
     );

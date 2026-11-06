@@ -6,10 +6,14 @@ import EcommercePortfolioGridSection from "../../components/Innerservices/Ecomme
 import EcommerceFeaturesSection from "../../components/Innerservices/EcommerceSolution/EcommerceFeaturesSection";
 import EcommerceHeroSection from "../../components/Innerservices/EcommerceSolution/EcommerceHeroSection";
 import EcommerceAboutSection from "../../components/Innerservices/EcommerceSolution/EcommerceAboutSection";
+import { PAGE_META } from "../../data/pageMeta";
+import PageMeta from "../../components/PageMeta";
 
 export default function EcommerceSolutionPage() {
     return (
         <main className="w-full">
+            <PageMeta {...PAGE_META["ecommerce-solution"]} />
+
             <EcommerceHeroSection />
             <EcommerceAboutSection />
             <ServicesClientsSection />

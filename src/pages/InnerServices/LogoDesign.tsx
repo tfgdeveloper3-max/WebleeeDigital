@@ -6,10 +6,14 @@ import ServicesClientsSection from "../../components/Innerservices/WebDevelopmen
 import LogoDesignPricingSection from "../../components/Innerservices/LogoDesign/LogoDesignPricingSection";
 import LogoTestimonials from "../../components/Innerservices/LogoDesign/LogoTestimonials";
 import LogoDesignCta from "../../components/Innerservices/LogoDesign/LogoDesignCta";
+import PageMeta from "../../components/PageMeta";
+import { PAGE_META } from "../../data/pageMeta";
 
 export default function LogoDesignPage() {
     return (
         <main className="w-full">
+            <PageMeta {...PAGE_META["logo-design"]} />
+            
             <LogoDesignHeroSection />
             <LogoDesignAboutSection />
             <ServicesClientsSection />

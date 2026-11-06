@@ -14,6 +14,9 @@ import FooterIntroReveal from "./components/FooterIntroReveal";
 import { ContactModalProvider } from './context/ContactModalContext'
 import ContactModal from './components/ContactModal'
 import { LiveChatWidget } from "@livechat/widget-react";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsAndConditions from "./pages/TermsAndConditions";
+import RefundPolicy from "./pages/RefundPolicy";
 
 function App() {
   useEffect(() => {
@@ -59,6 +62,9 @@ function App() {
             <Route path="/portfolio" element={<Portfolio />} />
             <Route path="/pricing" element={<Pricing />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
+            <Route path="/refund-policy" element={<RefundPolicy />} />
 
             {innerServiceRoutes.map(({ slug, component: Component }) => (
               <Route

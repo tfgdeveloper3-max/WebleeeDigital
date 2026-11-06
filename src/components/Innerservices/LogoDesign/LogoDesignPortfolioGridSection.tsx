@@ -4,12 +4,9 @@ import { ArrowUpRight } from "lucide-react";
 import { useContactModal } from "../../../context/ContactModalContext";
 
 const PROJECTS = [
-    { image: "/images/LogoDesignPortfolio1.png", title: "Minimal Logo Concept", accent: "#171717" },
-    { image: "/images/LogoDesignPortfolio2.png", title: "Wordmark & Icon Set", accent: "#5b3fa8" },
-    { image: "/images/LogoDesignPortfolio3.png", title: "Café Brand Mark", accent: "#8a5a2f" },
-    { image: "/images/LogoDesignPortfolio4.png", title: "Tech Startup Symbol", accent: "#2f7ac9" },
-    { image: "/images/LogoDesignPortfolio5.png", title: "Fitness Brand Emblem", accent: "#d9412f" },
-    { image: "/images/LogoDesignPortfolio6.png", title: "Boutique Monogram", accent: "#c94b6d" },
+    { image: "/images/Portfolio/Logo-Design-1.jpg", title: "Full Brand Identity Kit", accent: "#7c2d8a" },
+    { image: "/images/Portfolio/Logo-Design-2.jpg", title: "Packaging & Print Design", accent: "#c94b6d" },
+    { image: "/images/Portfolio/Logo-Design-3.jpg", title: "Startup Brand Refresh", accent: "#1f6a3c" },
 ];
 
 const SHUFFLE = [

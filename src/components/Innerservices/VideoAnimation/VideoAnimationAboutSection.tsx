@@ -29,27 +29,14 @@ const textItem: Variants = {
     },
 };
 
-const img1Variants: Variants = {
-    hidden: { x: 120, y: -60, opacity: 0, scale: 0.85, filter: "blur(6px)" },
+const imgVariants: Variants = {
+    hidden: { y: 60, opacity: 0, scale: 0.92, filter: "blur(6px)" },
     visible: {
-        x: 0,
         y: 0,
         opacity: 1,
         scale: 1,
         filter: "blur(0px)",
         transition: { duration: 1.4, ease: [0.16, 1, 0.3, 1], delay: 0.3 },
-    },
-};
-
-const img2Variants: Variants = {
-    hidden: { x: -120, y: 60, opacity: 0, scale: 0.85, filter: "blur(6px)" },
-    visible: {
-        x: 0,
-        y: 0,
-        opacity: 1,
-        scale: 1,
-        filter: "blur(0px)",
-        transition: { duration: 1.4, ease: [0.16, 1, 0.3, 1], delay: 0.5 },
     },
 };
 
@@ -116,28 +103,20 @@ export default function VideoAnimationAboutSection() {
                     </motion.div>
                 </motion.div>
 
-                <div className="relative mx-auto aspect-[4/5] w-full max-w-md md:max-w-none">
-                    <motion.img
-                        src="/images/VideoAnimation1.png"
-                        alt="Motion graphics and animation frame on screen"
-                        variants={img1Variants}
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: false, amount: 0.3 }}
-                        className="absolute right-0 top-0 w-[72%] rounded-[20px] border-4 border-white object-cover shadow-2xl"
+                <motion.div
+                    className="relative mx-auto w-full max-w-md md:max-w-none"
+                    variants={imgVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: false, amount: 0.3 }}
+                >
+                    <img
+                        src="/images/Services/Video-Animation.png"
+                        alt="Online store dashboard and shopping cart representing e-commerce shopping experience"
+                        className="w-full object-cover"
                         draggable={false}
                     />
-                    <motion.img
-                        src="/images/VideoAnimation2.png"
-                        alt="Animator storyboarding on a tablet"
-                        variants={img2Variants}
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: false, amount: 0.3 }}
-                        className="absolute bottom-0 left-0 z-10 w-[55%] rounded-[20px] border-4 border-white object-cover shadow-2xl"
-                        draggable={false}
-                    />
-                </div>
+                </motion.div>
             </div>
         </section>
     );

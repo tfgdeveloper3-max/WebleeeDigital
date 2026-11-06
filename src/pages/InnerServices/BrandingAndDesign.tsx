@@ -6,10 +6,14 @@ import ServicesClientsSection from "../../components/Innerservices/WebDevelopmen
 import CtaBannerSection from "../../components/Innerservices/BrandingAndDesign/BrandingCta";
 import BrandingPricingSection from "../../components/Innerservices/BrandingAndDesign/BrandingPricingSection";
 import TestimonialsSection from "../../components/Innerservices/BrandingAndDesign/BrandingTestimonials";
+import PageMeta from "../../components/PageMeta";
+import { PAGE_META } from "../../data/pageMeta";
 
 export default function BrandingAndDesignPage() {
     return (
         <main className="w-full">
+            <PageMeta {...PAGE_META["branding-design"]} />
+            
             <BrandingHeroSection />
             <BrandingAboutSection />
             <ServicesClientsSection />

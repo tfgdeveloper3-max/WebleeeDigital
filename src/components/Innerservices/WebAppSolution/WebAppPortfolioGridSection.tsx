@@ -4,12 +4,9 @@ import { ArrowUpRight } from "lucide-react";
 import { useContactModal } from "../../../context/ContactModalContext";
 
 const PROJECTS = [
-    { image: "/images/WebAppPortfolio1.png", title: "PropEsta — Real Estate Dashboard", accent: "#5b3fa8" },
-    { image: "/images/WebAppPortfolio2.png", title: "MedDash — Healthcare Management", accent: "#2f7ac9" },
-    { image: "/images/WebAppPortfolio3.png", title: "Axiom — AI Homework Assistant", accent: "#7c4fd6" },
-    { image: "/images/WebAppPortfolio4.png", title: "Zalsay — Analytics Platform", accent: "#171717" },
-    { image: "/images/WebAppPortfolio5.png", title: "Client Portal Dashboard", accent: "#1f8a6a" },
-    { image: "/images/WebAppPortfolio6.png", title: "Booking & Scheduling Tool", accent: "#c9631e" },
+    { image: "/images/Portfolio/Web-App1.png", title: "Full Brand Identity Kit", accent: "#7c2d8a" },
+    { image: "/images/Portfolio/Web-App2.png", title: "Packaging & Print Design", accent: "#c94b6d" },
+    { image: "/images/Portfolio/Web-App3.png", title: "Startup Brand Refresh", accent: "#1f6a3c" },
 ];
 
 const SHUFFLE = [
