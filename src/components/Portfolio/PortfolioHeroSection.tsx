@@ -85,7 +85,8 @@ export default function ServicesHeroSection() {
                                 <img
                                     key={i}
                                     src={src}
-                                    alt="Client avatar"
+                                    alt={`Client-Avatar-${i + 1}`}
+                                    title={`Client Avatar ${i + 1}`}
                                     className="h-9 w-9 rounded-full border-2 border-[#f4f4f2] object-cover transition-transform duration-300 hover:z-10 hover:scale-110"
                                 />
                             ))}
@@ -99,7 +100,6 @@ export default function ServicesHeroSection() {
                 </div>
             </div>
 
-            {/* rotating explore badge, anchored to the section corner */}
             <div className="absolute bottom-6 right-6 z-10 md:bottom-10 md:right-10">
                 <div className="relative h-32 w-32">
                     <div ref={badgeRef} className="absolute inset-0">

@@ -48,7 +48,8 @@ export default function Navbar() {
             <Link to="/" className="flex items-center">
                 <img
                     src="/images/logo.png"
-                    alt="Company Logo"
+                    alt="Weblee Digital"
+                    title="Weblee Digital"
                     className="h-12 w-auto object-contain md:h-18"
                     draggable={false}
                 />

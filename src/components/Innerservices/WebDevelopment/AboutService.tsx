@@ -115,7 +115,8 @@ export default function ServicesAboutSection() {
                 >
                     <img
                         src="/images/Services/Custom-Website-Development.png"
-                        alt="Developers working across multiple screens on a responsive website build"
+                        alt="Developers-working-across-multiple-screens-on-a-responsive-website-build"
+                        title="Developers Working Across Multiple Screens On A Responsive Website Build"
                         className="w-full object-cover"
                         draggable={false}
                     />

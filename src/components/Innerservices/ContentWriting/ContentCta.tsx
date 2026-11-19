@@ -75,7 +75,7 @@ export default function CtaBannerSection() {
 
                         <motion.div variants={textItem} className="mt-8 flex items-center gap-3">
                             <button onClick={() => openModal()} className="rounded-full bg-white px-6 py-3 text-sm font-medium text-neutral-900 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg">
-                               Find The Right Words
+                                Find The Right Words
                             </button>
 
                             <button
@@ -101,7 +101,8 @@ export default function CtaBannerSection() {
                             />
                             <motion.img
                                 src="/images/Banner.png"
-                                alt="Laptop and phone showing a modern website and dashboard app"
+                                alt="Laptop-and-phone-showing-a-modern-website-and-dashboard-app"
+                                title="Laptop And Phone Showing a Modern Website And Dashboard App"
                                 className="relative w-full select-none object-contain drop-shadow-[0_30px_40px_rgba(0,0,0,0.35)]"
                                 draggable={false}
                                 animate={{ y: [0, -14, 0] }}

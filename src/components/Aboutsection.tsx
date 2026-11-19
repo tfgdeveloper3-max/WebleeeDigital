@@ -118,7 +118,8 @@ export default function AboutSection() {
                         <div className="overflow-hidden rounded-[28px]">
                             <img
                                 src="/images/about2.png"
-                                alt="Code and technology"
+                                alt="Code-and-technology"
+                                title="Code and Technology"
                                 className="h-full max-h-[350px] w-full object-cover"
                             />
                         </div>
@@ -128,7 +129,8 @@ export default function AboutSection() {
                         <div className="overflow-hidden rounded-[28px] border border-neutral-200 bg-white p-2">
                             <img
                                 src="/images/about1.png"
-                                alt="Designer working on a laptop"
+                                alt="Designer-working-on-a-laptop"
+                                title="Designer working on a laptop"
                                 className="h-full max-h-[530px] w-full rounded-[22px] object-cover"
                             />
                         </div>

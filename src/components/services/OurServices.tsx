@@ -72,6 +72,10 @@ const cardReveal: Variants = {
     }),
 };
 
+// title ko words mein todta hai (\n, &, / sab hata ke) — alt aur title dono isi se bante hain
+const toImageWords = (text: string) =>
+    text.replace(/[^\w\s]/g, " ").trim().split(/\s+/);
+
 function ServiceCard({
     src,
     title,
@@ -94,7 +98,8 @@ function ServiceCard({
         >
             <img
                 src={src}
-                alt={title.replace("\n", " ")}
+                alt={`${toImageWords(title).join("-")}-Service`}
+                title={`${toImageWords(title).join(" ")} Service`}
                 className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-110"
             />
             <div className="absolute inset-0 bg-black/25 transition-opacity duration-500 group-hover:bg-black/10" />

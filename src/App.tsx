@@ -11,46 +11,49 @@ import Navbar from "./components/Navbar";
 import Footersection from "./components/Footersection";
 import { innerServiceRoutes } from "./routes/innerServiceRoutes";
 import FooterIntroReveal from "./components/FooterIntroReveal";
-import { ContactModalProvider } from './context/ContactModalContext'
-import ContactModal from './components/ContactModal'
-import { LiveChatWidget } from "@livechat/widget-react";
+import { ContactModalProvider } from "./context/ContactModalContext";
+import ContactModal from "./components/ContactModal";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsAndConditions from "./pages/TermsAndConditions";
 import RefundPolicy from "./pages/RefundPolicy";
+import ThankYouPage from "./components/ThankYou";
+
+declare global {
+  interface Window {
+    Tawk_API?: any;
+    Tawk_LoadStart?: Date;
+  }
+}
+
+const TAWK_SRC = "https://embed.tawk.to/6afcb6bc0a9f413cbd4631a5/1k7lijke1";
 
 function App() {
   useEffect(() => {
-    const openChat = () => {
-      const livechat = (window as any).LiveChatWidget;
+    if (document.querySelector(`script[src="${TAWK_SRC}"]`)) return;
 
-      if (livechat) {
-        setTimeout(() => {
-          livechat.call("maximize");
-        }, 1000);
-        livechat.on("new_event", (event: any) => {
-          if (
-            ["message", "rich_message", "file"].includes(event.type) &&
-            event.author?.type !== "customer"
-          ) {
-            livechat.call("maximize");
-          }
-        });
-      }
+    window.Tawk_API = window.Tawk_API || {};
+    window.Tawk_LoadStart = new Date();
+
+    window.Tawk_API.onLoad = () => {
+      setTimeout(() => {
+        window.Tawk_API?.maximize();
+      }, 1000);
     };
 
-    if ((window as any).LiveChatWidget) {
-      openChat();
-    }
-
-    (window as any).__lc = (window as any).__lc || {};
-    (window as any).__lc.asyncInit = () => {
-      openChat();
+    window.Tawk_API.onChatMessageAgent = () => {
+      window.Tawk_API?.maximize();
     };
+
+    const script = document.createElement("script");
+    script.async = true;
+    script.src = TAWK_SRC;
+    script.charset = "UTF-8";
+    script.setAttribute("crossorigin", "*");
+    document.body.appendChild(script);
   }, []);
 
   return (
     <>
-      <LiveChatWidget license="19067595" />
       <ContactModalProvider>
         <ScrollToTop />
         <Navbar />
@@ -62,6 +65,7 @@ function App() {
             <Route path="/portfolio" element={<Portfolio />} />
             <Route path="/pricing" element={<Pricing />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/thank-you" element={<ThankYouPage />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
             <Route path="/refund-policy" element={<RefundPolicy />} />

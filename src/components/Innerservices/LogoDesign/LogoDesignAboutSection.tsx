@@ -41,7 +41,7 @@ const imgVariants: Variants = {
 };
 
 export default function LogoDesignAboutSection() {
-      const { openModal } = useContactModal();
+    const { openModal } = useContactModal();
     return (
         <section className="relative w-full bg-[#fdfcf7] px-6 py-20 font-atyp md:px-12 lg:py-28">
             <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-16 md:grid-cols-2">
@@ -111,7 +111,8 @@ export default function LogoDesignAboutSection() {
                 >
                     <img
                         src="/images/Services/Logo-Design.png"
-                        alt="Online store dashboard and shopping cart representing e-commerce shopping experience"
+                        alt="Online-store-dashboard-and-shopping-cart-representing-e-commerce-shopping-experience"
+                        title="Online Store Dashboard"
                         className="w-full object-cover"
                         draggable={false}
                     />

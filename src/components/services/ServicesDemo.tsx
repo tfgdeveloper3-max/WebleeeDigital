@@ -23,22 +23,18 @@ const TAB_GROUPS = [
 ];
 
 const DEMOS = [
-    // ===== Custom Website =====
     { service: "Custom Website", title: "Reviv Juice — Fresh & Pure Can", image: "/images/CustomWebsite1.png", link: "#" },
     { service: "Custom Website", title: "Volume — Discover Your Style", image: "/images/CustomWebsite2.jpg", link: "#" },
     { service: "Custom Website", title: "Zalsay — Analytics Platform", image: "/images/CustomWebsite3.jpg", link: "#" },
 
-    // ===== E-commerce Solution =====
     { service: "E-commerce Solution", title: "Leaf — Natural Skincare Store", image: "/images/EcommerceSolution1.jpg", link: "#" },
     { service: "E-commerce Solution", title: "Cosmetic Store — Beauty Essentials", image: "/images/EcommerceSolution2.jpg", link: "#" },
     { service: "E-commerce Solution", title: "Leaf — Skincare Collection", image: "/images/EcommerceSolution3.jpg", link: "#" },
 
-    // ===== Web/App Solution =====
     { service: "Web/App Solution", title: "PropEsta — Real Estate Dashboard", image: "/images/WebApp1.png", link: "#" },
     { service: "Web/App Solution", title: "MedDash — Healthcare Management", image: "/images/WebApp2.png", link: "#" },
     { service: "Web/App Solution", title: "Axiom — AI Homework Assistant", image: "/images/WebApp3.png", link: "#" },
 
-    // ===== Mobile Apps =====
     { service: "Mobile Apps", title: "Creative Sprint — Learning App", image: "/images/MobileApps1.jpg", link: "#" },
     { service: "Mobile Apps", title: "Scenario — AI Meeting Assistant", image: "/images/MobileApps2.jpg", link: "#" },
     { service: "Mobile Apps", title: "CargoX — Logistics Tracking App", image: "/images/MobileApps3.jpg", link: "#" },
@@ -70,8 +66,14 @@ const DEMOS = [
     { service: "Digital Marketing Services", title: "Multi-Channel Ad Campaign", image: "/images/DigitalMarketingServices-3.png", link: "#" },
 ];
 
+const getImageWords = (demo: (typeof DEMOS)[number]) => {
+    const words = demo.title.replace(/[^\w\s]/g, " ").trim().split(/\s+/);
+    const sameTitle = DEMOS.filter((d) => d.title === demo.title);
+    return sameTitle.length > 1 ? [...words, String(sameTitle.indexOf(demo) + 1)] : words;
+};
 
 function DemoCard({ demo, index }: { demo: (typeof DEMOS)[number]; index: number }) {
+    const imageWords = getImageWords(demo);
     return (
         <motion.a
             href={demo.link}
@@ -84,19 +86,17 @@ function DemoCard({ demo, index }: { demo: (typeof DEMOS)[number]; index: number
         >
             <img
                 src={demo.image}
-                alt={demo.title}
+                alt={imageWords.join("-")}
+                title={imageWords.join(" ")}
                 className="h-full w-full object-cover transition-transform duration-[800ms] ease-out group-hover:scale-110"
             />
 
-            {/* Overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-[#237B43]/90 via-[#237B43]/30 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
 
-            {/* Category tag */}
             <span className="absolute left-4 top-4 rounded-full bg-white/90 px-3.5 py-1 text-[11px] font-semibold text-[#237B43] shadow-sm opacity-0 transition-all duration-500 -translate-y-2 group-hover:translate-y-0 group-hover:opacity-100">
                 {demo.service}
             </span>
 
-            {/* Title + View link */}
             <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 p-5 opacity-0 transition-all duration-500 translate-y-4 group-hover:translate-y-0 group-hover:opacity-100">
                 <h3 className="text-base font-semibold leading-snug text-white">{demo.title}</h3>
                 <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[#F2530F] via-[#DB1B3F] to-[#B23FC9] text-white shadow-lg transition-transform duration-300 group-hover:scale-110 group-hover:rotate-45">
@@ -128,7 +128,6 @@ export default function ServicesPortfolioSection() {
     return (
         <section className="w-full bg-[#FFFEFA] py-16 font-atyp md:py-20">
             <div className="mx-auto max-w-6xl px-6 md:px-12">
-                {/* Header */}
                 <div className="text-center">
                     <motion.span
                         initial={{ opacity: 0, y: 10 }}
@@ -161,7 +160,6 @@ export default function ServicesPortfolioSection() {
                     </motion.p>
                 </div>
 
-                {/* Top Tabs */}
                 <div className="mt-10 flex justify-center">
                     <div className="relative flex gap-8 border-b border-[#D1DCD7]">
                         {TAB_GROUPS.map((group) => {
@@ -187,11 +185,8 @@ export default function ServicesPortfolioSection() {
                     </div>
                 </div>
 
-                {/* Body: sidebar + grid */}
                 <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-[240px_1fr] md:gap-10">
-                    {/* Sidebar filters */}
                     <div className="flex flex-row flex-wrap gap-2.5 md:flex-col">
-                        {/* All button */}
                         <button
                             onClick={() => setActiveFilter("All")}
                             className="rounded-2xl px-5 py-3 text-left text-sm font-semibold text-white shadow-md shadow-[#237B43]/20 transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-[#237B43]/30"
@@ -233,7 +228,6 @@ export default function ServicesPortfolioSection() {
                         })}
                     </div>
 
-                    {/* Demo grid */}
                     <AnimatePresence mode="popLayout">
                         <motion.div
                             key={activeTab + activeFilter}

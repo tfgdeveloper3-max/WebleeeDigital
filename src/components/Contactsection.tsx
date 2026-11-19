@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import $ from "../lib/jquery-setup";
 import "jquery-ui-dist/jquery-ui";
+import { useNavigate } from "react-router-dom";
 import { submitLead } from "../lib/leadApi";
 
 const CONTACT_ITEMS = [
@@ -52,13 +53,14 @@ const CONTACT_ITEMS = [
 ];
 
 
-type FormStatus = "idle" | "loading" | "success" | "error";
+type FormStatus = "idle" | "loading" | "error";
 
 export default function ContactSection() {
     const fieldRefs = useRef<(HTMLElement | null)[]>([]);
     const mapRef = useRef<HTMLDivElement>(null);
     const formCardRef = useRef<HTMLDivElement>(null);
     const contactItemRefs = useRef<(HTMLElement | null)[]>([]);
+    const navigate = useNavigate();
 
     const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
     const [status, setStatus] = useState<FormStatus>("idle");
@@ -146,8 +148,7 @@ export default function ContactSection() {
                 phone_number: form.phone,
                 message: form.message,
             });
-            setStatus("success");
-            setForm({ name: "", email: "", phone: "", message: "" });
+            navigate("/thank-you", { state: { name: form.name } });
         } catch (err) {
             setStatus("error");
             setErrorMsg("Something went wrong. Please try again.");
@@ -168,20 +169,19 @@ export default function ContactSection() {
             </div>
 
             <div className="mx-auto mt-14 grid max-w-6xl grid-cols-1 gap-10 md:grid-cols-2">
-                {/* Map */}
                 <div
                     ref={mapRef}
                     className="opacity-0 relative h-[420px] overflow-hidden rounded-[20px] bg-neutral-100 md:h-[560px]"
                 >
                     <img
                         src="/images/Map.jpg"
-                        alt="Map showing our office locations"
+                        alt="Map-showing-our-office-locations"
+                        title="Map Showing Our Office Locations"
                         className="absolute inset-0 h-full w-full select-none object-cover"
                         draggable={false}
                     />
                 </div>
 
-                {/* Form card */}
                 <div
                     ref={formCardRef}
                     className="opacity-0 flex flex-col justify-center rounded-[20px] bg-gradient-to-br from-[#5a9a6a] via-brand to-[#12351f] p-10 md:h-[560px] lg:p-14"
@@ -256,11 +256,6 @@ export default function ContactSection() {
                             </span>
                         </button>
 
-                        {status === "success" && (
-                            <p className="text-sm font-medium text-white">
-                                Thanks! We've received your message and will be in touch soon.
-                            </p>
-                        )}
                         {status === "error" && (
                             <p className="text-sm font-medium text-red-100">{errorMsg}</p>
                         )}
@@ -310,6 +305,6 @@ export default function ContactSection() {
                     );
                 })}
             </div>
-        </section >
+        </section>
     );
 }

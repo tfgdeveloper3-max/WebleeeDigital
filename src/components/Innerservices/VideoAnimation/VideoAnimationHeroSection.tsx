@@ -84,7 +84,8 @@ export default function VideoAnimationHeroSection() {
                                 <img
                                     key={i}
                                     src={src}
-                                    alt="Client avatar"
+                                    alt={`Client-Avatar-${i + 1}`}
+                                    title={`Client Avatar ${i + 1}`}
                                     className="h-9 w-9 rounded-full border-2 border-[#f4f4f2] object-cover transition-transform duration-300 hover:z-10 hover:scale-110"
                                 />
                             ))}

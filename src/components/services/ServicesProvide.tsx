@@ -51,7 +51,8 @@ export default function SuiteOfServicesSection() {
                     >
                         <img
                             src="/images/ServicesProvide2.png"
-                            alt="Design and development suite"
+                            alt="Design-and-development-suite"
+                            title="Design And Development Suite"
                             className="h-[300px] w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 md:h-[340px]"
                         />
                     </motion.div>
@@ -68,7 +69,8 @@ export default function SuiteOfServicesSection() {
                     >
                         <img
                             src="/images/ServicesProvide1.png"
-                            alt="Development and coding"
+                            alt="Development-and-coding"
+                            title="Development and Coding"
                             className="h-[220px] w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 md:h-[240px]"
                         />
                     </motion.div>

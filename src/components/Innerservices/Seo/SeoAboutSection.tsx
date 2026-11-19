@@ -111,7 +111,8 @@ export default function SeoAboutSection() {
                 >
                     <img
                         src="/images/Services/SEO.png"
-                        alt="Online store dashboard and shopping cart representing e-commerce shopping experience"
+                        alt="Online-store-dashboard-and-shopping-cart-representing-e-commerce-shopping-experience"
+                        title="Online Store Dashboard"
                         className="w-full object-cover"
                         draggable={false}
                     />

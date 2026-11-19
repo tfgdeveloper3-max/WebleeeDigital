@@ -70,6 +70,9 @@ const cardVariants: Variants = {
     }),
 };
 
+const toImageWords = (text: string) =>
+    text.replace(/[^\w\s]/g, " ").trim().split(/\s+/);
+
 function WorkCard({
     project,
     index,
@@ -86,7 +89,8 @@ function WorkCard({
         >
             <img
                 src={project.image}
-                alt={project.title}
+                alt={toImageWords(project.title).join("-")}
+                title={toImageWords(project.title).join(" ")}
                 className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
             />
         </motion.div>
@@ -163,7 +167,7 @@ export default function EcommercePortfolioGridSection() {
                         </button>
 
                         <button
-                        onClick={() => openModal()}
+                            onClick={() => openModal()}
                             aria-label="Go"
                             className="btn-sweep relative flex h-11 w-11 items-center justify-center overflow-hidden rounded-full bg-cta-gradient text-white shadow-lg shadow-pink-500/20 transition-all duration-300 hover:-translate-y-0.5 hover:scale-110 hover:rotate-45 hover:shadow-lg hover:shadow-orange-500/40"
                         >

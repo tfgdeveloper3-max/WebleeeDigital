@@ -131,7 +131,8 @@ export default function HeroSection() {
                                             <img
                                                 key={i}
                                                 src={src}
-                                                alt="Client avatar"
+                                                alt={`Client-Avatar-${i + 1}`}
+                                                title={`Client Avatar ${i + 1}`}
                                                 className="h-9 w-9 rounded-full border-2 border-[#f4f4f2] object-cover transition-transform duration-300 hover:z-10 hover:scale-110"
                                             />
                                         ))}
@@ -181,14 +182,16 @@ export default function HeroSection() {
 
                         <img
                             src="/images/hero/circle.png"
-                            alt=""
+                            alt="Hero-Background-Circle"
+                            title="Hero Background Circle"
                             className="animate__animated animate__fadeIn pointer-events-none absolute h-[75%] w-auto max-w-none select-none object-contain"
                             draggable={false}
                         />
 
                         <img
                             src="/images/hero/person.png"
-                            alt="Team member holding a tablet"
+                            alt="Team-Member-Holding-A-Tablet"
+                            title="Team Member Holding A Tablet"
                             className="animate__animated animate__fadeIn relative z-10 h-full max-h-[560px] w-auto max-w-none select-none object-contain drop-shadow-2xl md:max-h-[640px] lg:max-h-[720px]"
                             draggable={false}
                         />
@@ -205,7 +208,8 @@ export default function HeroSection() {
                         >
                             <img
                                 src="/images/hero/card-webapp.png"
-                                alt="Web / App Solutions"
+                                alt="Web-App-Solutions"
+                                title="Web App Solutions"
                                 className="w-full drop-shadow-xl"
                                 draggable={false}
                             />
@@ -223,7 +227,8 @@ export default function HeroSection() {
                         >
                             <img
                                 src="/images/hero/card-rating.png"
-                                alt="5-Star Rating, 100% Client Satisfaction"
+                                alt="5-Star-Rating-100-Percent-Client-Satisfaction"
+                                title="5 Star Rating 100 Percent Client Satisfaction"
                                 className="w-full drop-shadow-xl"
                                 draggable={false}
                             />
@@ -241,7 +246,8 @@ export default function HeroSection() {
                         >
                             <img
                                 src="/images/hero/card-video.jpg"
-                                alt="Video Animation"
+                                alt="Video-Animation"
+                                title="Video Animation"
                                 className="w-full drop-shadow-xl"
                                 draggable={false}
                             />
@@ -259,7 +265,8 @@ export default function HeroSection() {
                         >
                             <img
                                 src="/images/hero/card-branding.png"
-                                alt="Creative Branding"
+                                alt="Creative-Branding"
+                                title="Creative Branding"
                                 className="w-full drop-shadow-xl"
                                 draggable={false}
                             />

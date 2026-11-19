@@ -101,7 +101,8 @@ export default function CtaBannerSection() {
                             />
                             <motion.img
                                 src="/images/Banner.png"
-                                alt="Laptop and phone showing a modern website and dashboard app"
+                                alt="Laptop-and-phone-showing-a-modern-website-and-dashboard-app"
+                                title="Laptop And Phone Showing a Modern Website And Dashboard App"
                                 className="relative w-full select-none object-contain drop-shadow-[0_30px_40px_rgba(0,0,0,0.35)]"
                                 draggable={false}
                                 animate={{ y: [0, -14, 0] }}

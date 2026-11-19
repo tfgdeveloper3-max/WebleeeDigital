@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "motion/react";
 import { X, Package } from "lucide-react";
 import { useContactModal } from "../context/ContactModalContext";
 import { submitLead } from "../lib/leadApi";
 
-type FormStatus = "idle" | "loading" | "success" | "error";
+type FormStatus = "idle" | "loading" | "error";
 
 export default function ContactModal() {
     const { isOpen, closeModal, selectedPlan } = useContactModal();
+    const navigate = useNavigate();
 
     const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
     const [status, setStatus] = useState<FormStatus>("idle");
@@ -56,8 +58,6 @@ export default function ContactModal() {
         setStatus("loading");
         setErrorMsg("");
 
-        // Selected package info ko message field ke sath merge karke bhejte hain
-        // — API sirf 4 fields (name, email, phone_number, message) accept karti hai
         const finalMessage = selectedPlan
             ? `Interested Package: ${selectedPlan}${form.message ? `\n\n${form.message}` : ""}`
             : form.message;
@@ -69,7 +69,10 @@ export default function ContactModal() {
                 phone_number: form.phone,
                 message: finalMessage,
             });
-            setStatus("success");
+            closeModal();
+            navigate("/thank-you", {
+                state: { name: form.name, plan: selectedPlan },
+            });
         } catch (err) {
             setStatus("error");
             setErrorMsg("Something went wrong. Please try again.");
@@ -103,93 +106,74 @@ export default function ContactModal() {
                             <X className="h-4 w-4" strokeWidth={2.5} />
                         </button>
 
-                        {status === "success" ? (
-                            <div className="flex flex-col items-center py-6 text-center">
-                                <h3 className="text-[22px] font-semibold text-white">Message Sent!</h3>
-                                <p className="mt-3 text-sm leading-relaxed text-white/85">
-                                    Thanks for reaching out. We've received your message and
-                                    will get back to you soon.
-                                </p>
-                                <button
-                                    onClick={closeModal}
-                                    className="mt-6 rounded-full bg-white px-6 py-3 text-sm font-semibold text-neutral-900 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg"
-                                >
-                                    Close
-                                </button>
+                        <h3 className="mb-4 pr-8 text-[24px] font-semibold leading-tight text-white md:text-[28px]">
+                            Have a Vision? Let's Give It a Digital Home.
+                        </h3>
+
+                        {selectedPlan && (
+                            <div className="mb-6 flex items-center gap-2 rounded-full bg-white/15 px-4 py-2 text-sm text-white">
+                                <Package className="h-4 w-4 shrink-0" />
+                                <span className="truncate">{selectedPlan}</span>
                             </div>
-                        ) : (
-                            <>
-                                <h3 className="mb-4 pr-8 text-[24px] font-semibold leading-tight text-white md:text-[28px]">
-                                    Have a Vision? Let's Give It a Digital Home.
-                                </h3>
-
-                                {/* Selected package badge — sirf display, editable nahi */}
-                                {selectedPlan && (
-                                    <div className="mb-6 flex items-center gap-2 rounded-full bg-white/15 px-4 py-2 text-sm text-white">
-                                        <Package className="h-4 w-4 shrink-0" />
-                                        <span className="truncate">{selectedPlan}</span>
-                                    </div>
-                                )}
-
-                                <form onSubmit={handleSubmit} className="flex flex-col gap-6">
-                                    <div className="border-b border-white/35 pb-3">
-                                        <input
-                                            type="text"
-                                            placeholder="Name"
-                                            value={form.name}
-                                            onChange={handleChange("name")}
-                                            required
-                                            className="w-full bg-transparent text-white outline-none placeholder:text-white/70"
-                                        />
-                                    </div>
-
-                                    <div className="border-b border-white/35 pb-3">
-                                        <input
-                                            type="email"
-                                            placeholder="Email address"
-                                            value={form.email}
-                                            onChange={handleChange("email")}
-                                            required
-                                            className="w-full bg-transparent text-white outline-none placeholder:text-white/70"
-                                        />
-                                    </div>
-
-                                    <div className="border-b border-white/35 pb-3">
-                                        <input
-                                            type="tel"
-                                            placeholder="Phone number"
-                                            value={form.phone}
-                                            onChange={handleChange("phone")}
-                                            className="w-full bg-transparent text-white outline-none placeholder:text-white/70"
-                                        />
-                                    </div>
-
-                                    <div className="border-b border-white/35 pb-3">
-                                        <input
-                                            type="text"
-                                            placeholder="Message (optional)"
-                                            value={form.message}
-                                            onChange={handleChange("message")}
-                                            className="w-full bg-transparent text-white outline-none placeholder:text-white/70"
-                                        />
-                                    </div>
-
-                                    <button
-                                        type="submit"
-                                        disabled={status === "loading"}
-                                        className="btn-sweep relative mt-2 overflow-hidden rounded-full bg-white px-8 py-4 text-base font-semibold text-neutral-900 shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.01] hover:shadow-xl disabled:cursor-not-allowed disabled:opacity-70"
-                                    >
-                                        <span className="relative z-10">
-                                            {status === "loading" ? "Sending..." : "Send now"}
-                                        </span>
-                                    </button>
-
-                                    {status === "error" && (
-                                        <p className="text-sm font-medium text-red-100">{errorMsg}</p>
-                                    )}
-                                </form>
-                            </>
                         )}
+
+                        <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+                            <div className="border-b border-white/35 pb-3">
+                                <input
+                                    type="text"
+                                    placeholder="Name"
+                                    value={form.name}
+                                    onChange={handleChange("name")}
+                                    required
+                                    className="w-full bg-transparent text-white outline-none placeholder:text-white/70"
+                                />
+                            </div>
+
+                            <div className="border-b border-white/35 pb-3">
+                                <input
+                                    type="email"
+                                    placeholder="Email address"
+                                    value={form.email}
+                                    onChange={handleChange("email")}
+                                    required
+                                    className="w-full bg-transparent text-white outline-none placeholder:text-white/70"
+                                />
+                            </div>
+
+                            <div className="border-b border-white/35 pb-3">
+                                <input
+                                    type="tel"
+                                    placeholder="Phone number"
+                                    value={form.phone}
+                                    onChange={handleChange("phone")}
+                                    className="w-full bg-transparent text-white outline-none placeholder:text-white/70"
+                                />
+                            </div>
+
+                            <div className="border-b border-white/35 pb-3">
+                                <input
+                                    type="text"
+                                    placeholder="Message (optional)"
+                                    value={form.message}
+                                    onChange={handleChange("message")}
+                                    className="w-full bg-transparent text-white outline-none placeholder:text-white/70"
+                                />
+                            </div>
+
+                            <button
+                                type="submit"
+                                disabled={status === "loading"}
+                                className="btn-sweep relative mt-2 overflow-hidden rounded-full bg-white px-8 py-4 text-base font-semibold text-neutral-900 shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.01] hover:shadow-xl disabled:cursor-not-allowed disabled:opacity-70"
+                            >
+                                <span className="relative z-10">
+                                    {status === "loading" ? "Sending..." : "Send now"}
+                                </span>
+                            </button>
+
+                            {status === "error" && (
+                                <p className="text-sm font-medium text-red-100">{errorMsg}</p>
+                            )}
+                        </form>
                     </motion.div>
                 </motion.div>
             )}

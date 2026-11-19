@@ -93,6 +93,9 @@ const headerItem: Variants = {
     },
 };
 
+const toImageWords = (text: string) =>
+    text.replace(/[^\w\s]/g, " ").trim().split(/\s+/);
+
 function ProjectCard({ project }: { project: (typeof PROJECTS)[number] }) {
     return (
         <motion.div
@@ -105,7 +108,8 @@ function ProjectCard({ project }: { project: (typeof PROJECTS)[number] }) {
         >
             <img
                 src={project.image}
-                alt={project.title}
+                alt={`${toImageWords(project.title).join("-")}-Portfolio`}
+                title={`${toImageWords(project.title).join(" ")} Portfolio`}
                 className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-transparent" />

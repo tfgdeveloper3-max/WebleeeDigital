@@ -95,6 +95,10 @@ const cardVariants: Variants = {
     }),
 };
 
+// title ko words mein todta hai, symbols (&, /, commas) hata ke — alt aur title dono isi se bante hain
+const toImageWords = (text: string) =>
+    text.replace(/[^\w\s]/g, " ").trim().split(/\s+/);
+
 function ProjectCard({
     project,
     index,
@@ -112,7 +116,8 @@ function ProjectCard({
         >
             <img
                 src={project.image}
-                alt={project.title}
+                alt={`${toImageWords(project.title).join("-")}-Portfolio`}
+                title={`${toImageWords(project.title).join(" ")} Portfolio`}
                 className={`absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105 ${project.position === "top"
                     ? "object-top"
                     : project.position === "bottom"

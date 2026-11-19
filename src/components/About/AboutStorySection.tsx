@@ -38,7 +38,8 @@ export default function AboutStorySection() {
                     <div className="overflow-hidden rounded-[28px] p-2">
                         <img
                             src="/images/AboutPage.png"
-                            alt="Weblee's early workspace"
+                            alt="Weblee's-early-workspace"
+                            title="Weblee Early Workspace"
                             className="h-full max-h-[520px] w-full rounded-[22px] object-cover"
                         />
                     </div>

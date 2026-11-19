@@ -1,10 +1,6 @@
 import { useEffect, useMemo, useState, type ReactNode } from "react";
 import { Link } from "react-router-dom";
 
-/* ------------------------------------------------------------------ */
-/*  Shared config — update routes here if your router uses other paths */
-/* ------------------------------------------------------------------ */
-
 export const COMPANY = {
     name: "Weblee Digital",
     website: "https://webleedigital.com/",
@@ -19,10 +15,6 @@ export const POLICY_LINKS = [
     { label: "Terms & Conditions", href: "/terms-and-conditions" },
     { label: "Refund & Cancellation Policy", href: "/refund-policy" },
 ];
-
-/* ------------------------------------------------------------------ */
-/*  Content model                                                       */
-/* ------------------------------------------------------------------ */
 
 export type ListItem = string | { label: string; text: string };
 
@@ -40,16 +32,11 @@ export type PolicySection = {
     blocks: Block[];
 };
 
-/* Small helpers so page files stay readable */
 export const p = (text: string): Block => ({ type: "p", text });
 export const list = (items: ListItem[], columns: 1 | 2 = 1): Block => ({ type: "list", items, columns });
 export const sub = (title: string, blocks: Block[]): Block => ({ type: "sub", title, blocks });
 export const note = (text: string): Block => ({ type: "note", text });
 export const contact = (subject?: string): Block => ({ type: "contact", subject });
-
-/* ------------------------------------------------------------------ */
-/*  Rendering helpers                                                   */
-/* ------------------------------------------------------------------ */
 
 const EMAIL_RE = /([A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,})/g;
 const IS_EMAIL = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
@@ -222,10 +209,6 @@ function RenderBlocks({ blocks, prefix }: { blocks: Block[]; prefix: string }) {
         </>
     );
 }
-
-/* ------------------------------------------------------------------ */
-/*  Layout                                                              */
-/* ------------------------------------------------------------------ */
 
 type PolicyLayoutProps = {
     title: string;

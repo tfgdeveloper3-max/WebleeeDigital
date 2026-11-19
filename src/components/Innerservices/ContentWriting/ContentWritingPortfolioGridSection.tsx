@@ -70,6 +70,9 @@ const cardVariants: Variants = {
     }),
 };
 
+const toImageWords = (text: string) =>
+    text.replace(/[^\w\s]/g, " ").trim().split(/\s+/);
+
 function WorkCard({
     project,
     index,
@@ -86,7 +89,8 @@ function WorkCard({
         >
             <img
                 src={project.image}
-                alt={project.title}
+                alt={toImageWords(project.title).join("-")}
+                title={toImageWords(project.title).join(" ")}
                 className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
             />
         </motion.div>

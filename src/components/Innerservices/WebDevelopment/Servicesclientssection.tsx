@@ -26,6 +26,9 @@ const rowReveal: Variants = {
     },
 };
 
+const toImageWords = (text: string) =>
+    text.replace(/[^\w\s]/g, " ").trim().split(/\s+/);
+
 function LogoRow({
     direction,
     size,
@@ -49,7 +52,8 @@ function LogoRow({
                     <img
                         key={`${logo.alt}-${i}`}
                         src={logo.src}
-                        alt={logo.alt}
+                        alt={`${toImageWords(logo.alt).join("-")}-Logo`}
+                        title={`${toImageWords(logo.alt).join(" ")} Logo`}
                         className={`${size} w-auto shrink-0 object-contain opacity-50 grayscale transition-all duration-700 ease-out hover:scale-110 hover:opacity-100 hover:grayscale-0 hover:drop-shadow-[0_0_20px_rgba(255,255,255,0.6)]`}
                     />
                 ))}
@@ -91,7 +95,6 @@ export default function ServicesClientsSection() {
                     100% { background-position: 0% 50%; }
                 }
 
-                /* Sweeping Light Effect */
                 .sweep-light::before {
                     content: '';
                     position: absolute;

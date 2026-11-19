@@ -112,7 +112,8 @@ export default function VideoAnimationAboutSection() {
                 >
                     <img
                         src="/images/Services/Video-Animation.png"
-                        alt="Online store dashboard and shopping cart representing e-commerce shopping experience"
+                        alt="Online-store-dashboard-and-shopping-cart-representing-e-commerce-shopping-experience"
+                        title="Online Store Dashboard"
                         className="w-full object-cover"
                         draggable={false}
                     />

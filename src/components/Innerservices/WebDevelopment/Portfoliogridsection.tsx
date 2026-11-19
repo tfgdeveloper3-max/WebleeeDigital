@@ -49,7 +49,7 @@ const cardVariants: Variants = {
         rotate: SHUFFLE[i].rotate,
         scale: 0.75,
         transition: {
-            duration: 1.2, // Pehle 0.7 tha, ab slow exit
+            duration: 1.2,
             ease: [0.22, 1, 0.36, 1],
             delay: EXIT_DELAYS[i] ?? 0,
         },
@@ -62,13 +62,16 @@ const cardVariants: Variants = {
         scale: 1,
         transition: {
             type: "spring",
-            stiffness: 60,  // Pehle 110 tha, ab slow & heavy
-            damping: 18,    // Pehle 20 tha, ab thoda more settle
-            mass: 1,        // Pehle 0.7 tha, ab heavy feel
-            delay: i * 0.3, // Pehle 0.12 tha, ab bohot spread out (1.5 sec total stagger)
+            stiffness: 60,
+            damping: 18,
+            mass: 1,
+            delay: i * 0.3,
         },
     }),
 };
+
+const toImageWords = (text: string) =>
+    text.replace(/[^\w\s]/g, " ").trim().split(/\s+/);
 
 function WorkCard({
     project,
@@ -86,7 +89,8 @@ function WorkCard({
         >
             <img
                 src={project.image}
-                alt={project.title}
+                alt={toImageWords(project.title).join("-")}
+                title={toImageWords(project.title).join(" ")}
                 className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
             />
         </motion.div>

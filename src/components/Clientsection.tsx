@@ -1,12 +1,12 @@
 import { motion, type Variants } from "motion/react";
 
 const LOGOS = [
-    { src: "/images/logos/Western.png", alt: "Western" },
-    { src: "/images/logos/Holdings.png", alt: "Holdings" },
-    { src: "/images/logos/Mobiletech.png", alt: "MobileTech" },
-    { src: "/images/logos/Reliance.png", alt: "Reliance Insurance Group" },
-    { src: "/images/logos/Pandora.png", alt: "Pandora" },
-    { src: "/images/logos/Audiowave.png", alt: "AudioWave" },
+    { src: "/images/logos/Western.png", alt: "Western", title: "Western"},
+    { src: "/images/logos/Holdings.png", alt: "Holdings", title: "Holdings" },
+    { src: "/images/logos/Mobiletech.png", alt: "MobileTech", title: "MobileTech" },
+    { src: "/images/logos/Reliance.png", alt: "Reliance-Insurance-Group", title: "Reliance Insurance Group" },
+    { src: "/images/logos/Pandora.png", alt: "Pandora", title: "Pandora" },
+    { src: "/images/logos/Audiowave.png", alt: "AudioWave", title: "AudioWave" },
 ];
 
 const headerContainer: Variants = {
@@ -66,6 +66,7 @@ function LogoRow({
                         key={`${logo.alt}-${i}`}
                         src={logo.src}
                         alt={logo.alt}
+                        title={logo.title}
                         className={`${size} w-auto shrink-0 object-contain opacity-50 grayscale transition-all duration-700 ease-out hover:scale-110 hover:opacity-100 hover:grayscale-0 hover:drop-shadow-[0_0_20px_rgba(255,255,255,0.6)]`}
                     />
                 ))}

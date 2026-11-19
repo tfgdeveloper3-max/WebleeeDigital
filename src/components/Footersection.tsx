@@ -23,10 +23,29 @@ const SERVICE_LINKS = [
 ];
 
 const SOCIALS = [
-    { label: "Instagram", href: "https://instagram.com" },
-    { label: "Dribbble", href: "https://dribbble.com" },
-    { label: "LinkedIn", href: "https://linkedin.com" },
-    { label: "Twitter", href: "https://twitter.com" },
+    {
+        label: "Facebook",
+        href: "https://www.facebook.com/WebleeDigital",
+        hoverClass: "hover:border-[#1877F2] hover:bg-[#1877F2] hover:text-white",
+        icon: (
+            <svg viewBox="0 0 24 24" className="h-[18px] w-[18px]" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z" />
+            </svg>
+        ),
+    },
+    {
+        label: "Instagram",
+        href: "https://www.instagram.com/webleedigital/",
+        hoverClass:
+            "hover:border-transparent hover:bg-[linear-gradient(45deg,#f09433_0%,#e6683c_25%,#dc2743_50%,#cc2366_75%,#bc1888_100%)] hover:text-white",
+        icon: (
+            <svg viewBox="0 0 24 24" className="h-[18px] w-[18px]" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect x="2.5" y="2.5" width="19" height="19" rx="5.5" stroke="currentColor" strokeWidth="2" />
+                <circle cx="12" cy="12" r="4.4" stroke="currentColor" strokeWidth="2" />
+                <circle cx="17.4" cy="6.6" r="1.3" fill="currentColor" />
+            </svg>
+        ),
+    },
 ];
 
 function ArrowIcon() {
@@ -242,7 +261,8 @@ export default function FooterSection() {
                         <Link to="/" className="flex items-center">
                             <img
                                 src="/images/Footerlogo.png"
-                                alt="Company Logo"
+                                alt="Weblee Digital"
+                                title="Weblee Digital"
                                 className="h-10 w-auto object-contain md:h-26"
                                 draggable={false}
                             />
@@ -261,9 +281,10 @@ export default function FooterSection() {
                                     target="_blank"
                                     rel="noreferrer"
                                     aria-label={s.label}
-                                    className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-neutral-300 transition-all duration-300 hover:-translate-y-0.5 hover:border-brand hover:text-brand"
+                                    title={s.label}
+                                    className={`flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-neutral-300 transition-all duration-300 hover:-translate-y-0.5 ${s.hoverClass}`}
                                 >
-                                    <span className="text-xs font-medium">{s.label[0]}</span>
+                                    {s.icon}
                                 </a>
                             ))}
                         </div>
@@ -371,4 +392,4 @@ export default function FooterSection() {
             < BrandWordmark />
         </footer >
     );
-} 
+}
