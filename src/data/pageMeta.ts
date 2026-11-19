@@ -1,121 +1,179 @@
 type MetaEntry = {
     title: string;
     description: string;
+    keywords: string;
     path: string;
 };
 
 export const PAGE_META: Record<string, MetaEntry> = {
-    /* ===================== Main Pages ===================== */
 
     home: {
-        title: "Weblee Digital | Web Design, Development & Digital Solutions",
+        title: "Web Design & Digital Marketing Agency | Weblee Digital",
         description:
-            "Weblee Digital builds custom websites, e-commerce stores, apps, branding, and digital marketing campaigns that turn visitors into customers. Get a free consultation today.",
+            "Weblee Digital is a full-service web design and digital marketing agency offering website development, e-commerce, mobile apps, branding and SEO services.",
+        keywords:
+            "web design agency, website development company, digital marketing agency, web design services, website design company, SEO services, ecommerce website development, mobile app development, branding agency",
         path: "/",
     },
     about: {
-        title: "About Us — Our Story, Mission & Team",
+        title: "About Us | Web Design & Digital Marketing Agency | Weblee Digital",
         description:
-            "Learn how Weblee Digital started, what drives our mission and vision, and meet the team of designers, developers, and strategists behind every project.",
+            "Learn about Weblee Digital, a creative web design and digital marketing agency helping businesses grow with custom websites, apps, branding and SEO.",
+        keywords:
+            "about Weblee Digital, web design agency, digital agency, creative agency, website design company, digital marketing company",
         path: "/about",
     },
     services: {
-        title: "Our Services — Web, App, Branding & Marketing Solutions",
+        title: "Web Design, SEO & Digital Marketing Services | Weblee Digital",
         description:
-            "Explore Weblee Digital's full range of services: custom websites, e-commerce, web/app development, branding, video animation, SEO, and digital marketing.",
+            "Explore our digital services: website design and development, e-commerce, web and mobile apps, logo and brand design, SEO, content writing and social media.",
+        keywords:
+            "digital services, web design services, website development services, SEO services, digital marketing services, app development services, branding services",
         path: "/services",
     },
     portfolio: {
-        title: "Portfolio — Recent Projects & Client Work",
+        title: "Web Design Portfolio & Case Studies | Weblee Digital",
         description:
-            "Browse a selection of websites, apps, branding, and marketing campaigns Weblee Digital has designed and shipped for clients across every industry.",
+            "Browse our portfolio of website design, web development, mobile app, video animation and logo design projects for businesses across industries.",
+        keywords:
+            "web design portfolio, website design examples, web development portfolio, app development portfolio, logo design portfolio, digital agency portfolio",
         path: "/portfolio",
     },
     pricing: {
-        title: "Pricing — Transparent Packages For Every Service",
+        title: "Web Design Packages & Plans | Weblee Digital",
         description:
-            "See clear, upfront pricing for custom websites, e-commerce, apps, branding, SEO, and digital marketing packages. Find the plan that fits your budget.",
+            "Compare affordable website design, e-commerce, app development, branding, SEO and digital marketing packages. Find the right plan for your business.",
+        keywords:
+            "web design packages, website design cost, affordable web design, website packages, SEO packages, digital marketing packages, logo design packages",
         path: "/pricing",
     },
     contact: {
-        title: "Contact Us — Let's Talk About Your Project",
+        title: "Contact Us | Get a Free Website Consultation | Weblee Digital",
         description:
-            "Get in touch with Weblee Digital to discuss your next website, app, or marketing project. We typically reply within one business day.",
+            "Contact Weblee Digital for a free consultation on web design, app development, branding or digital marketing. Tell us about your project today.",
+        keywords:
+            "contact web design agency, free website consultation, hire web designer, web development quote, digital marketing consultation",
         path: "/contact",
     },
 
     /* ============= Services: Websites & Apps ============= */
 
     "custom-website": {
-        title: "Custom Website Design & Development",
+        title: "Website Design & Development Services | Weblee Digital",
         description:
-            "Bespoke, mobile-responsive websites built around your brand — fast load times, clean code, and design that turns visitors into customers.",
-        path: "/services/custom-website",
+            "Professional website design and development services. We build custom, responsive, SEO-friendly websites that look great and turn visitors into customers.",
+        keywords:
+            "website design, web development services, custom website design, responsive web design, website development company, professional web design, WordPress website development",
+        path: "/services/web-development",
     },
     "ecommerce-solution": {
-        title: "E-Commerce Solutions — Online Stores That Convert",
+        title: "E-Commerce Website Development Services | Weblee Digital",
         description:
-            "Custom e-commerce stores with secure checkout, product management, and conversion-focused design built to grow your online sales.",
+            "Custom e-commerce website design and development. We build secure, mobile-friendly online stores with easy checkout to help you sell more online.",
+        keywords:
+            "ecommerce website development, ecommerce web design, online store design, ecommerce development company, ecommerce solutions, online shop website",
         path: "/services/ecommerce-solution",
     },
     "web-app-solution": {
-        title: "Web & App Solutions — Custom Platforms & Portals",
+        title: "Custom Web Application Development | Weblee Digital",
         description:
-            "Scalable web and app platforms, CRM/ERP portals, booking systems, and custom software engineered for performance and growth.",
+            "Custom web application development for businesses. We design and build secure, scalable web apps, portals and dashboards tailored to your needs.",
+        keywords:
+            "web application development, custom web app development, web app development company, SaaS development, custom software development, web portal development",
         path: "/services/web-app-solution",
     },
     "mobile-apps": {
-        title: "Mobile App Development — iOS & Android",
+        title: "Mobile App Development Services | Weblee Digital",
         description:
-            "Cross-platform and native mobile apps designed for a seamless user experience, from MVP builds to full enterprise applications.",
+            "Mobile app development services for startups and businesses. We design and build fast, user-friendly apps from concept and UI/UX design to launch.",
+        keywords:
+            "mobile app development, app development company, mobile app design, iOS app development, Android app development, custom app development",
         path: "/services/mobile-apps",
     },
 
     /* ============= Services: Design & Media ============= */
 
     "video-animation": {
-        title: "Video Animation & Explainer Videos",
+        title: "Explainer Video & 2D Animation Services | Weblee Digital",
         description:
-            "Custom 2D and 3D animated videos, explainer videos, and motion graphics that tell your brand's story and boost engagement.",
+            "2D explainer video and animation services for businesses. Script-to-screen videos that explain your product, engage your audience and boost conversions.",
+        keywords:
+            "explainer video, 2D animation services, animated explainer video, video animation company, motion graphics, promotional video production",
         path: "/services/video-animation",
     },
     "branding-design": {
-        title: "Branding & Design — Build A Brand People Remember",
+        title: "Branding & Brand Identity Design Services | Weblee Digital",
         description:
-            "Full brand identity design including collateral, packaging, and visual systems that make your business look professional and cohesive.",
-        path: "/services/branding-design",
+            "Professional branding and brand identity design. We create logos, color palettes, typography and brand guidelines that make your business memorable.",
+        keywords:
+            "branding agency, brand identity design, branding services, brand design, corporate identity design, brand strategy",
+        path: "/services/branding-and-design",
     },
     "logo-design": {
-        title: "Logo Design — Custom Logos By Professional Designers",
+        title: "Custom Logo Design Services | Weblee Digital",
         description:
-            "Unique, memorable logo design packages with unlimited concepts and revisions, delivered in every file format you need.",
+            "Professional custom logo design services for businesses and startups. Get a unique, memorable logo that represents your brand across web and print.",
+        keywords:
+            "logo design, custom logo design, logo design services, professional logo design, business logo design, logo designer",
         path: "/services/logo-design",
     },
 
     /* ============= Services: Marketing & Content ============= */
 
     seo: {
-        title: "SEO Optimization — Rank Higher, Get Found",
+        title: "SEO Services | Search Engine Optimization | Weblee Digital",
         description:
-            "Technical SEO, keyword research, and on/off-page optimization plans designed to grow your organic search rankings and traffic.",
+            "Results-driven SEO services to help you rank higher on Google. Keyword research, on-page and technical SEO, link building and local SEO to grow traffic.",
+        keywords:
+            "SEO services, search engine optimization, SEO agency, SEO company, local SEO, technical SEO, on-page SEO, Google ranking",
         path: "/services/seo",
     },
     "content-writing": {
-        title: "Content Writing — Copy That Sounds Like You",
+        title: "Content Writing Services | Website & SEO Content | Weblee Digital",
         description:
-            "Website copy, blog content, and SEO-optimized writing plans built to engage your audience and support your growth goals.",
+            "Professional content writing services for websites, blogs and marketing. SEO-friendly copy that engages readers, builds trust and ranks on Google.",
+        keywords:
+            "content writing services, website content writing, SEO content writing, blog writing services, copywriting services, web copywriter",
         path: "/services/content-writing",
     },
     "social-media-marketing": {
-        title: "Social Media Management & Marketing",
+        title: "Social Media Management & Marketing Services | Weblee Digital",
         description:
-            "Social media management, content creation, and paid ad campaigns across Facebook, Instagram, and more to grow your brand's presence.",
-        path: "/services/social-media-marketing",
+            "Social media management and marketing for Facebook, Instagram, LinkedIn and more. Grow your followers, engagement and leads with a clear strategy.",
+        keywords:
+            "social media management, social media marketing, social media agency, Instagram marketing, Facebook marketing, social media services",
+        path: "/services/social-media-management",
     },
     "digital-marketing-services": {
-        title: "Digital Marketing Services — Multi-Channel Growth",
+        title: "Digital Marketing Services & Agency | Weblee Digital",
         description:
-            "Full-funnel digital marketing plans combining SEO, paid ads, email, and content to drive measurable growth for your business.",
-        path: "/services/digital-marketing-services",
+            "Full-service digital marketing agency offering SEO, PPC, social media, email and content marketing to grow your traffic, leads and online sales.",
+        keywords:
+            "digital marketing agency, digital marketing services, online marketing, PPC management, internet marketing, performance marketing",
+        path: "/services/digital-marketing",
+    },
+
+    /* ===================== Legal Pages ===================== */
+
+    "terms-and-conditions": {
+        title: "Terms and Conditions | Web Design Services | Weblee Digital",
+        description:
+            "Read the terms and conditions that apply when you use the Weblee Digital website or hire us for web design, development and digital marketing services.",
+        keywords: "Weblee Digital terms and conditions, terms of service",
+        path: "/terms-and-conditions",
+    },
+    "privacy-policy": {
+        title: "Privacy Policy | How We Protect Your Data | Weblee Digital",
+        description:
+            "Read the Weblee Digital privacy policy to learn what personal information we collect, how we use and protect it, and the choices you have about your data.",
+        keywords: "Weblee Digital privacy policy, data protection",
+        path: "/privacy-policy",
+    },
+    "refund-policy": {
+        title: "Refund Policy | Service Refund Terms | Weblee Digital",
+        description:
+            "Read the Weblee Digital refund policy to understand when refunds apply, how to request one, and how we handle web design and digital marketing projects.",
+        keywords: "Weblee Digital refund policy, money back policy",
+        path: "/refund-policy",
     },
 };

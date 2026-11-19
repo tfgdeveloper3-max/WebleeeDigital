@@ -3,7 +3,7 @@ import { useEffect } from "react";
 type PageMetaProps = {
     title: string;
     description: string;
-    /** Optional canonical path, e.g. "/services/custom-website" */
+    keywords?: string;
     path?: string;
 };
 
@@ -20,6 +20,10 @@ function setMetaTag(attr: "name" | "property", key: string, content: string) {
     el.setAttribute("content", content);
 }
 
+function removeMetaTag(attr: "name" | "property", key: string) {
+    document.querySelector(`meta[${attr}="${key}"]`)?.remove();
+}
+
 function setCanonical(href: string) {
     let el = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
     if (!el) {
@@ -30,12 +34,19 @@ function setCanonical(href: string) {
     el.setAttribute("href", href);
 }
 
-export default function PageMeta({ title, description, path }: PageMetaProps) {
+export default function PageMeta({ title, description, keywords, path }: PageMetaProps) {
     useEffect(() => {
         const fullTitle = title.includes(SITE_NAME) ? title : `${title} | ${SITE_NAME}`;
         document.title = fullTitle;
 
         setMetaTag("name", "description", description);
+
+        if (keywords) {
+            setMetaTag("name", "keywords", keywords);
+        } else {
+            removeMetaTag("name", "keywords");
+        }
+
         setMetaTag("property", "og:title", fullTitle);
         setMetaTag("property", "og:description", description);
         setMetaTag("property", "og:site_name", SITE_NAME);
@@ -48,7 +59,7 @@ export default function PageMeta({ title, description, path }: PageMetaProps) {
             setMetaTag("property", "og:url", url);
             setCanonical(url);
         }
-    }, [title, description, path]);
+    }, [title, description, keywords, path]);
 
     return null;
 }
